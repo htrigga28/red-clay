@@ -23,7 +23,7 @@ export function HeroCarousel() {
     if (isPaused || reducedMotion) return;
     const timer = window.setInterval(() => {
       setActiveIndex((index) => (index + 1) % homeHeroSlides.length);
-    }, 3500);
+    }, 5000);
     return () => window.clearInterval(timer);
   }, [isPaused, reducedMotion]);
 
