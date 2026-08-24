@@ -17,7 +17,6 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [reveal, setReveal] = useState<Reveal>(null);
   const [heroTone, setHeroTone] = useState<HeroTone>("light");
-  const [isScrolled, setIsScrolled] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const panelButtonRef = useRef<HTMLButtonElement>(null);
   const originButtonRef = useRef<HTMLButtonElement>(null);
@@ -41,18 +40,6 @@ export function Header() {
     if (initialTone === "light" || initialTone === "dark") setHeroTone(initialTone);
     document.addEventListener(homeHeroToneEvent, onHeroTone);
     return () => document.removeEventListener(homeHeroToneEvent, onHeroTone);
-  }, [isHome]);
-
-  useEffect(() => {
-    if (!isHome) {
-      setIsScrolled(false);
-      return;
-    }
-
-    const onScroll = () => setIsScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
   }, [isHome]);
 
   useEffect(() => {
@@ -111,7 +98,6 @@ export function Header() {
     <header
       className={`site-header ${isHome ? "site-header--home" : ""}`}
       data-tone={isHome ? heroTone : undefined}
-      data-scrolled={isHome ? isScrolled : undefined}
       data-reveal-open={Boolean(reveal)}
       data-mobile-open={mobileOpen}
       onPointerLeave={(event) => {
