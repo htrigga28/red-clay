@@ -1,0 +1,48 @@
+## 1. Brand & Creative Direction
+Canonical:
+Strategic Brand Resolution — Earthen Monograph
+
+Controls:
+- brand thesis
+- positioning
+- tone
+- cultural guardrails
+- material philosophy
+
+## 2. Visual Direction
+Canonical:
+Red Clay — Art Direction Validation Pack
+
+Controls:
+- photography
+- materials
+- lighting
+- product visual language
+- approved/rejected visual tendencies
+
+## 3. Page & Content Architecture
+Canonical:
+RED_CLAY_SECTION_4B_CORRECTED_CONSOLIDATED.md
+
+Controls:
+- sitemap
+- page purpose
+- section order
+- provisional copy architecture
+- content relationships
+
+## 4. Structural Layout
+Canonical:
+RED_CLAY_SECTION_4C_CORRECTED_CANONICAL.md
+
+Controls:
+- wireframes
+- responsive hierarchy
+- component placement
+- mobile/desktop behavior
+
+## Superseded Material
+
+Earlier Section 4A, 4B and 4C drafts are non-authoritative.
+Deep Research documents are contextual research only.
+Rejected creative territories must not override canonical documents.
