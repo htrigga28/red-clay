@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Newsreader, Geist, Geist_Mono } from "next/font/google";
 import { BagProvider } from "@/components/commerce/BagProvider";
+import { CartDrawer } from "@/components/commerce/CartDrawer";
 import { Header } from "@/components/navigation/Header";
 import "./globals.css";
 
@@ -14,5 +15,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en" className={`${editorial.variable} ${sans.variable} ${mono.variable}`}><body><BagProvider><Header />{children}</BagProvider></body></html>;
+  return <html lang="en" className={`${editorial.variable} ${sans.variable} ${mono.variable}`}><body><BagProvider><Header /><CartDrawer />{children}</BagProvider></body></html>;
 }

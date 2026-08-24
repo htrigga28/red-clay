@@ -13,7 +13,7 @@ type Reveal = "shop" | "origins" | null;
 
 export function Header() {
   const pathname = usePathname();
-  const { count } = useBag();
+  const { count, open: openBag } = useBag();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [reveal, setReveal] = useState<Reveal>(null);
   const [heroTone, setHeroTone] = useState<HeroTone>("light");
@@ -122,7 +122,7 @@ export function Header() {
           </div>
           {navigation.primary.slice(2).map((item) => <Link className={`nav-link ${isCurrent(item.href) ? "is-current" : ""}`} key={item.href} href={item.href} onFocus={() => setReveal(null)} onPointerEnter={(event) => { if (event.pointerType === "mouse") setReveal(null); }}>{item.label}</Link>)}
         </nav>
-        <Link className="bag-link" href="/bag" aria-label={`Bag, ${count} items`}>Bag <span aria-hidden="true">({count})</span></Link>
+        <Link className="bag-link" href="/bag" aria-label={`Bag, ${count} items`} onClick={(event) => { event.preventDefault(); openBag(event.currentTarget); }}>Bag <span aria-hidden="true">({count})</span></Link>
       </div>
       {mobileOpen && <MobileNavigation pathname={pathname} close={() => setMobileOpen(false)} />}
     </header>
