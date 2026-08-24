@@ -862,6 +862,11 @@ html[data-home-motion="ready"] .home-ritual:not([data-visible="true"]) .ritual-p
 .dossier-next { padding-block: 5rem 7rem; background: var(--color-mineral); color: var(--color-bone); }
 .dossier-next h2 { color: var(--color-bone); }
 .dossier-next .editorial-link { justify-self: start; }
+.origin-dossier--central-kenya .dossier-place-media .media-frame { aspect-ratio: 16 / 10; }
+.origin-dossier--kayanza-burundi .dossier-hero-media .media-frame { aspect-ratio: 4 / 5; }
+.origin-dossier--kayanza-burundi .dossier-place-media .media-frame { aspect-ratio: 4 / 5; }
+.origin-dossier--southern-ethiopia .dossier-hero-media .media-frame { aspect-ratio: 16 / 10; }
+.origin-dossier--southern-ethiopia .dossier-place-media .media-frame { aspect-ratio: 3 / 2; }
 
 @media (min-width: 640px) {
   .origins-thesis-grid { grid-template-columns: minmax(8rem, 0.42fr) minmax(0, 1.6fr) minmax(12rem, 0.65fr); gap: 1.25rem; align-items: start; }
@@ -950,6 +955,8 @@ html[data-home-motion="ready"] .home-ritual:not([data-visible="true"]) .ritual-p
   .dossier-edition { padding-block: 9rem; }
   .dossier-facts { padding-block: 8rem; }
   .dossier-next { padding-block: 7rem 9rem; }
+  .origin-dossier--kayanza-burundi .dossier-place-media { margin-top: 2rem; }
+  .origin-dossier--southern-ethiopia .dossier-context-media { margin-top: 3rem; }
 }
 
 @media (min-width: 1280px) {
