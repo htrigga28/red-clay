@@ -18,6 +18,7 @@ export function ProductMediaPlaceholder({ assetId, aspectRatio = "4 / 5", label,
         <span className="placeholder-mark">RED CLAY</span>
         <span className="placeholder-label">{label}</span>
       </div>
+      <span className="placeholder-alt" aria-hidden="true">Material study</span>
     </div>
   );
 }

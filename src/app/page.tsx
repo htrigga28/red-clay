@@ -21,22 +21,22 @@ export default function HomePage() {
       <section className="home-continuum" aria-labelledby="continuum-title" data-continuum data-active="0">
         <h2 className="sr-only" id="continuum-title">Earth, coffee, vessel, ritual.</h2>
         <div className="continuum-sticky">
-          <div className="continuum-kicker page-container"><SectionLabel>MATERIAL CONTINUUM</SectionLabel></div>
+          <div className="continuum-kicker page-container"><SectionLabel>THE CONTINUUM</SectionLabel></div>
           <div className="continuum-states page-container">
             <article className="continuum-state" data-continuum-state="0">
-              <div className="continuum-state-copy"><span className="continuum-number">01</span><h3>Earth</h3><p>Laterite, stone, and linen set the quiet material register for the work.</p></div>
+              <div className="continuum-state-copy"><span className="continuum-number">01 / 04</span><h3>Earth</h3><p>Laterite, stone, and linen set the quiet material register for the work.</p></div>
               <MediaFrame asset={redClayAssets.materials.clay} className="continuum-state-media continuum-state-media--earth" sizes="(max-width: 1023px) 100vw, 66vw" />
             </article>
             <article className="continuum-state" data-continuum-state="1">
-              <div className="continuum-state-copy"><span className="continuum-number">02</span><h3>Coffee</h3><p>Fruit, water, and patient process gather into four seasonal lots.</p></div>
+              <div className="continuum-state-copy"><span className="continuum-number">02 / 04</span><h3>Coffee</h3><p>Fruit, water, and patient process gather into four seasonal lots.</p></div>
               <MediaFrame asset={redClayAssets.origins.kenyaDetail} className="continuum-state-media continuum-state-media--coffee" sizes="(max-width: 1023px) 100vw, 66vw" />
             </article>
             <article className="continuum-state" data-continuum-state="2">
-              <div className="continuum-state-copy"><span className="continuum-number">03</span><h3>Vessel</h3><p>Earth becomes a companion object for the everyday ceremony of coffee.</p></div>
+              <div className="continuum-state-copy"><span className="continuum-number">03 / 04</span><h3>Vessel</h3><p>Earth becomes a companion object for the everyday ceremony of coffee.</p></div>
               <MediaFrame asset={redClayAssets.materials.stone} className="continuum-state-media continuum-state-media--vessel" sizes="(max-width: 1023px) 100vw, 66vw" />
             </article>
             <article className="continuum-state" data-continuum-state="3">
-              <div className="continuum-state-copy"><span className="continuum-number">04</span><h3>Ritual</h3><p>The final measure is time: a slower morning, held in the hand.</p></div>
+              <div className="continuum-state-copy"><span className="continuum-number">04 / 04</span><h3>Ritual</h3><p>The final measure is time: a slower morning, held in the hand.</p></div>
               <MediaFrame asset={redClayAssets.ritual.pourOver} className="continuum-state-media continuum-state-media--ritual" sizes="(max-width: 1023px) 100vw, 66vw" />
             </article>
           </div>
@@ -70,7 +70,7 @@ export default function HomePage() {
             <span className="mono-label">01 / KENYA</span>
             <h3>Central Kenya</h3>
             <p>Coffee plants, red soil, and process hold the opening chapter.</p>
-            <Link className="editorial-link" href="/origins/central-kenya">Enter the chapter <span aria-hidden="true">↗</span></Link>
+            <Link className="editorial-link" href="/origins/central-kenya">Read the chapter <span aria-hidden="true">↗</span></Link>
           </div>
         </article>
 
@@ -81,7 +81,7 @@ export default function HomePage() {
             <span className="mono-label">02 / BURUNDI</span>
             <h3>Kayanza / Burundi</h3>
             <p>Drying-bed geometry gives the Kayanza chapter its broad, graphic rhythm.</p>
-            <Link className="editorial-link" href="/origins/kayanza-burundi">Enter the chapter <span aria-hidden="true">↗</span></Link>
+            <Link className="editorial-link" href="/origins/kayanza-burundi">Read the chapter <span aria-hidden="true">↗</span></Link>
           </div>
         </article>
 
@@ -92,7 +92,7 @@ export default function HomePage() {
             <span className="mono-label">03 / ETHIOPIA</span>
             <h3>Southern Ethiopia</h3>
             <p>A closer process view near Hawassa shifts the chapter from landscape to hand and attention.</p>
-            <Link className="editorial-link" href="/origins/southern-ethiopia">Enter the chapter <span aria-hidden="true">↗</span></Link>
+            <Link className="editorial-link" href="/origins/southern-ethiopia">Read the chapter <span aria-hidden="true">↗</span></Link>
           </div>
         </article>
       </section>

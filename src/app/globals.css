@@ -292,8 +292,12 @@ h3 { margin-block: 0.65rem 0.65rem; font-size: clamp(1.35rem, 1.8vw, 2rem); line
 .harvest-wall .product-card:not(:first-child) .product-placeholder { aspect-ratio: 4 / 5 !important; }
 .harvest-wall .product-card:not(:first-child) .product-card-copy { padding-top: 0; }
 .harvest-wall .product-card-notes { margin-top: 0.35rem; }
-.harvest-wall .product-placeholder { transition: background-color 320ms var(--ease-quiet), color 320ms var(--ease-quiet); }
-.harvest-wall .product-card-media:hover .product-placeholder, .harvest-wall .product-card-media:focus-within .product-placeholder { background: #ddd6ca; color: var(--color-clay); }
+.harvest-wall .product-placeholder { transition: background-color 320ms var(--ease-quiet), color 320ms var(--ease-quiet), filter 320ms var(--ease-quiet); }
+.harvest-wall .product-placeholder::after { position: absolute; inset: 0; content: ""; background: linear-gradient(135deg, rgba(155, 77, 55, 0.22), transparent 42%, rgba(46, 49, 45, 0.16)); opacity: 0; transition: opacity 320ms var(--ease-quiet); pointer-events: none; }
+.harvest-wall .product-card-media:hover .product-placeholder, .harvest-wall .product-card-media:focus-within .product-placeholder { background: #ddd6ca; color: var(--color-clay); filter: saturate(0.82); }
+.harvest-wall .product-card-media:hover .product-placeholder::after, .harvest-wall .product-card-media:focus-within .product-placeholder::after { opacity: 1; }
+.placeholder-alt { position: absolute; right: 0.8rem; bottom: 0.8rem; z-index: 1; color: currentColor; font-family: var(--font-mono), monospace; font-size: 0.56rem; letter-spacing: 0.1em; opacity: 0; text-transform: uppercase; transition: opacity 320ms var(--ease-quiet); }
+.harvest-wall .product-card-media:hover .placeholder-alt, .harvest-wall .product-card-media:focus-within .placeholder-alt { opacity: 0.72; }
 
 /* Pass 2R origin chapters */
 .home-origins { overflow: hidden; padding-block: 7rem 4rem; background: var(--color-canvas); }
