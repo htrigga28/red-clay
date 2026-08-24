@@ -8,7 +8,9 @@ export type CoffeeMedia = {
   pdpHero: RedClayAsset;
   origin?: RedClayAsset;
   process?: RedClayAsset;
+  secondaryProcess?: RedClayAsset;
   botanical?: RedClayAsset;
+  ritual?: RedClayAsset;
 };
 
 export type Coffee = {
@@ -48,7 +50,9 @@ export const coffees: Coffee[] = [
       pdpHero: pendingCoffee(redClayAssets.pending.kenyaProduct),
       origin: redClayAssets.origins.kenyaLead,
       process: redClayAssets.origins.kenyaProcess,
+      secondaryProcess: redClayAssets.origins.kenyaDrying,
       botanical: redClayAssets.origins.kenyaDetail,
+      ritual: redClayAssets.ritual.pourOver,
     },
     relatedEdition: "water-and-time",
   },
@@ -69,6 +73,7 @@ export const coffees: Coffee[] = [
       origin: redClayAssets.origins.burundiLead,
       process: redClayAssets.origins.burundiSupport,
       botanical: redClayAssets.origins.burundiBotanical,
+      ritual: redClayAssets.ritual.hands,
     },
   },
   {
@@ -87,6 +92,8 @@ export const coffees: Coffee[] = [
       pdpHero: pendingCoffee(redClayAssets.pending.ethiopia01Product),
       origin: redClayAssets.origins.ethiopiaLead,
       process: redClayAssets.origins.ethiopiaSupport,
+      secondaryProcess: redClayAssets.origins.ethiopiaDetail,
+      ritual: redClayAssets.ritual.pourOver,
     },
   },
   {
@@ -101,10 +108,12 @@ export const coffees: Coffee[] = [
     availability: null,
     media: {
       shopPrimary: pendingCoffee(redClayAssets.pending.ethiopia02Product),
-      shopAlternate: redClayAssets.origins.ethiopiaLead,
+      shopAlternate: redClayAssets.origins.ethiopiaDetail,
       pdpHero: pendingCoffee(redClayAssets.pending.ethiopia02Product),
       origin: redClayAssets.origins.ethiopiaLead,
-      process: redClayAssets.origins.ethiopiaSupport,
+      process: redClayAssets.origins.ethiopiaDetail,
+      secondaryProcess: redClayAssets.origins.ethiopiaSupport,
+      ritual: redClayAssets.ritual.hands,
     },
   },
 ];

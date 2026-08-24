@@ -6,7 +6,6 @@ import { ProductCard } from "@/components/editorial/ProductCard";
 import { ProductMediaPlaceholder } from "@/components/media/ProductMediaPlaceholder";
 import { HomeMotion } from "@/components/home/HomeMotion";
 import { HeroCarousel } from "@/components/home/HeroCarousel";
-import { Footer } from "@/components/layout/Footer";
 import { SectionLabel } from "@/components/layout/PageContainer";
 import { redClayAssets } from "@/lib/assets/registry";
 
@@ -135,6 +134,5 @@ export default function HomePage() {
         </div>
       </section>
     </main>
-    <Footer />
   </>;
 }

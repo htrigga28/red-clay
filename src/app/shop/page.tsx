@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { AddToBagButton } from "@/components/commerce/AddToBagButton";
 import { ProductGrid } from "@/components/editorial/ProductCard";
+import { MediaFrame } from "@/components/editorial/MediaFrame";
 import { ProductMediaPlaceholder } from "@/components/media/ProductMediaPlaceholder";
 import { PageContainer, SectionLabel } from "@/components/layout/PageContainer";
 import { kilnCup } from "@/content/coffees";
+import { redClayAssets } from "@/lib/assets/registry";
 
 export const metadata: Metadata = {
   title: "Shop the Current Harvest",
@@ -20,6 +22,12 @@ export default function ShopPage() {
     </section>
     <section className="shop-coffee-collection" aria-labelledby="coffee-collection-title">
       <div className="page-container"><h2 className="sr-only" id="coffee-collection-title">Current coffees</h2><ProductGrid includeCup={false} showQuickAction action="add" /></div>
+    </section>
+    <section className="shop-editorial-break" aria-labelledby="shop-editorial-title">
+      <div className="page-container shop-editorial-break-grid">
+        <MediaFrame asset={redClayAssets.origins.kenyaProcess} className="shop-editorial-break-media" sizes="(max-width: 767px) 100vw, 68vw" />
+        <div className="shop-editorial-break-copy"><SectionLabel>FROM THE CURRENT HARVEST</SectionLabel><h2 id="shop-editorial-title">Coffee is carried by place, people, and patient process.</h2><p>Contextual process imagery sits alongside the release wall without standing in for product packaging.</p></div>
+      </div>
     </section>
     <section className="shop-companion" aria-labelledby="kiln-cup-title">
       <div className="page-container shop-companion-grid">

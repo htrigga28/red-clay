@@ -1,9 +1,8 @@
 import Link from "next/link";
-import { Footer } from "./Footer";
 import { PageContainer, SectionLabel } from "./PageContainer";
 
 export function ScaffoldPage({ eyebrow, title, intro, children }: { eyebrow: string; title: string; intro: string; children?: React.ReactNode }) {
-  return <><main id="main-content"><section className="scaffold-hero page-container"><SectionLabel>{eyebrow}</SectionLabel><h1>{title}</h1><p className="lead-copy">{intro}</p></section>{children}</main><Footer /></>;
+  return <main id="main-content"><section className="scaffold-hero page-container"><SectionLabel>{eyebrow}</SectionLabel><h1>{title}</h1><p className="lead-copy">{intro}</p></section>{children}</main>;
 }
 
 export function RouteLinks({ links }: { links: { label: string; href: string }[] }) {

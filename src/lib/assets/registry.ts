@@ -59,6 +59,13 @@ export const redClayAssets = {
       alt: "Farmers sorting coffee cherries in Kenya.",
       role: "Kenya process plate",
     },
+    kenyaDrying: {
+      id: "KEN-PROC-111",
+      src: "/media/red-clay/KENYA/KEN-PROC-111.jpg",
+      status: "APPROVED_CURRENT",
+      alt: "Coffee beans drying on raised racks at Fairview Estate in Kiambu, Kenya.",
+      role: "Kenya process detail",
+    },
     kenyaDetail: {
       id: "KEN-PROC-115",
       src: "/media/red-clay/KENYA/KEN-PROC-115.jpg",
@@ -100,6 +107,13 @@ export const redClayAssets = {
       status: "APPROVED_CURRENT",
       alt: "Workers sorting coffee beans by size in Hawassa, Ethiopia.",
       role: "Ethiopia process support",
+    },
+    ethiopiaDetail: {
+      id: "ETH-PROC-105",
+      src: "/media/red-clay/ETHIOPIA/ETH-PROC-105.jpg",
+      status: "APPROVED_CURRENT",
+      alt: "Coffee beans being sifted during quality sorting in Ethiopia.",
+      role: "Ethiopia process detail",
     },
   },
   ritual: {

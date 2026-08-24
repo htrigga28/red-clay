@@ -9,5 +9,5 @@ export const navigation = {
     { label: "About", href: "/about" },
   ],
   shopReveal: [...coffees.map(({ id, slug }) => ({ label: id, href: `/shop/${slug}` })), { label: kilnCup.id, href: `/shop/${kilnCup.slug}` }],
-  originReveal: origins.map(({ name, slug }) => ({ label: name, href: `/origins/${slug}` })),
+  originReveal: [...origins.map(({ name, slug }) => ({ label: name, href: `/origins/${slug}` })), { label: "The Earthen Folio", href: "/origins" }],
 } as const;
