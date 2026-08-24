@@ -80,6 +80,13 @@ export const redClayAssets = {
       alt: "Hillside landscape in Banga, Burundi.",
       role: "Burundi landscape support",
     },
+    burundiBotanical: {
+      id: "BUR-BOT-001",
+      src: "/media/red-clay/BURUNDI/BUR-BOT-001.jpg",
+      status: "APPROVED_CURRENT",
+      alt: "Coffee cherries and leaves in Ngozi, Burundi.",
+      role: "Burundi botanical detail",
+    },
     ethiopiaLead: {
       id: "ETH-PROC-103",
       src: "/media/red-clay/ETHIOPIA/ETH-PROC-103.jpg",
