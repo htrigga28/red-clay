@@ -3,11 +3,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
+import { SplitText } from "gsap/SplitText";
 import { type HeroTone, homeHeroToneEvent } from "@/content/homeHero";
 import { navigation } from "@/content/navigation";
 import { redClayAssets } from "@/lib/assets/registry";
 import { useBag } from "@/components/commerce/BagProvider";
+
+gsap.registerPlugin(SplitText);
 
 type Reveal = "shop" | "origins" | null;
 
@@ -144,7 +148,24 @@ function RevealPanel({ id, eyebrow, allLabel, items, feature, href, image, onClo
 }
 
 function MobileNavigation({ pathname, close }: { pathname: string; close: () => void }) {
-  return <div className="mobile-navigation" id="mobile-navigation" role="dialog" aria-modal="true" aria-label="Site navigation">
+  const navigationRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    const root = navigationRef.current;
+    if (!root || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const splitTargets = Array.from(root.querySelectorAll<HTMLElement>(".mobile-navigation .section-label, .mobile-navigation li a, .mobile-close"));
+    const splits = splitTargets.map((target) => SplitText.create(target, { type: "words", wordsClass: "mobile-menu-word", aria: "auto" }));
+    const words = splits.flatMap((split) => split.words);
+    const tween = gsap.fromTo(words, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out", stagger: 0.055, clearProps: "transform,opacity" });
+
+    return () => {
+      tween.kill();
+      splits.forEach((split) => split.revert());
+    };
+  }, []);
+
+  return <div ref={navigationRef} className="mobile-navigation" id="mobile-navigation" role="dialog" aria-modal="true" aria-label="Site navigation">
     <div className="mobile-navigation-inner page-container">
       <p className="section-label">RED CLAY / NAVIGATION</p>
       <nav aria-label="Mobile navigation"><ul>{navigation.primary.map((item) => <li key={item.href}><Link className={pathname === item.href ? "is-current" : ""} href={item.href} onClick={close}>{item.label}</Link></li>)}<li><Link href="/bag" onClick={close}>Bag</Link></li></ul></nav>
