@@ -29,8 +29,7 @@ Status: implementation complete for the approved Pass 6 scope.
 ## Cross-site checks
 
 - Motion uses the existing quiet easing with 180ms micro, 420ms standard, and 760ms major tokens. The hero keeps its five-second cycle. Reduced motion keeps autoplay and choreographed layers disabled.
-- Full breakpoint matrix checked at 320, 375, 390, 430, 768, 900, 1024, 1100, 1200, 1280, 1366, 1440, 1600, and 1920px.
-- Full route checks covered overflow, loaded-image failures, heading structure, footer presence, sticky behavior, direct article navigation, and Bag focus restoration.
+- Full breakpoint matrix checked at 320, 375, 390, 430, 768, 900, 1024, 1100, 1200, 1280, 1366, 1440, 1600, and 1920px on representative Home, PDP, Origins, Article, and Bag paths.
+- Full route checks at 390, 1100, and 1366px covered overflow, loaded-image failures, heading structure, footer presence, sticky behavior, direct article navigation, and Bag focus restoration.
 - No unresolved UI bug was found in this pass.
 - Packaging and Kiln Cup custom media remain `DEFERRED — CUSTOM MEDIA`.
-
