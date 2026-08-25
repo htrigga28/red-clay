@@ -253,7 +253,9 @@ h3 { margin-block: 0.65rem 0.65rem; font-size: clamp(1.35rem, 1.8vw, 2rem); line
 .product-media-stage { position: relative; min-height: 0; overflow: hidden; background: #e8e3d9; }
 .product-placeholder { position: absolute; inset: 0; display: grid; place-items: center; overflow: hidden; background: #e8e3d9; color: var(--color-ink); }
 .product-media-primary, .product-media-alternate { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.product-media-alternate { z-index: 2; opacity: 0; transition: opacity 420ms var(--ease-quiet), transform 600ms var(--ease-quiet); }
+.product-media-primary { transition: opacity 160ms var(--ease-quiet); }
+.product-media-alternate { z-index: 2; opacity: 0; transition: opacity 260ms var(--ease-quiet), transform 520ms var(--ease-quiet); }
+.product-card-media:hover .product-media-primary, .product-card-media:focus-within .product-media-primary { opacity: 0.08; }
 .product-card-media:hover .product-media-alternate, .product-card-media:focus-within .product-media-alternate { opacity: 1; transform: scale(1.015); }
 .product-placeholder--coffee:nth-child(2n) { background: #ebe8e1; }
 .product-placeholder--kiln-cup { background: #e5ded3; color: var(--color-ink); }
@@ -825,41 +827,47 @@ html[data-home-motion="ready"] .home-ritual:not([data-visible="true"]) .ritual-p
 
 /* Regional dossiers */
 .origin-dossier { background: var(--color-canvas); }
-.dossier-hero { padding-block: 5rem 7rem; background: var(--color-bone); }
+.dossier-hero { padding-block: 4.5rem 5.5rem; background: var(--color-bone); }
 .dossier-hero-grid, .dossier-place-grid, .dossier-context-grid, .dossier-process-grid, .dossier-work-grid, .dossier-edition-grid, .dossier-facts-grid, .dossier-next-grid { display: grid; gap: 2rem; }
-.dossier-hero-copy h1 { max-width: 8ch; margin-block: 0.8rem 1rem; font-size: clamp(3.8rem, 14vw, 9rem); line-height: 0.84; }
+.dossier-hero-grid > *, .dossier-place-grid > *, .dossier-context-grid > *, .dossier-process-grid > *, .dossier-work-grid > *, .dossier-edition-grid > *, .dossier-facts-grid > *, .dossier-next-grid > * { min-width: 0; }
+.dossier-hero-copy { min-width: 0; }
+.dossier-hero-copy h1 { max-width: 9ch; margin-block: 0.8rem 1rem; font-size: clamp(3.8rem, 14vw, 9rem); line-height: 0.84; text-wrap: balance; overflow-wrap: normal; }
 .dossier-descriptor { max-width: 24rem; margin-bottom: 1.25rem; color: var(--color-clay); font-family: var(--font-editorial), Georgia, serif; font-size: clamp(1.4rem, 2.6vw, 2.15rem); line-height: 1.06; }
 .dossier-hero-copy .lead-copy { max-width: 32rem; margin-bottom: 1.75rem; }
 .dossier-hero-media .media-frame { aspect-ratio: 4 / 5; min-height: 0; }
 .dossier-caption { color: var(--color-stone); }
-.dossier-place { padding-block: 7rem; background: var(--color-canvas); }
+.dossier-place { padding-block: 5rem 6rem; background: var(--color-canvas); }
 .dossier-place-copy h2, .dossier-context-copy h2, .dossier-process-copy h2, .dossier-work-copy h2, .dossier-section-heading h2, .dossier-edition h2, .dossier-facts h2, .dossier-next h2 { max-width: 11ch; margin-block: 0.75rem 1rem; }
 .dossier-place-copy p, .dossier-context-copy p, .dossier-process-copy p, .dossier-work-copy p, .dossier-section-heading p { max-width: 34rem; color: var(--color-stone); }
 .dossier-place-media .media-frame { aspect-ratio: 16 / 10; min-height: 0; }
-.dossier-context { padding-block: 6rem 8rem; background: var(--color-bone); }
+.dossier-context { padding-block: 5rem 6rem; background: var(--color-bone); }
 .dossier-context-media .media-frame { aspect-ratio: 1 / 1; min-height: 0; }
 .dossier-context-copy { align-self: center; }
-.dossier-process { padding-block: 7rem; background: var(--color-mineral); color: var(--color-bone); }
+.dossier-process { padding-block: 5.5rem; background: var(--color-mineral); color: var(--color-bone); }
 .dossier-process-copy h2 { color: var(--color-bone); font-size: clamp(3rem, 8vw, 6.5rem); }
 .dossier-process-copy p { color: rgba(250, 248, 242, 0.72); }
 .dossier-process-note { align-self: end; padding-top: 0.75rem; border-top: 1px solid rgba(250, 248, 242, 0.28); }
 .dossier-process-note .mono-label { color: rgba(250, 248, 242, 0.58); }
 .dossier-process-note p { max-width: 24rem; margin: 0.8rem 0 0; color: rgba(250, 248, 242, 0.72); font-size: 0.92rem; }
-.dossier-work { padding-block: 7rem; background: var(--color-canvas); }
+.dossier-work { padding-block: 5rem 6rem; background: var(--color-canvas); }
 .dossier-work-media .media-frame { aspect-ratio: 16 / 10; min-height: 0; }
 .dossier-work-copy { align-self: end; }
-.dossier-coffees { padding-block: 7rem 8rem; background: var(--color-bone); }
-.dossier-section-heading { display: grid; gap: 1rem; margin-bottom: 3rem; }
-.dossier-coffee-grid { display: grid; gap: 3rem; }
-.dossier-edition { padding-block: 6rem; background: var(--color-canvas); }
+.dossier-coffees { padding-block: 5rem 6rem; background: var(--color-bone); }
+.dossier-section-heading { display: grid; gap: 1rem; margin-bottom: 2rem; }
+.dossier-coffee-grid { display: grid; gap: 2rem; align-items: start; }
+.product-card--contextual .product-media-stage { aspect-ratio: 5 / 6 !important; }
+.dossier-coffee-grid--structured .product-card, .dossier-coffee-grid--vertical .product-card { width: min(100%, 32rem); }
+.dossier-coffee-grid--vertical .product-card { width: min(100%, 27rem); }
+.dossier-coffee-grid--botanical .product-card:nth-child(2) { width: min(100%, 24rem); margin-top: 4rem; }
+.dossier-edition { padding-block: 5rem 6rem; background: var(--color-canvas); }
 .dossier-edition-grid { align-items: end; }
 .dossier-edition h2 { font-size: clamp(3rem, 8vw, 6rem); }
 .dossier-edition-grid > div:last-child { max-width: 28rem; }
 .dossier-edition-grid > div:last-child p { color: var(--color-stone); }
-.dossier-facts { padding-block: 6rem; background: var(--color-bone); }
+.dossier-facts { padding-block: 4.5rem; background: var(--color-bone); }
 .dossier-facts-grid ul { display: grid; gap: 1rem; max-width: 44rem; margin: 0; padding: 1.25rem 0 0 1.15rem; border-top: 1px solid var(--color-rule); }
 .dossier-facts-grid li { padding-left: 0.3rem; color: var(--color-stone); }
-.dossier-next { padding-block: 5rem 7rem; background: var(--color-mineral); color: var(--color-bone); }
+.dossier-next { padding-block: 4.5rem 6rem; background: var(--color-mineral); color: var(--color-bone); }
 .dossier-next h2 { color: var(--color-bone); }
 .dossier-next .editorial-link { justify-self: start; }
 .origin-dossier--central-kenya .dossier-place-media .media-frame { aspect-ratio: 16 / 10; }
@@ -886,7 +894,7 @@ html[data-home-motion="ready"] .home-ritual:not([data-visible="true"]) .ritual-p
   .origins-editions-grid { grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.75fr); gap: 3rem 5rem; align-items: end; }
   .origins-editions-media { grid-row: 1 / span 2; }
   .origins-editions-list { grid-column: 2; }
-  .dossier-hero-grid { grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr); align-items: end; gap: 4rem; }
+  .dossier-hero-grid { grid-template-columns: minmax(15rem, 0.82fr) minmax(0, 1.18fr); align-items: start; gap: 2.5rem; }
   .dossier-hero-media .media-frame { aspect-ratio: 5 / 4; }
   .dossier-place-grid { grid-template-columns: minmax(14rem, 0.65fr) minmax(0, 1.35fr); align-items: center; gap: 4rem; }
   .dossier-context-grid { grid-template-columns: minmax(0, 0.85fr) minmax(14rem, 0.65fr); align-items: center; gap: 5rem; }
@@ -896,6 +904,8 @@ html[data-home-motion="ready"] .home-ritual:not([data-visible="true"]) .ritual-p
   .dossier-facts-grid { grid-template-columns: minmax(8rem, 0.4fr) minmax(0, 1.6fr); gap: 2rem; }
   .dossier-next-grid { grid-template-columns: minmax(0, 1fr) auto; align-items: end; }
   .dossier-coffee-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3rem 1.25rem; }
+  .dossier-coffee-grid--structured, .dossier-coffee-grid--vertical { grid-template-columns: minmax(0, 1fr); }
+  .dossier-coffee-grid--botanical { grid-template-columns: minmax(0, 1.15fr) minmax(12rem, 0.75fr); gap: 2.5rem; }
 }
 
 @media (min-width: 1024px) {
@@ -906,8 +916,17 @@ html[data-home-motion="ready"] .home-ritual:not([data-visible="true"]) .ritual-p
   .origins-folio[data-enhanced="true"] .folio-stage { position: sticky; top: var(--header-height); height: calc(100svh - var(--header-height)); min-height: 37rem; padding-block: 1.5rem 3rem; overflow: hidden; }
   .origins-folio[data-enhanced="true"] .folio-stage-plane { position: absolute; inset: 18% -18% 12% 42%; display: block; z-index: 0; background: rgba(250, 248, 242, 0.035); clip-path: polygon(12% 0, 100% 8%, 92% 100%, 0 90%); pointer-events: none; }
   .origins-folio[data-enhanced="true"] .folio-chapters { position: absolute; inset: 3.5rem 0 3.25rem; z-index: 1; display: block; }
-  .origins-folio[data-enhanced="true"] .folio-chapter { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: 1fr; gap: 1.25rem; padding: 1.5rem 0 2.5rem; border-top: 0; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(1.25rem); transition: opacity 360ms var(--ease-quiet), transform 520ms var(--ease-quiet), visibility 0s linear 520ms; }
-  .origins-folio[data-enhanced="true"] .folio-chapter[data-active="true"] { opacity: 1; visibility: visible; pointer-events: auto; transform: none; transition-delay: 0s; }
+  .origins-folio[data-enhanced="true"] .folio-chapter { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: 1fr; gap: 1.25rem; padding: 1.5rem 0 2.5rem; border-top: 0; visibility: hidden; pointer-events: none; transform: translateY(0.75rem); transition: visibility 0s linear 680ms; }
+  .origins-folio[data-enhanced="true"] .folio-chapter-media,
+  .origins-folio[data-enhanced="true"] .folio-chapter-copy,
+  .origins-folio[data-enhanced="true"] .folio-chapter-detail { opacity: 0; transform: translateY(0.75rem); }
+  .origins-folio[data-enhanced="true"] .folio-chapter-media { transition: opacity 620ms var(--ease-quiet) 120ms, transform 720ms var(--ease-quiet) 120ms; }
+  .origins-folio[data-enhanced="true"] .folio-chapter-copy { transition: opacity 360ms var(--ease-quiet), transform 460ms var(--ease-quiet); }
+  .origins-folio[data-enhanced="true"] .folio-chapter-detail { transition: opacity 420ms var(--ease-quiet) 220ms, transform 560ms var(--ease-quiet) 220ms; }
+  .origins-folio[data-enhanced="true"] .folio-chapter[data-active="true"] { visibility: visible; pointer-events: auto; transform: none; transition-delay: 0s; }
+  .origins-folio[data-enhanced="true"] .folio-chapter[data-active="true"] .folio-chapter-media,
+  .origins-folio[data-enhanced="true"] .folio-chapter[data-active="true"] .folio-chapter-copy,
+  .origins-folio[data-enhanced="true"] .folio-chapter[data-active="true"] .folio-chapter-detail { opacity: 1; transform: none; }
   .origins-folio[data-enhanced="true"] .folio-chapter-media { grid-row: 1; align-self: center; }
   .origins-folio[data-enhanced="true"] .folio-chapter-media .media-frame { height: min(68svh, 42rem); aspect-ratio: auto; }
   .origins-folio[data-enhanced="true"] .folio-chapter-copy { grid-row: 1; align-self: end; padding-bottom: 1rem; }
@@ -943,20 +962,43 @@ html[data-home-motion="ready"] .home-ritual:not([data-visible="true"]) .ritual-p
   .origins-editions { padding-block: 8rem; }
   .origins-editions-grid { grid-template-columns: minmax(0, 1.5fr) minmax(16rem, 0.7fr); gap: 4rem 6rem; }
   .origins-close { padding-block: 9rem; }
-  .dossier-hero { padding-block: 8rem 10rem; }
-  .dossier-hero-grid { grid-template-columns: minmax(0, 0.65fr) minmax(0, 1.35fr); gap: 6rem; }
-  .dossier-hero-copy h1 { font-size: clamp(5rem, 8vw, 9.5rem); }
-  .dossier-place { padding-block: 11rem 13rem; }
-  .dossier-context { padding-block: 10rem; }
-  .dossier-process { padding-block: 11rem; }
-  .dossier-work { padding-block: 11rem 13rem; }
-  .dossier-coffees { padding-block: 10rem 12rem; }
-  .dossier-coffee-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4rem 1.25rem; }
-  .dossier-edition { padding-block: 9rem; }
-  .dossier-facts { padding-block: 8rem; }
-  .dossier-next { padding-block: 7rem 9rem; }
+  .dossier-hero { padding-block: 6rem 7rem; }
+  .dossier-hero-grid { grid-template-columns: minmax(17rem, 0.82fr) minmax(0, 1.18fr); gap: 4rem; }
+  .dossier-hero-copy h1 { font-size: clamp(4rem, 7vw, 8.5rem); }
+  .dossier-hero-media .media-frame { width: 100%; height: min(68svh, 42rem); aspect-ratio: auto !important; }
+  .dossier-place { padding-block: 7rem 8.5rem; }
+  .dossier-context { padding-block: 6.5rem 7rem; }
+  .dossier-process { padding-block: 7.5rem; }
+  .dossier-work { padding-block: 7rem 8.5rem; }
+  .dossier-coffees { padding-block: 7rem 8rem; }
+  .dossier-coffee-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3rem 1.25rem; }
+  .dossier-coffee-grid--structured, .dossier-coffee-grid--vertical { grid-template-columns: minmax(0, 32rem); }
+  .dossier-coffee-grid--structured .product-card { width: min(100%, 26rem); }
+  .dossier-coffee-grid--vertical .product-card { width: min(100%, 23rem); }
+  .dossier-coffee-grid--botanical { grid-template-columns: minmax(0, 1.15fr) minmax(14rem, 0.75fr); gap: 3.5rem; }
+  .dossier-coffee-grid--botanical .product-card:first-child { width: min(100%, 24rem); }
+  .dossier-coffee-grid--botanical .product-card:nth-child(2) { width: min(100%, 18rem); }
+  .dossier-edition { padding-block: 6.5rem; }
+  .dossier-facts { padding-block: 5.5rem; }
+  .dossier-next { padding-block: 5rem 7rem; }
+  .origin-dossier--kayanza-burundi .dossier-place-grid { grid-template-columns: minmax(12rem, 0.55fr) minmax(0, 0.95fr); align-items: start; }
+  .origin-dossier--southern-ethiopia .dossier-place-grid { grid-template-columns: minmax(0, 1fr) minmax(14rem, 0.6fr); align-items: end; }
+  .origin-dossier--southern-ethiopia .dossier-place-copy { grid-column: 2; grid-row: 1; }
+  .origin-dossier--southern-ethiopia .dossier-place-media { grid-column: 1; grid-row: 1; }
   .origin-dossier--kayanza-burundi .dossier-place-media { margin-top: 2rem; }
   .origin-dossier--southern-ethiopia .dossier-context-media { margin-top: 3rem; }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .dossier-hero-grid { gap: 2.5rem; }
+  .dossier-hero-copy h1 { font-size: clamp(4rem, 9vw, 7rem); }
+  .dossier-hero-media .media-frame { width: 100%; height: min(58svh, 34rem); aspect-ratio: auto !important; }
+  .dossier-coffee-grid--botanical { grid-template-columns: minmax(0, 1.1fr) minmax(11rem, 0.75fr); }
+}
+
+@media (max-width: 639px) {
+  .dossier-coffee-grid--structured .product-card, .dossier-coffee-grid--vertical .product-card, .dossier-coffee-grid--botanical .product-card, .dossier-coffee-grid--botanical .product-card:nth-child(2) { width: min(100%, 26rem); margin-top: 0; }
+  .dossier-coffee-grid--botanical { gap: 2.5rem; }
 }
 
 @media (min-width: 1280px) {
@@ -965,5 +1007,8 @@ html[data-home-motion="ready"] .home-ritual:not([data-visible="true"]) .ritual-p
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .origins-folio[data-enhanced="true"] .folio-chapter { transition: none; }
+  .origins-folio[data-enhanced="true"] .folio-chapter,
+  .origins-folio[data-enhanced="true"] .folio-chapter-media,
+  .origins-folio[data-enhanced="true"] .folio-chapter-copy,
+  .origins-folio[data-enhanced="true"] .folio-chapter-detail { transition: none; }
 }

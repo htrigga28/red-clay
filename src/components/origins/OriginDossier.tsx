@@ -11,7 +11,7 @@ export function OriginDossier({ origin, nextOrigin }: { origin: Origin; nextOrig
   const edition = editions.find((item) => item.slug === origin.editionSlug) ?? editions[Number(origin.number) - 1] ?? editions[0];
 
   return (
-    <main id="main-content" className={`origin-dossier origin-dossier--${origin.slug}`}>
+    <main id="main-content" className={`origin-dossier origin-dossier--${origin.slug} origin-dossier--layout-${origin.layout}`}>
       <section className="dossier-hero">
         <PageContainer className="dossier-hero-grid">
           <div className="dossier-hero-copy">
@@ -29,7 +29,7 @@ export function OriginDossier({ origin, nextOrigin }: { origin: Origin; nextOrig
         <PageContainer className="dossier-place-grid">
           <div className="dossier-place-copy">
             <SectionLabel>02 / PLACE &amp; LANDSCAPE</SectionLabel>
-            <h2 id="dossier-place-title">A place held at the edge of the frame.</h2>
+            <h2 id="dossier-place-title">{origin.headings.place}</h2>
             <p>{origin.place}</p>
           </div>
           <div className="dossier-place-media"><MediaFrame asset={origin.assets.support} sizes="(max-width: 767px) 100vw, 62vw" /><span className="dossier-caption">{origin.assets.support.alt}</span></div>
@@ -41,7 +41,7 @@ export function OriginDossier({ origin, nextOrigin }: { origin: Origin; nextOrig
           <div className="dossier-context-media"><MediaFrame asset={origin.assets.detail} sizes="(max-width: 767px) 100vw, 42vw" /><span className="dossier-caption">{origin.assets.detail.alt}</span></div>
           <div className="dossier-context-copy">
             <SectionLabel>03 / COFFEE CONTEXT</SectionLabel>
-            <h2 id="dossier-context-title">The coffee enters through material detail.</h2>
+            <h2 id="dossier-context-title">{origin.headings.context}</h2>
             <p>{origin.summary} The current release is a fictional Red Clay product expression; the documentary images provide context, not a claim of direct sourcing.</p>
           </div>
         </PageContainer>
@@ -51,7 +51,7 @@ export function OriginDossier({ origin, nextOrigin }: { origin: Origin; nextOrig
         <PageContainer className="dossier-process-grid">
           <div className="dossier-process-copy">
             <SectionLabel>04 / PROCESSING TRADITIONS</SectionLabel>
-            <h2 id="dossier-process-title">Work made visible.</h2>
+            <h2 id="dossier-process-title">{origin.headings.process}</h2>
             <p>{origin.process}</p>
           </div>
           <div className="dossier-process-note"><span className="mono-label">A REGIONAL VIEW</span><p>Process language stays specific to the image and the approved context. It is not presented as a universal recipe for the region.</p></div>
@@ -60,10 +60,10 @@ export function OriginDossier({ origin, nextOrigin }: { origin: Origin; nextOrig
 
       <section className="dossier-work" aria-labelledby="dossier-work-title">
         <PageContainer className="dossier-work-grid">
-          <div className="dossier-work-media"><MediaFrame asset={origin.assets.lead} sizes="(max-width: 767px) 100vw, 70vw" /><span className="dossier-caption">{origin.assets.lead.alt}</span></div>
+          <div className="dossier-work-media"><MediaFrame asset={origin.assets.support} sizes="(max-width: 767px) 100vw, 70vw" /><span className="dossier-caption">{origin.assets.support.alt}</span></div>
           <div className="dossier-work-copy">
             <SectionLabel>05 / AGRICULTURAL WORK</SectionLabel>
-            <h2 id="dossier-work-title">Attention, repetition, and skill.</h2>
+            <h2 id="dossier-work-title">{origin.headings.work}</h2>
             <p>People and work remain visible as context. No individual is named or presented as a Red Clay producer; the image stays with the act of making and sorting.</p>
           </div>
         </PageContainer>
@@ -71,8 +71,8 @@ export function OriginDossier({ origin, nextOrigin }: { origin: Origin; nextOrig
 
       <section className="dossier-coffees" aria-labelledby="dossier-coffees-title">
         <PageContainer>
-          <div className="dossier-section-heading"><SectionLabel>06 / CURRENT RED CLAY COFFEES</SectionLabel><div><h2 id="dossier-coffees-title">This place, in the current harvest.</h2><p>{origin.cup}</p></div></div>
-          <div className="dossier-coffee-grid">{products.map((coffee) => <ProductCard key={coffee.id} product={coffee} />)}</div>
+          <div className="dossier-section-heading"><SectionLabel>06 / CURRENT RED CLAY COFFEES</SectionLabel><div><h2 id="dossier-coffees-title">{origin.headings.coffees}</h2><p>{origin.cup}</p></div></div>
+          <div className={`dossier-coffee-grid dossier-coffee-grid--${origin.layout}`}>{products.map((coffee, index) => <ProductCard key={coffee.id} product={coffee} contextual featured={origin.layout === "botanical" && index === 0} />)}</div>
         </PageContainer>
       </section>
 
@@ -86,7 +86,7 @@ export function OriginDossier({ origin, nextOrigin }: { origin: Origin; nextOrig
       <section className="dossier-facts" aria-labelledby="dossier-facts-title">
         <PageContainer className="dossier-facts-grid">
           <SectionLabel>08 / FACTUAL REFERENCE</SectionLabel>
-          <div><h2 id="dossier-facts-title">Context kept in view.</h2><ul>{origin.factualContext.map((fact) => <li key={fact}>{fact}</li>)}</ul></div>
+          <div><h2 id="dossier-facts-title">{origin.headings.facts}</h2><ul>{origin.factualContext.map((fact) => <li key={fact}>{fact}</li>)}</ul></div>
         </PageContainer>
       </section>
 

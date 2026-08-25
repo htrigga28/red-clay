@@ -10,9 +10,10 @@ type ProductCardProps = {
   featured?: boolean;
   showQuickAction?: boolean;
   action?: "view" | "add";
+  contextual?: boolean;
 };
 
-export function ProductCard({ product, featured = false, showQuickAction = false, action = "view" }: ProductCardProps) {
+export function ProductCard({ product, featured = false, showQuickAction = false, action = "view", contextual = false }: ProductCardProps) {
   const { add } = useBag();
   const isCup = product.id === kilnCup.id;
   const href = `/shop/${product.slug}`;
@@ -20,13 +21,14 @@ export function ProductCard({ product, featured = false, showQuickAction = false
   const label = isCup ? "View The Kiln Cup" : `View ${product.id}`;
 
   return (
-    <article className={`product-card ${isCup ? "product-card--cup" : ""} ${featured ? "product-card--featured" : ""}`}>
+    <article className={`product-card ${isCup ? "product-card--cup" : ""} ${featured ? "product-card--featured" : ""} ${contextual ? "product-card--contextual" : ""}`}>
       <div className="product-card-media">
         <Link href={href} aria-label={label}>
           <ProductMediaPlaceholder
             assetId={product.media.shopPrimary.id}
             label={product.id}
             kind={isCup ? "kiln-cup" : "coffee"}
+            className={contextual ? "product-media-stage--contextual" : ""}
             alternate={"shopAlternate" in product.media ? product.media.shopAlternate : undefined}
           />
         </Link>

@@ -21,6 +21,15 @@ export type Origin = {
     detail: RedClayAsset;
   };
   factualContext: string[];
+  layout: "structured" | "vertical" | "botanical";
+  headings: {
+    place: string;
+    context: string;
+    process: string;
+    work: string;
+    coffees: string;
+    facts: string;
+  };
 };
 
 export const origins: Origin[] = [
@@ -44,6 +53,15 @@ export const origins: Origin[] = [
       detail: redClayAssets.origins.kenyaDetail,
     },
     factualContext: ["Lead place context: Kiambu County, Kenya.", "Process and botanical images are contextual documentary photographs; they do not imply a Red Clay sourcing relationship."],
+    layout: "structured",
+    headings: {
+      place: "Kiambu, held in a measured frame.",
+      context: "Sorting gives the chapter its close grain.",
+      process: "A rhythm built one surface at a time.",
+      work: "The ordered work of a green highland.",
+      coffees: "One release, held close to its place.",
+      facts: "A close reading, without overclaiming.",
+    },
   },
   {
     slug: "kayanza-burundi",
@@ -64,6 +82,15 @@ export const origins: Origin[] = [
       detail: redClayAssets.origins.burundiBotanical,
     },
     factualContext: ["Lead place context: Kayanza, Burundi.", "The broader landscape is Banga, Burundi; the botanical detail is from Ngozi, Burundi."],
+    layout: "vertical",
+    headings: {
+      place: "Drying beds set the vertical rhythm.",
+      context: "Fruit and surface, held in detail.",
+      process: "Raised beds, repeated attention.",
+      work: "A chapter written in layers.",
+      coffees: "The current lot, between hill and bed.",
+      facts: "Three locations, kept distinct.",
+    },
   },
   {
     slug: "southern-ethiopia",
@@ -84,6 +111,15 @@ export const origins: Origin[] = [
       detail: redClayAssets.origins.ethiopiaDetail,
     },
     factualContext: ["Lead and support context: Hawassa, Ethiopia, used for process and people imagery.", "The current archive does not provide a dedicated Southern Ethiopia landscape plate, so no narrower landscape claim is made."],
+    layout: "botanical",
+    headings: {
+      place: "Sorting work, seen near Hawassa.",
+      context: "Hands and beans at close range.",
+      process: "A process built from small decisions.",
+      work: "Open attention, material and human.",
+      coffees: "Two releases, kept open to the archive.",
+      facts: "What the current archive can support.",
+    },
   },
 ];
 
