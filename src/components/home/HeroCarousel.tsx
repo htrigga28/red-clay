@@ -25,7 +25,7 @@ export function HeroCarousel() {
       setActiveIndex((index) => (index + 1) % homeHeroSlides.length);
     }, 5000);
     return () => window.clearInterval(timer);
-  }, [isPaused, reducedMotion]);
+  }, [activeIndex, isPaused, reducedMotion]);
 
   useEffect(() => {
     document.documentElement.dataset.homeHeroTone = activeSlide.headerTone;
