@@ -845,7 +845,7 @@ html[data-home-motion="ready"] .home-ritual:not([data-visible="true"]) .ritual-p
   .section-shell { padding-block: 9rem; }
   .scaffold-hero { padding-block: 8rem 7rem; }
   .folio-list { gap: 9rem; }
-  .home-continuum { min-height: 220svh; }
+  .home-continuum { min-height: 280svh; }
   .continuum-sticky { position: sticky; top: 0; height: 100svh; overflow: hidden; padding-block: 0; }
   .continuum-kicker { position: absolute; z-index: 2; top: 8vh; right: 0; left: 0; }
   .continuum-states { position: relative; height: 100%; margin-top: 0; }
