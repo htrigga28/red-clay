@@ -786,7 +786,7 @@ html[data-home-motion="ready"] .home-ritual:not([data-visible="true"]) .ritual-p
 .folio-chapter-media .media-frame { aspect-ratio: 4 / 5; min-height: 0; }
 .folio-chapter-caption, .folio-chapter-detail > span, .dossier-caption { display: block; margin-top: 0.55rem; color: rgba(250, 248, 242, 0.58); font-size: 0.72rem; line-height: 1.4; }
 .folio-chapter-copy { min-width: 0; }
-.folio-chapter-copy h3 { max-width: 8ch; margin-block: 0.8rem 0.8rem; color: var(--color-bone); font-size: clamp(3.7rem, 13vw, 8rem); line-height: 0.84; }
+.folio-chapter-copy h3 { max-width: 8ch; margin-block: 0.8rem 0.8rem; color: var(--color-bone); font-size: clamp(3.7rem, 9vw, 8rem); line-height: 0.84; }
 .folio-chapter-descriptor { max-width: 20rem; margin-bottom: 2rem; color: var(--color-terracotta); font-family: var(--font-editorial), Georgia, serif; font-size: clamp(1.35rem, 2.4vw, 2rem); line-height: 1.05; }
 .folio-meta-grid { display: grid; gap: 1.15rem; margin-bottom: 2rem; }
 .folio-meta-grid > div { padding-top: 0.6rem; border-top: 1px solid rgba(250, 248, 242, 0.24); }
@@ -930,16 +930,18 @@ html[data-home-motion="ready"] .home-ritual:not([data-visible="true"]) .ritual-p
   .origins-folio[data-enhanced="true"] .folio-chapter-media { grid-row: 1; align-self: center; }
   .origins-folio[data-enhanced="true"] .folio-chapter-media .media-frame { height: min(68svh, 42rem); aspect-ratio: auto; }
   .origins-folio[data-enhanced="true"] .folio-chapter-copy { grid-row: 1; align-self: end; padding-bottom: 1rem; }
+  .origins-folio[data-enhanced="true"] .folio-chapter-copy h3 { max-width: 100%; font-size: clamp(3.5rem, 6vw, 7rem); }
   .origins-folio[data-enhanced="true"] .folio-chapter-descriptor { margin-bottom: 1.25rem; }
   .origins-folio[data-enhanced="true"] .folio-meta-grid { gap: 0.8rem; margin-bottom: 1.25rem; }
   .origins-folio[data-enhanced="true"] .folio-meta-grid p { font-size: 0.84rem; line-height: 1.4; }
   .origins-folio[data-enhanced="true"] .folio-chapter-detail { grid-row: 1; align-self: end; }
   .origins-folio[data-enhanced="true"] .folio-chapter--central-kenya .folio-chapter-media { grid-column: 1 / span 8; }
-  .origins-folio[data-enhanced="true"] .folio-chapter--central-kenya .folio-chapter-copy { grid-column: 10 / -1; }
+  .origins-folio[data-enhanced="true"] .folio-chapter--central-kenya .folio-chapter-copy { grid-column: 9 / -1; }
   .origins-folio[data-enhanced="true"] .folio-chapter--central-kenya .folio-chapter-detail { grid-column: 7 / span 2; margin-bottom: -1.5rem; }
   .origins-folio[data-enhanced="true"] .folio-chapter--kayanza-burundi .folio-chapter-media { grid-column: 5 / -1; align-self: start; }
   .origins-folio[data-enhanced="true"] .folio-chapter--kayanza-burundi .folio-chapter-media .media-frame { height: min(74svh, 46rem); }
   .origins-folio[data-enhanced="true"] .folio-chapter--kayanza-burundi .folio-chapter-copy { grid-column: 1 / span 3; align-self: start; padding-top: 4rem; }
+  .origins-folio[data-enhanced="true"] .folio-chapter--kayanza-burundi .folio-chapter-copy h3 { max-width: 100%; font-size: clamp(3rem, 4.6vw, 6rem); }
   .origins-folio[data-enhanced="true"] .folio-chapter--kayanza-burundi .folio-chapter-detail { grid-column: 4 / span 2; margin-top: auto; }
   .origins-folio[data-enhanced="true"] .folio-chapter--southern-ethiopia .folio-chapter-media { grid-column: 2 / span 7; align-self: center; }
   .origins-folio[data-enhanced="true"] .folio-chapter--southern-ethiopia .folio-chapter-media .media-frame { height: min(64svh, 40rem); }
@@ -1002,7 +1004,7 @@ html[data-home-motion="ready"] .home-ritual:not([data-visible="true"]) .ritual-p
 }
 
 @media (min-width: 1280px) {
-  .origins-folio[data-enhanced="true"] .folio-chapter-copy h3 { font-size: clamp(4rem, 5.5vw, 7rem); }
+  .origins-folio[data-enhanced="true"] .folio-chapter-copy h3 { max-width: 100%; font-size: clamp(4rem, 5.5vw, 7rem); }
   .origins-folio[data-enhanced="true"] .folio-chapter-descriptor { max-width: 18rem; }
 }
 
