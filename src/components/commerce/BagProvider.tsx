@@ -2,6 +2,7 @@
 
 import { createContext, useCallback, useContext, useMemo, useRef, useState } from "react";
 import type { Product } from "@/content/coffees";
+import { getProductById } from "@/content/coffees";
 
 export type BagItem = {
   id: Product["id"];
@@ -38,6 +39,16 @@ type BagContextValue = {
 const BagContext = createContext<BagContextValue | null>(null);
 
 export const getBagLineKey = (item: Pick<BagItem, "id" | "format" | "grind" | "lineKey">) => item.lineKey ?? [item.id, item.format ?? "", item.grind ?? ""].join("|");
+
+const itemPrice = (item: BagItem) => item.price ?? getProductById(item.id)?.price ?? null;
+const formatSubtotal = (value: number | null) => value == null
+  ? "KES unavailable"
+  : `KES ${new Intl.NumberFormat("en-KE", { maximumFractionDigits: 0 }).format(value)}`;
+
+const subtotalFor = (items: BagItem[]) => {
+  if (items.some((item) => itemPrice(item) === null)) return null;
+  return items.reduce((total, item) => total + itemPrice(item)! * item.quantity, 0);
+};
 
 const itemFromProduct = (product: Product, variant: BagVariant = {}): BagItem => ({
   id: product.id,
@@ -92,7 +103,8 @@ export function BagProvider({ children }: { children: React.ReactNode }) {
     if (!item) return;
     const nextQuantity = item.quantity + 1;
     setItems((current) => current.map((entry) => getBagLineKey(entry) === lineKey ? { ...entry, quantity: entry.quantity + 1 } : entry));
-    setAnnouncement(`${item.id} quantity ${nextQuantity}.`);
+    const nextItems = itemsRef.current.map((entry) => getBagLineKey(entry) === lineKey ? { ...entry, quantity: nextQuantity } : entry);
+    setAnnouncement(`${item.id} quantity ${nextQuantity}. Subtotal ${formatSubtotal(subtotalFor(nextItems))}.`);
   }, []);
   const decrement = useCallback((lineKey: string) => {
     const item = itemsRef.current.find((entry) => getBagLineKey(entry) === lineKey);
@@ -100,7 +112,8 @@ export function BagProvider({ children }: { children: React.ReactNode }) {
     if (item.quantity > 1) {
       const nextQuantity = item.quantity - 1;
       setItems((current) => current.map((entry) => getBagLineKey(entry) === lineKey ? { ...entry, quantity: entry.quantity - 1 } : entry));
-      setAnnouncement(`${item.id} quantity ${nextQuantity}.`);
+      const nextItems = itemsRef.current.map((entry) => getBagLineKey(entry) === lineKey ? { ...entry, quantity: nextQuantity } : entry);
+      setAnnouncement(`${item.id} quantity ${nextQuantity}. Subtotal ${formatSubtotal(subtotalFor(nextItems))}.`);
       return;
     }
     const index = itemsRef.current.findIndex((entry) => getBagLineKey(entry) === lineKey);
