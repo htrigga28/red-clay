@@ -20,6 +20,43 @@ function linePrice(item: BagItem) {
   return price == null ? null : price * item.quantity;
 }
 
+const createDemoOrderId = () => {
+  const date = new Date().toISOString().slice(2, 10).replaceAll("-", "");
+  const token = globalThis.crypto.randomUUID().replaceAll("-", "").slice(0, 4).toUpperCase();
+  return `RC-${date}-${token}`;
+};
+
+function CheckoutEmptyView() {
+  return <main id="main-content" className="checkout-page"><PageContainer><div className="checkout-empty"><SectionLabel>CHECKOUT</SectionLabel><h1>Your bag is empty.</h1><p>Add something from the collection before you check out.</p><Link className="button button--dark" href="/shop">Browse the collection <span aria-hidden="true">↗</span></Link></div></PageContainer></main>;
+}
+
+function ContactFields() {
+  return <fieldset className="checkout-section"><legend><span>01</span> Contact</legend><label>Email<input name="email" type="email" autoComplete="email" required placeholder="you@example.com" /></label></fieldset>;
+}
+
+function DeliveryFields({ country, region, onCountryChange, onRegionChange }: { country: string; region: string; onCountryChange: (value: string) => void; onRegionChange: (value: string) => void }) {
+  return <fieldset className="checkout-section"><legend><span>02</span> Delivery</legend><div className="checkout-two-up"><label>First name<input name="firstName" autoComplete="given-name" required /></label><label>Last name<input name="lastName" autoComplete="family-name" required /></label></div><label>Phone<input name="phone" type="tel" autoComplete="tel" required /></label><label>Address<input name="address" autoComplete="street-address" required /></label><div className="checkout-two-up"><label>City / town<input name="city" autoComplete="address-level2" required /></label><label>County / region<input name="region" autoComplete="address-level1" required value={region} onChange={(event) => onRegionChange(event.target.value)} /></label></div><label>Country<select name="country" value={country} onChange={(event) => onCountryChange(event.target.value)}><option>Kenya</option><option value="International">International</option></select></label></fieldset>;
+}
+
+function DeliveryMethod({ country, isNairobi, shipping }: { country: string; isNairobi: boolean; shipping: number }) {
+  const isKenya = country === "Kenya";
+  const name = isKenya ? (isNairobi ? "Nairobi delivery" : "Kenya delivery") : "International demo rate";
+  const details = isKenya
+    ? `${isNairobi ? "1–2" : "2–4"} business days · ${shipping === 0 ? "Free" : money(shipping)}`
+    : "Calculated at checkout · KES 3,500";
+  return <fieldset className="checkout-section"><legend><span>03</span> Delivery method</legend><div className="checkout-method"><strong>{name}</strong><span>{details}</span></div></fieldset>;
+}
+
+function PaymentMethod({ payment, onPaymentChange }: { payment: string; onPaymentChange: (value: string) => void }) {
+  return <fieldset className="checkout-section"><legend><span>04</span> Payment method</legend><label className="checkout-choice" htmlFor="payment-mpesa"><input id="payment-mpesa" type="radio" name="payment" value="mpesa" checked={payment === "mpesa"} onChange={() => onPaymentChange("mpesa")} /><span><strong>M-Pesa</strong><small>Demo confirmation only. No STK push is sent.</small></span></label><label className="checkout-choice" htmlFor="payment-card"><input id="payment-card" type="radio" name="payment" value="card" checked={payment === "card"} onChange={() => onPaymentChange("card")} /><span><strong>Card</strong><small>Demo card state. Do not enter a real card number.</small></span></label>{payment === "card" && <output className="checkout-card-demo" aria-live="polite">Card details are simulated for this portfolio checkout.</output>}</fieldset>;
+}
+
+function CheckoutSummary({ items, count, country, subtotal, shipping, hasPrices }: { items: BagItem[]; count: number; country: string; subtotal: number; shipping: number; hasPrices: boolean }) {
+  const total = subtotal + shipping;
+  const isKenya = country === "Kenya";
+  return <aside className="checkout-summary" aria-label="Order summary"><SectionLabel>REVIEW</SectionLabel><h2>{count} {count === 1 ? "item" : "items"}</h2><ul>{items.map((item) => <li key={getBagLineKey(item)}><span>{item.id}<small>{item.quantity} × {[item.format, item.grind].filter(Boolean).join(" · ") || item.region}</small></span><strong>{money(linePrice(item))}</strong></li>)}</ul><div className="checkout-total-row"><span>Subtotal</span><strong>{hasPrices ? money(subtotal) : "KES —"}</strong></div><div className="checkout-total-row"><span>Shipping</span><strong>{shipping === 0 ? "Free" : money(shipping)}</strong></div><div className="checkout-total-row checkout-total-row--grand"><span>Total</span><strong>{hasPrices ? money(total) : "KES —"}</strong></div>{isKenya && subtotal < FREE_DELIVERY_THRESHOLD && hasPrices && <p className="checkout-summary-note">{money(FREE_DELIVERY_THRESHOLD - subtotal)} away from free Kenya delivery.</p>}<Link className="editorial-link" href="/bag">Back to bag <span aria-hidden="true">↗</span></Link></aside>;
+}
+
 export function CheckoutPageView() {
   const router = useRouter();
   const { items, count } = useBag();
@@ -32,19 +69,18 @@ export function CheckoutPageView() {
   const hasPrices = items.every((item) => linePrice(item) !== null);
   const isNairobi = region.trim().toLowerCase().includes("nairobi");
   const shipping = country === "Kenya" ? (subtotal >= FREE_DELIVERY_THRESHOLD ? 0 : isNairobi ? 300 : 500) : 3500;
-  const total = subtotal + shipping;
 
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (items.length === 0 || isSubmitting) return;
     setIsSubmitting(true);
     setError("");
-    const order = `RC-${new Date().toISOString().slice(2, 10).replaceAll("-", "")}-${Math.floor(1000 + Math.random() * 9000)}`;
+    const order = createDemoOrderId();
     router.push(`/checkout/complete?order=${encodeURIComponent(order)}`);
   }
 
   if (items.length === 0) {
-    return <main id="main-content" className="checkout-page"><PageContainer><div className="checkout-empty"><SectionLabel>CHECKOUT</SectionLabel><h1>Your bag is empty.</h1><p>Add something from the collection before you check out.</p><Link className="button button--dark" href="/shop">Browse the collection <span aria-hidden="true">↗</span></Link></div></PageContainer></main>;
+    return <CheckoutEmptyView />;
   }
 
   return <main id="main-content" className="checkout-page">
@@ -52,14 +88,14 @@ export function CheckoutPageView() {
       <div className="checkout-heading"><SectionLabel>CHECKOUT</SectionLabel><h1>One considered step at a time.</h1><p className="checkout-disclosure"><strong>Portfolio demo checkout — no payment is collected and no order is fulfilled.</strong></p></div>
       <form className="checkout-layout" onSubmit={submit}>
         <div className="checkout-form">
-          <fieldset className="checkout-section"><legend><span>01</span> Contact</legend><label>Email<input name="email" type="email" autoComplete="email" required placeholder="you@example.com" /></label></fieldset>
-          <fieldset className="checkout-section"><legend><span>02</span> Delivery</legend><div className="checkout-two-up"><label>First name<input name="firstName" autoComplete="given-name" required /></label><label>Last name<input name="lastName" autoComplete="family-name" required /></label></div><label>Phone<input name="phone" type="tel" autoComplete="tel" required /></label><label>Address<input name="address" autoComplete="street-address" required /></label><div className="checkout-two-up"><label>City / town<input name="city" autoComplete="address-level2" required /></label><label>County / region<input name="region" autoComplete="address-level1" required value={region} onChange={(event) => setRegion(event.target.value)} /></label></div><label>Country<select name="country" value={country} onChange={(event) => setCountry(event.target.value)}><option>Kenya</option><option value="International">International</option></select></label></fieldset>
-          <fieldset className="checkout-section"><legend><span>03</span> Delivery method</legend><div className="checkout-method"><strong>{country === "Kenya" ? (isNairobi ? "Nairobi delivery" : "Kenya delivery") : "International demo rate"}</strong><span>{country === "Kenya" ? `${isNairobi ? "1–2" : "2–4"} business days · ${shipping === 0 ? "Free" : money(shipping)}` : "Calculated at checkout · KES 3,500"}</span></div></fieldset>
-          <fieldset className="checkout-section"><legend><span>04</span> Payment method</legend><label className="checkout-choice"><input type="radio" name="payment" value="mpesa" checked={payment === "mpesa"} onChange={() => setPayment("mpesa")} /><span><strong>M-Pesa</strong><small>Demo confirmation only. No STK push is sent.</small></span></label><label className="checkout-choice"><input type="radio" name="payment" value="card" checked={payment === "card"} onChange={() => setPayment("card")} /><span><strong>Card</strong><small>Demo card state. Do not enter a real card number.</small></span></label>{payment === "card" && <div className="checkout-card-demo" role="status">Card details are simulated for this portfolio checkout.</div>}</fieldset>
+          <ContactFields />
+          <DeliveryFields country={country} region={region} onCountryChange={setCountry} onRegionChange={setRegion} />
+          <DeliveryMethod country={country} isNairobi={isNairobi} shipping={shipping} />
+          <PaymentMethod payment={payment} onPaymentChange={setPayment} />
           {error && <p className="checkout-error" role="alert">{error}</p>}
           <button className="button button--dark checkout-submit" type="submit" disabled={isSubmitting}>{isSubmitting ? "Placing demo order…" : "Place demo order"} <span aria-hidden="true">↗</span></button>
         </div>
-        <aside className="checkout-summary" aria-label="Order summary"><SectionLabel>REVIEW</SectionLabel><h2>{count} {count === 1 ? "item" : "items"}</h2><ul>{items.map((item) => <li key={getBagLineKey(item)}><span>{item.id}<small>{item.quantity} × {[item.format, item.grind].filter(Boolean).join(" · ") || item.region}</small></span><strong>{money(linePrice(item))}</strong></li>)}</ul><div className="checkout-total-row"><span>Subtotal</span><strong>{hasPrices ? money(subtotal) : "KES —"}</strong></div><div className="checkout-total-row"><span>Shipping</span><strong>{shipping === 0 ? "Free" : money(shipping)}</strong></div><div className="checkout-total-row checkout-total-row--grand"><span>Total</span><strong>{hasPrices ? money(total) : "KES —"}</strong></div>{country === "Kenya" && subtotal < FREE_DELIVERY_THRESHOLD && hasPrices && <p className="checkout-summary-note">{money(FREE_DELIVERY_THRESHOLD - subtotal)} away from free Kenya delivery.</p>}<Link className="editorial-link" href="/bag">Back to bag <span aria-hidden="true">↗</span></Link></aside>
+        <CheckoutSummary items={items} count={count} country={country} subtotal={subtotal} shipping={shipping} hasPrices={hasPrices} />
       </form>
     </PageContainer>
   </main>;
