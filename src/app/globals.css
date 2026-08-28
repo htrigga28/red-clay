@@ -331,6 +331,7 @@ h3 { margin-block: 0.65rem 0.65rem; font-size: clamp(1.35rem, 1.8vw, 2rem); line
 .harvest-wall .product-card-media:hover .product-placeholder::after, .harvest-wall .product-card-media:focus-within .product-placeholder::after { opacity: 1; }
 .placeholder-alt { position: absolute; right: 0.8rem; bottom: 0.8rem; z-index: 1; color: currentColor; font-family: var(--font-mono), monospace; font-size: 0.56rem; letter-spacing: 0.1em; opacity: 0; text-transform: uppercase; transition: opacity var(--duration-standard) var(--ease-quiet); }
 .harvest-wall .product-card-media:hover .placeholder-alt, .harvest-wall .product-card-media:focus-within .placeholder-alt { opacity: 0.72; }
+.harvest-all-link { margin-top: 3rem; }
 
 /* Pass 3 commerce collection */
 .shop-page { background: var(--color-bone); }
@@ -370,6 +371,7 @@ h3 { margin-block: 0.65rem 0.65rem; font-size: clamp(1.35rem, 1.8vw, 2rem); line
 .shop-other-ways .shop-movement-heading p { color: rgba(250, 248, 242, 0.68); }
 .shop-comparison { display: grid; margin: -1rem 0 5rem; border-top: 1px solid var(--color-rule); }
 .shop-comparison p { display: grid; gap: 0.65rem; margin: 0; padding-block: 1.1rem; border-bottom: 1px solid var(--color-rule); }
+.shop-comparison p { scroll-margin-top: calc(var(--header-height) + 1.5rem); }
 .shop-comparison strong { font-family: var(--font-mono), monospace; font-size: 0.66rem; letter-spacing: 0.08em; }
 .shop-comparison span { max-width: 38rem; color: var(--color-stone); font-size: 0.86rem; }
 
@@ -488,7 +490,8 @@ h3 { margin-block: 0.65rem 0.65rem; font-size: clamp(1.35rem, 1.8vw, 2rem); line
 .edition-section-copy { max-width: 28rem; }
 .edition-section-copy h2 { margin-block: .75rem 1rem; font-size: clamp(2.05rem, 4.4vw, 4.1rem); }
 .edition-section--2 .edition-section-copy h2 { max-width: 12ch; font-size: clamp(1.8rem, 3.4vw, 3.35rem); }
-.edition-section-copy p { color: var(--color-stone); }
+.edition-section-copy p { margin-bottom: 0; color: var(--color-stone); }
+.edition-section-copy p + p { margin-top: 1.15rem; }
 .edition-section-figure { margin: 0; }
 .edition-section-figure figcaption { margin-top: .65rem; color: var(--color-stone); font-size: .72rem; }
 .edition-section-figure .media-frame { aspect-ratio: 4 / 3; min-height: 0; }
@@ -508,6 +511,13 @@ h3 { margin-block: 0.65rem 0.65rem; font-size: clamp(1.35rem, 1.8vw, 2rem); line
 .edition-article-related p { max-width: 28rem; color: var(--color-stone); }
 .edition-article-next { padding-top: 2rem; border-top: 1px solid var(--color-rule); }
 .edition-article-next h3 { margin: .8rem 0 1rem; font-size: clamp(2rem, 4vw, 3.4rem); }
+.edition-article-sources { display: grid; gap: 2.5rem; padding-block: clamp(4.5rem, 7vw, 6.5rem); border-top: 1px solid var(--color-rule); }
+.edition-article-sources h2 { max-width: 11ch; margin-top: .8rem; font-size: clamp(2.4rem, 5vw, 4.6rem); }
+.edition-article-sources ol { display: grid; gap: 0; margin: 0; padding: 0; border-top: 1px solid var(--color-rule); list-style: none; counter-reset: sources; }
+.edition-article-sources li { display: grid; gap: .25rem; padding-block: 1rem; border-bottom: 1px solid var(--color-rule); counter-increment: sources; }
+.edition-article-sources li::before { color: var(--color-stone); font-family: var(--font-mono), monospace; font-size: .62rem; content: counter(sources, decimal-leading-zero); }
+.edition-article-sources a { width: fit-content; border-bottom: 1px solid currentColor; font-family: var(--font-editorial), Georgia, serif; font-size: 1.15rem; line-height: 1.25; }
+.edition-article-sources span { color: var(--color-stone); font-size: .76rem; }
 
 .about-opening { display: grid; gap: 3rem; padding-block: 7rem 6rem; }
 .about-opening h1 { max-width: 11ch; margin-block: 1rem 0; font-size: clamp(3.3rem, 8vw, 7rem); }
@@ -594,6 +604,7 @@ h3 { margin-block: 0.65rem 0.65rem; font-size: clamp(1.35rem, 1.8vw, 2rem); line
   .edition-article-ending--compact .edition-commerce-intro, .edition-article-ending--compact .edition-commerce-grid { max-width: 22rem; }
   .edition-article-ending--compact .edition-commerce-grid { margin-top: 2rem; }
   .edition-commerce-grid--paired { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .edition-article-sources { grid-template-columns: minmax(0, .65fr) minmax(0, 1.35fr); gap: 5rem; }
   .edition-article-related { grid-template-columns: 1fr .7fr; gap: 8rem; }
   .about-opening { grid-template-columns: minmax(0, 1.25fr) minmax(16rem, .75fr); gap: 6rem; padding-block: 10rem 8rem; }
   .about-continuum { padding-block: 5.5rem 6rem; }
@@ -709,6 +720,8 @@ html[data-home-motion="ready"] .home-ritual:not([data-visible="true"]) .ritual-p
 .footer-links { display: grid; gap: 0.45rem; margin: 1rem 0 0; padding: 0; list-style: none; font-size: 0.86rem; }
 .footer-links a { text-decoration: underline; text-decoration-color: rgba(250, 248, 242, 0.35); text-underline-offset: 0.25em; }
 .footer-link-placeholder { display: inline-block; margin-top: 1rem; padding-bottom: 0.2rem; border-bottom: 1px solid rgba(250, 248, 242, 0.5); font-size: 0.78rem; }
+.footer-disclosure { margin-top: 3.5rem; padding-top: 1.25rem; border-top: 1px solid rgba(250, 248, 242, 0.24); }
+.footer-disclosure p { max-width: 68rem; margin: 0; color: rgba(250, 248, 242, 0.58); font-size: 0.72rem; line-height: 1.55; }
 .footer-bottom { display: flex; justify-content: space-between; gap: 1rem; margin-top: 3.5rem; padding-top: 1rem; border-top: 1px solid rgba(250, 248, 242, 0.24); color: rgba(250, 248, 242, 0.55); font-family: var(--font-mono), monospace; font-size: 0.62rem; letter-spacing: 0.05em; text-transform: uppercase; }
 
 @media (min-width: 640px) {
