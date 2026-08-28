@@ -1,8 +1,8 @@
 # RED CLAY COFFEE — PRODUCT & CONTENT CANON
 
-**Status:** APPROVED WORKING CANON — COPY REWRITE AUTHORITY  
-**Version:** 1.0  
-**Date:** 2026-08-28  
+**Status:** APPROVED WORKING CANON — COPY REWRITE AUTHORITY
+**Version:** 1.0
+**Date:** 2026-08-28
 **Scope:** Product architecture, coffee identities, commerce framing, editorial program, terminology, disclosure, and public copy boundaries.
 
 ---
@@ -144,12 +144,12 @@ Material names are brand metaphors. They must never imply that the named materia
 
 ## 5.1 LATERITE
 
-**Status:** APPROVED WORKING PRODUCT  
-**Family:** The Material Series  
-**Role:** House Coffee  
-**Availability model:** Ongoing / rotating seasonal composition  
-**Primary use:** Filter, batch, espresso  
-**Formats:** 250g / 1kg  
+**Status:** APPROVED WORKING PRODUCT
+**Family:** The Material Series
+**Role:** House Coffee
+**Availability model:** Ongoing / rotating seasonal composition
+**Primary use:** Filter, batch, espresso
+**Formats:** 250g / 1kg
 **Working profile:** Red plum / brown sugar / cacao
 
 **Product character:** Warm, balanced, generous, and easy to return to.
@@ -162,12 +162,12 @@ Material names are brand metaphors. They must never imply that the named materia
 
 ## 5.2 BASALT
 
-**Status:** APPROVED WORKING PRODUCT  
-**Family:** The Material Series  
-**Role:** House Espresso  
-**Availability model:** Ongoing / rotating seasonal composition  
-**Primary use:** Espresso, moka, milk drinks  
-**Formats:** 250g / 1kg  
+**Status:** APPROVED WORKING PRODUCT
+**Family:** The Material Series
+**Role:** House Espresso
+**Availability model:** Ongoing / rotating seasonal composition
+**Primary use:** Espresso, moka, milk drinks
+**Formats:** 250g / 1kg
 **Working profile:** Dark cherry / cacao / molasses
 
 **Product character:** Deeper, rounder, and more structured.
@@ -180,12 +180,12 @@ Material names are brand metaphors. They must never imply that the named materia
 
 ## 5.3 LINEN
 
-**Status:** APPROVED WORKING PRODUCT  
-**Family:** The Material Series  
-**Role:** House Filter  
-**Availability model:** Ongoing / rotating seasonal composition  
-**Primary use:** Pour-over / batch brew  
-**Formats:** 250g / 1kg  
+**Status:** APPROVED WORKING PRODUCT
+**Family:** The Material Series
+**Role:** House Filter
+**Availability model:** Ongoing / rotating seasonal composition
+**Primary use:** Pour-over / batch brew
+**Formats:** 250g / 1kg
 **Working profile:** Pear / bergamot / jasmine
 
 **Product character:** Light, aromatic, clean, and lifted.
@@ -235,12 +235,12 @@ Avoid using `seasonal`, `current lot`, `current release`, and `current coffee` i
 
 ## 7.1 KIAMBU / WASHED 01
 
-**Status:** APPROVED WORKING PRODUCT  
-**Country:** Kenya  
-**Region:** Kiambu  
-**Process:** Washed  
-**Variety family:** SL28 / SL34 / Ruiru 11 — INTERNAL FACT CHECK REQUIRED BEFORE PUBLIC DETAIL  
-**Profile:** Blackcurrant / plum / cane sugar  
+**Status:** APPROVED WORKING PRODUCT
+**Country:** Kenya
+**Region:** Kiambu
+**Process:** Washed
+**Variety family:** SL28 / SL34 / Ruiru 11 — INTERNAL FACT CHECK REQUIRED BEFORE PUBLIC DETAIL
+**Profile:** Blackcurrant / plum / cane sugar
 **Character:** Bright / structured / clear / fruit-led
 
 **Working short description:** A bright Kenyan coffee built around blackcurrant, plum, and clear cane-sugar sweetness.
@@ -255,11 +255,11 @@ Avoid using `seasonal`, `current lot`, `current release`, and `current coffee` i
 
 ## 7.2 KIRINYAGA / WASHED 02
 
-**Status:** APPROVED WORKING PRODUCT — NEW  
-**Country:** Kenya  
-**Region:** Kirinyaga  
-**Process:** Washed  
-**Profile:** Red currant / hibiscus / pomelo  
+**Status:** APPROVED WORKING PRODUCT — NEW
+**Country:** Kenya
+**Region:** Kirinyaga
+**Process:** Washed
+**Profile:** Red currant / hibiscus / pomelo
 **Character:** Brighter / more floral / sharper than Kiambu
 
 **Working short description:** A more lifted Kenyan expression, moving from red currant into hibiscus and pomelo.
@@ -274,12 +274,12 @@ Do not reuse Kiambu photography and label it Kirinyaga.
 
 ## 7.3 KAYANZA / WASHED 01
 
-**Status:** APPROVED WORKING PRODUCT  
-**Country:** Burundi  
-**Region:** Kayanza  
-**Process:** Washed  
-**Variety family:** Bourbon-type — INTERNAL FACT CHECK REQUIRED  
-**Profile:** Red apple / honey / orange blossom  
+**Status:** APPROVED WORKING PRODUCT
+**Country:** Burundi
+**Region:** Kayanza
+**Process:** Washed
+**Variety family:** Bourbon-type — INTERNAL FACT CHECK REQUIRED
+**Profile:** Red apple / honey / orange blossom
 **Character:** Floral / soft fruit / honeyed / lifted
 
 **Working short description:** Red apple, honey, and orange blossom in a soft, lifted Burundi cup.
@@ -292,12 +292,12 @@ Do not reuse Kiambu photography and label it Kirinyaga.
 
 ## 7.4 KAYANZA / NATURAL 02
 
-**Status:** APPROVED WORKING PRODUCT — NEW  
-**Country:** Burundi  
-**Region:** Kayanza  
-**Process:** Natural  
-**Variety family:** Bourbon-type — INTERNAL FACT CHECK REQUIRED  
-**Profile:** Raspberry / black tea / brown sugar  
+**Status:** APPROVED WORKING PRODUCT — NEW
+**Country:** Burundi
+**Region:** Kayanza
+**Process:** Natural
+**Variety family:** Bourbon-type — INTERNAL FACT CHECK REQUIRED
+**Profile:** Raspberry / black tea / brown sugar
 **Character:** Fruit-forward / deeper / tea-like / rounded
 
 **Working short description:** A fruit-forward Kayanza coffee with raspberry, black tea, and brown-sugar depth.
@@ -310,12 +310,12 @@ Do not reuse Kiambu photography and label it Kirinyaga.
 
 ## 7.5 SIDAMA / WASHED 01
 
-**Status:** APPROVED WORKING PRODUCT — REPLACES ETHIOPIA LOT 01  
-**Country:** Ethiopia  
-**Region:** Sidama  
-**Process:** Washed  
-**Variety language:** Ethiopian landrace selections — INTERNAL FACT CHECK REQUIRED  
-**Profile:** Jasmine / yellow peach / lemon tea  
+**Status:** APPROVED WORKING PRODUCT — REPLACES ETHIOPIA LOT 01
+**Country:** Ethiopia
+**Region:** Sidama
+**Process:** Washed
+**Variety language:** Ethiopian landrace selections — INTERNAL FACT CHECK REQUIRED
+**Profile:** Jasmine / yellow peach / lemon tea
 **Character:** Floral / clean / tea-like / high-toned
 
 **Working short description:** A clean, floral Ethiopian coffee with jasmine, yellow peach, and a tea-like finish.
@@ -330,12 +330,12 @@ Do not reuse Kiambu photography and label it Kirinyaga.
 
 ## 7.6 GUJI / NATURAL 02
 
-**Status:** APPROVED WORKING PRODUCT — REPLACES ETHIOPIA LOT 02  
-**Country:** Ethiopia  
-**Region:** Guji  
-**Process:** Natural  
-**Variety language:** Ethiopian landrace selections — INTERNAL FACT CHECK REQUIRED  
-**Profile:** Strawberry / apricot / cacao nib  
+**Status:** APPROVED WORKING PRODUCT — REPLACES ETHIOPIA LOT 02
+**Country:** Ethiopia
+**Region:** Guji
+**Process:** Natural
+**Variety language:** Ethiopian landrace selections — INTERNAL FACT CHECK REQUIRED
+**Profile:** Strawberry / apricot / cacao nib
 **Character:** Fruit-driven / round / saturated / deeper
 
 **Working short description:** A fruit-driven Ethiopian natural with strawberry, apricot, and cacao-nib depth.
@@ -356,10 +356,10 @@ Do not label current Hawassa imagery as Guji-specific.
 
 ## 8.1 AFTERLIGHT
 
-**Status:** APPROVED WORKING PRODUCT  
-**Type:** Decaf  
-**Working origin:** Ethiopia  
-**Decaffeination:** Swiss Water or equivalent — FINAL PROCESS MUST BE APPROVED BEFORE PUBLICATION  
+**Status:** APPROVED WORKING PRODUCT
+**Type:** Decaf
+**Working origin:** Ethiopia
+**Decaffeination:** Swiss Water or equivalent — FINAL PROCESS MUST BE APPROVED BEFORE PUBLICATION
 **Profile:** Plum / cocoa / honey
 
 **Product role:** A serious decaf rather than a compromised afterthought.
@@ -370,8 +370,8 @@ Do not label current Hawassa imagery as Guji-specific.
 
 ## 8.2 RED CLAY INSTANT — ETHIOPIA
 
-**Status:** APPROVED WORKING PRODUCT  
-**Format:** 6 sachets — WORKING  
+**Status:** APPROVED WORKING PRODUCT
+**Format:** 6 sachets — WORKING
 **Role:** Specialty instant / travel / office / convenience
 
 **Working description:** Good coffee when the grinder, scale, and brewer are not coming with you.
@@ -380,8 +380,8 @@ Do not label current Hawassa imagery as Guji-specific.
 
 ## 8.3 THREE REGIONS
 
-**Status:** APPROVED WORKING PRODUCT  
-**Type:** Discovery Box  
+**Status:** APPROVED WORKING PRODUCT
+**Type:** Discovery Box
 **Working format:** 3 × 100g
 
 **Initial composition:**
@@ -405,7 +405,7 @@ Objects and publications are supporting extensions.
 
 ## 9.1 THE KILN CUP
 
-**Status:** APPROVED WORKING OBJECT CANON  
+**Status:** APPROVED WORKING OBJECT CANON
 **Role:** Singular companion object
 
 **Material direction:** iron-rich high-fired stoneware rather than literal low-fired terracotta.
@@ -432,7 +432,7 @@ Objects and publications are supporting extensions.
 
 ## 9.2 THE EARTHEN FOLIO — VOLUME 01
 
-**Status:** APPROVED WORKING PRODUCT — FUTURE PHYSICAL EDITION  
+**Status:** APPROVED WORKING PRODUCT — FUTURE PHYSICAL EDITION
 **Type:** Printed editorial object
 
 **Working format:** approximately 96 pages; uncoated bone stock; terracotta cover; sewn or exposed binding; photography; essays; coffee/process diagrams.
@@ -604,8 +604,8 @@ Avoid generic structures that merely repeat `PLACE → PROCESS → PRODUCT` unle
 
 ## 15.1 WATER & TIME
 
-**Status:** APPROVED  
-**Region:** Central Kenya  
+**Status:** APPROVED
+**Region:** Central Kenya
 **Related coffee:** Kiambu / Washed 01
 
 **Subtitle:** **Why washed coffee became such a defining part of Kenya's specialty-coffee identity**
@@ -628,8 +628,8 @@ Avoid generic structures that merely repeat `PLACE → PROCESS → PRODUCT` unle
 
 ## 15.2 ALONG THE KAYANZA HILLS
 
-**Status:** APPROVED  
-**Region:** Kayanza / Burundi  
+**Status:** APPROVED
+**Region:** Kayanza / Burundi
 **Related coffee:** Kayanza / Washed 01
 
 **Subtitle:** **How coffee moves from hillside plots to washing stations and raised drying beds**
@@ -650,8 +650,8 @@ Avoid generic structures that merely repeat `PLACE → PROCESS → PRODUCT` unle
 
 ## 15.3 BEYOND “HEIRLOOM”
 
-**Status:** APPROVED — REPLACES `Canopy & Landrace`  
-**Region:** Ethiopia  
+**Status:** APPROVED — REPLACES `Canopy & Landrace`
+**Region:** Ethiopia
 **Related coffees:** Sidama / Washed 01, Guji / Natural 02
 
 **Subtitle:** **Why Ethiopian coffee diversity resists one convenient word**
@@ -675,21 +675,21 @@ Avoid generic structures that merely repeat `PLACE → PROCESS → PRODUCT` unle
 # 16. VOLUME 02 — PROCESS
 
 ## TWO WAYS THROUGH KAYANZA
-**Status:** APPROVED FUTURE EDITION  
-**Subtitle:** **One region. One variety family. Washed and natural coffee.**  
-**Related coffees:** Kayanza / Washed 01; Kayanza / Natural 02  
+**Status:** APPROVED FUTURE EDITION
+**Subtitle:** **One region. One variety family. Washed and natural coffee.**
+**Related coffees:** Kayanza / Washed 01; Kayanza / Natural 02
 **Purpose:** Show that process matters without presenting it as a deterministic flavor machine.
 
 ## WHAT WASHING CHANGES
-**Status:** APPROVED FUTURE EDITION  
+**Status:** APPROVED FUTURE EDITION
 **Subjects:** fruit removal; fermentation; washing; drying; cleanliness; consistency; limits of process descriptors.
 
 ## HOW TO READ A COFFEE BAG
-**Status:** APPROVED FUTURE EDITION  
+**Status:** APPROVED FUTURE EDITION
 **Subjects:** country; region; producer/site when known; variety; process; elevation; harvest; tasting notes; roast; what actually helps a customer choose.
 
 ## WHY COFFEE CHANGES WITH THE HARVEST
-**Status:** APPROVED FUTURE EDITION  
+**Status:** APPROVED FUTURE EDITION
 **Subjects:** seasonality; harvest cycles; why seasonal coffees rotate; why a house profile can remain while components change; what Current Harvest means within Red Clay.
 
 ---
@@ -697,17 +697,17 @@ Avoid generic structures that merely repeat `PLACE → PROCESS → PRODUCT` unle
 # 17. VOLUME 03 — RITUAL
 
 ## WATER AT HOME
-**Status:** APPROVED FUTURE EDITION  
+**Status:** APPROVED FUTURE EDITION
 **Subjects:** water temperature; mineral content in plain language; filtered water; consistency; avoiding pseudo-scientific precision.
 
 ## A BETTER MORNING CUP
-**Status:** APPROVED FUTURE EDITION  
-**Subjects:** grind fresh; ratio; water; bloom; timing; taste; adjust.  
+**Status:** APPROVED FUTURE EDITION
+**Subjects:** grind fresh; ratio; water; bloom; timing; taste; adjust.
 **Voice:** Useful rather than equipment-obsessed.
 
 ## HOW TO TASTE WITHOUT CHASING TASTING NOTES
-**Status:** APPROVED FUTURE EDITION  
-**Subjects:** sweetness; acidity; bitterness; body; finish; association; tasting notes as references, not added flavor.  
+**Status:** APPROVED FUTURE EDITION
+**Subjects:** sweetness; acidity; bitterness; body; finish; association; tasting notes as references, not added flavor.
 **Role:** Potential cornerstone customer-education article.
 
 ---
@@ -715,13 +715,13 @@ Avoid generic structures that merely repeat `PLACE → PROCESS → PRODUCT` unle
 # 18. VOLUME 04 — MATERIAL
 
 ## FROM CLAY BODY TO CUP
-**Status:** APPROVED FUTURE EDITION  
-**Related product:** The Kiln Cup  
-**Subjects:** stoneware vs earthenware; exposed clay body; glazed interior; wall thickness; capacity; lip; handle; firing; practical everyday use.  
+**Status:** APPROVED FUTURE EDITION
+**Related product:** The Kiln Cup
+**Subjects:** stoneware vs earthenware; exposed clay body; glazed interior; wall thickness; capacity; lip; handle; firing; practical everyday use.
 **Guardrail:** Do not invent technical performance benefits without support.
 
 ## RED EARTH, BLACK STONE, LINEN
-**Status:** APPROVED FUTURE EDITION  
+**Status:** APPROVED FUTURE EDITION
 **Subjects:** laterite; basalt; linen; paper; terracotta/red-burning clay; light; shadow.
 
 **Required clarification:** These materials form a brand and visual vocabulary. They are not a theory that soil color or architecture determines how coffee tastes.
@@ -954,9 +954,9 @@ Focus on agricultural knowledge, labor, expertise, contemporary dignity, and spe
 
 # 26. JOURNAL / THE EDITIONS TERMINOLOGY
 
-**Public label:** The Editions  
-**URL:** `/journal` may remain.  
-**Collection term:** Volume  
+**Public label:** The Editions
+**URL:** `/journal` may remain.
+**Collection term:** Volume
 **Individual story:** Edition
 
 Do not call Volume 01 “the complete first edition.”
