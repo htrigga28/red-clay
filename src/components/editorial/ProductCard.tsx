@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { coffees, kilnCup, type Product } from "@/content/coffees";
+import { coffees, type Product } from "@/content/coffees";
 import { ProductMediaPlaceholder } from "@/components/media/ProductMediaPlaceholder";
 import { useBag } from "@/components/commerce/BagProvider";
 
@@ -11,17 +11,18 @@ type ProductCardProps = {
   showQuickAction?: boolean;
   action?: "view" | "add";
   contextual?: boolean;
+  showDirection?: boolean;
 };
 
-export function ProductCard({ product, featured = false, showQuickAction = false, action = "view", contextual = false }: ProductCardProps) {
+export function ProductCard({ product, featured = false, showQuickAction = false, action = "view", contextual = false, showDirection = false }: ProductCardProps) {
   const { add } = useBag();
-  const isCup = product.id === kilnCup.id;
+  const isCup = product.kind === "kiln-cup";
   const href = `/shop/${product.slug}`;
   const notes = product.notes.join(" / ");
   const label = isCup ? "View The Kiln Cup" : `View ${product.id}`;
 
   return (
-    <article className={`product-card ${isCup ? "product-card--cup" : ""} ${featured ? "product-card--featured" : ""} ${contextual ? "product-card--contextual" : ""}`}>
+    <article className={`product-card product-card--${product.family} ${isCup ? "product-card--cup" : ""} ${featured ? "product-card--featured" : ""} ${contextual ? "product-card--contextual" : ""}`}>
       <div className="product-card-media">
         <Link href={href} aria-label={label}>
           <ProductMediaPlaceholder
@@ -34,25 +35,21 @@ export function ProductCard({ product, featured = false, showQuickAction = false
         </Link>
         {showQuickAction && action === "add" && (
           <button className="product-quick-action" type="button" onClick={(event) => add(product, 1, event.currentTarget)}>
-            Add to bag <span aria-hidden="true">↗</span>
+            Add to Bag <span aria-hidden="true">↗</span>
           </button>
-        )}
-        {showQuickAction && action === "view" && (
-          <Link className="product-quick-action" href={href}>
-            {isCup ? "View the object" : "View coffee"} <span aria-hidden="true">↗</span>
-          </Link>
         )}
       </div>
       <div className="product-card-copy">
         <p className="product-card-id">{product.id}</p>
         <p className="product-card-region">{product.region}</p>
         {notes && <p className="product-card-notes">{notes}</p>}
-        <Link className="text-link" href={href}>{isCup ? "View the object" : "View coffee"}<span aria-hidden="true">↗</span></Link>
+        {showDirection && <p className="product-card-direction">{product.customerDirection}</p>}
+        <Link className="text-link" href={href}>{label}<span aria-hidden="true">↗</span></Link>
       </div>
     </article>
   );
 }
 
-export function ProductGrid({ includeCup = true, showQuickAction = false, action = "view" }: { includeCup?: boolean; showQuickAction?: boolean; action?: "view" | "add" }) {
-  return <div className="product-grid">{coffees.map((coffee, index) => <ProductCard key={coffee.id} product={coffee} featured={index === 0} showQuickAction={showQuickAction} action={action} />)}{includeCup && <ProductCard product={kilnCup} showQuickAction={showQuickAction} action={action} />}</div>;
+export function ProductGrid({ items = coffees, showQuickAction = false, action = "view", showDirection = false, className = "" }: { items?: readonly Product[]; showQuickAction?: boolean; action?: "view" | "add"; showDirection?: boolean; className?: string }) {
+  return <div className={`product-grid ${className}`}>{items.map((product, index) => <ProductCard key={product.id} product={product} featured={index === 0} showQuickAction={showQuickAction} action={action} showDirection={showDirection} />)}</div>;
 }

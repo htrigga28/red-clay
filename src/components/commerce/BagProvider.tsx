@@ -8,7 +8,7 @@ export type BagItem = {
   slug: string;
   region: string;
   assetId: string;
-  kind: "coffee" | "kiln-cup";
+  kind: Product["kind"];
   quantity: number;
 };
 
@@ -32,7 +32,7 @@ const itemFromProduct = (product: Product): BagItem => ({
   slug: product.slug,
   region: product.region,
   assetId: product.media.shopPrimary.id,
-  kind: product.id === "THE KILN CUP" ? "kiln-cup" : "coffee",
+  kind: product.kind,
   quantity: 1,
 });
 

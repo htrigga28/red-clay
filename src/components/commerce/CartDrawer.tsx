@@ -45,7 +45,7 @@ export function CartDrawer() {
   return <>
     <button className="bag-backdrop" type="button" aria-label="Close bag" onClick={close} />
     <aside ref={panelRef} className="bag-drawer" role="dialog" aria-modal="true" aria-labelledby="bag-title">
-      <div className="bag-drawer-header"><div><p className="section-label">BAG</p><h2 id="bag-title">Your selections <span>({count})</span></h2></div><button className="bag-close" type="button" onClick={close}>Close</button></div>
+      <div className="bag-drawer-header"><div><p className="section-label">BAG</p><h2 id="bag-title">Bag <span>({count})</span></h2></div><button className="bag-close" type="button" onClick={close}>Close</button></div>
       <BagContents compact />
     </aside>
   </>;
@@ -55,12 +55,12 @@ export function BagContents({ compact = false }: { compact?: boolean }) {
   const { items, count, announcement, increment, decrement, remove } = useBag();
   return <div className={`bag-contents ${compact ? "bag-contents--compact" : ""}`}>
     <p className="sr-only" aria-live="polite">{announcement}</p>
-    {items.length === 0 ? <div className="bag-empty"><p className="section-label">EMPTY BAG</p><h2>Your bag is quiet for now.</h2><p>Add a coffee or the companion object to begin.</p><Link className="editorial-link" href="/shop">Explore the harvest <span aria-hidden="true">↗</span></Link></div> : <>
+    {items.length === 0 ? <div className="bag-empty"><p className="section-label">EMPTY BAG</p><h2>Your bag is empty.</h2><p>Add a coffee or The Kiln Cup to begin.</p><Link className="editorial-link" href="/shop">See all coffees <span aria-hidden="true">↗</span></Link></div> : <>
       <p className="bag-count-label">{count} {count === 1 ? "item" : "items"}</p>
       <ul className="bag-items">
         {items.map((item) => <BagLineItem key={item.id} item={item} increment={increment} decrement={decrement} remove={remove} />)}
       </ul>
-      <p className="bag-note">Your selections are held here while you continue exploring.</p>
+      <p className="bag-note">Items stay in your bag while you browse.</p>
     </>}
   </div>;
 }
