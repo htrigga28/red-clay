@@ -644,35 +644,67 @@ h3 { margin-block: 0.65rem 0.65rem; font-size: clamp(1.35rem, 1.8vw, 2rem); line
   .editions-featured-media img, .edition-section-figure img, .about-materials-media img, .kiln-cup-ritual-media img { transition: none !important; transform: none !important; }
 }
 
-/* Pass 3 bag */
+/* Commerce Bag */
 .bag-backdrop { position: fixed; inset: 0; z-index: 59; border: 0; background: rgba(33, 29, 25, 0.38); cursor: pointer; }
-.bag-drawer { position: fixed; top: 0; right: 0; bottom: 0; z-index: 60; display: flex; width: min(100%, 30rem); flex-direction: column; overflow-y: auto; background: var(--color-bone); color: var(--color-ink); box-shadow: -16px 0 40px rgba(33, 29, 25, 0.12); animation: bag-in var(--duration-editorial) var(--ease-quiet) both; }
-.bag-drawer-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; padding: 1.5rem var(--gutter); border-bottom: 1px solid var(--color-rule); }
+.bag-drawer { position: fixed; top: 0; right: 0; bottom: 0; z-index: 60; display: flex; width: min(100%, clamp(420px, 36vw, 560px)); flex-direction: column; overflow: hidden; background: var(--color-bone); color: var(--color-ink); box-shadow: -16px 0 40px rgba(33, 29, 25, 0.12); animation: bag-in var(--duration-editorial) var(--ease-quiet) both; }
+.bag-drawer-header { display: flex; flex: 0 0 auto; align-items: flex-start; justify-content: space-between; gap: 1rem; padding: 1.5rem var(--gutter); border-bottom: 1px solid var(--color-rule); }
 .bag-drawer-header h2 { margin: 0.7rem 0 0; font-size: clamp(1.75rem, 4vw, 2.5rem); }
 .bag-drawer-header h2 span { color: var(--color-stone); font-family: var(--font-mono), monospace; font-size: 0.7em; letter-spacing: 0.08em; }
 .bag-close { min-height: 44px; padding: 0; border: 0; border-bottom: 1px solid currentColor; background: transparent; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; }
-.bag-contents { padding-block: 2rem 3rem; }
-.bag-contents--compact { padding-inline: var(--gutter); }
+.bag-drawer-items { flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: 1.5rem var(--gutter) 2rem; }
+.bag-drawer-summary { flex: 0 0 auto; padding: 1.25rem var(--gutter) 1.5rem; border-top: 1px solid var(--color-rule); background: var(--color-bone); }
 .bag-count-label { margin-bottom: 1.25rem; color: var(--color-stone); font-size: 0.78rem; }
-.bag-items { display: grid; gap: 1.5rem; margin: 0; padding: 0; list-style: none; }
-.bag-line-item { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr); gap: 1rem; }
-.bag-line-media .product-media-stage { aspect-ratio: 4 / 5; }
-.bag-line-copy { min-width: 0; }
-.bag-line-copy .product-card-id { overflow-wrap: anywhere; }
-.bag-line-controls { display: inline-flex; min-height: 44px; align-items: center; margin-top: 0.85rem; border: 1px solid var(--color-rule); }
+.bag-items { display: grid; gap: 1.25rem; margin: 0; padding: 0; list-style: none; }
+.cart-line { display: grid; grid-template-columns: clamp(4.5rem, 26vw, 5.5rem) minmax(0, 1fr); gap: 0.75rem 1rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--color-rule); }
+.cart-line > * { min-width: 0; }
+.cart-line-media { grid-column: 1; grid-row: 1; align-self: start; }
+.cart-line-media .product-media-stage { aspect-ratio: 4 / 5; }
+.product-media-stage--cart .placeholder-object { width: 52%; min-height: 62%; padding: 0.25rem; }
+.product-media-stage--cart .placeholder-mark { font-size: clamp(0.36rem, 1.1vw, 0.52rem); }
+.cart-line-copy { grid-column: 2; min-width: 0; }
+.cart-line-copy .product-card-id { overflow-wrap: anywhere; }
+.cart-line-selection, .cart-line-price, .cart-line-status { margin: 0.35rem 0 0; color: var(--color-stone); font-size: 0.78rem; line-height: 1.4; }
+.cart-line-price { color: var(--color-ink); font-family: var(--font-mono), monospace; font-size: 0.72rem; }
+.cart-line-status { max-width: 28rem; color: var(--color-clay); }
+.cart-line-actions { display: flex; grid-column: 1 / -1; align-items: center; justify-content: space-between; gap: 1rem; }
+.cart-line--invalid { grid-template-columns: minmax(0, 1fr); }
+.cart-line--invalid .cart-line-copy, .cart-line--invalid .cart-line-actions { grid-column: 1; }
+.bag-line-controls { display: inline-flex; min-height: 44px; align-items: center; border: 1px solid var(--color-rule); }
 .bag-line-controls button { width: 44px; height: 44px; border: 0; background: transparent; cursor: pointer; }
 .bag-line-controls span { min-width: 1.5rem; text-align: center; font-family: var(--font-mono), monospace; font-size: 0.7rem; }
-.bag-remove { display: inline-flex; min-height: 44px; align-items: center; margin-top: 0.35rem; padding: 0; border: 0; border-bottom: 1px solid var(--color-rule); background: transparent; color: var(--color-stone); font-size: 0.7rem; cursor: pointer; }
-.bag-note { margin-top: 2.5rem; color: var(--color-stone); font-size: 0.8rem; }
-.bag-empty { min-height: 15rem; }
+.bag-remove { display: inline-flex; min-height: 44px; align-items: center; padding: 0; border: 0; border-bottom: 1px solid var(--color-rule); background: transparent; color: var(--color-stone); font-size: 0.7rem; cursor: pointer; }
+.bag-summary-warning { margin: 0 0 1rem; color: var(--color-clay); font-size: 0.8rem; line-height: 1.45; }
+.bag-summary-totals { margin: 0; }
+.bag-summary-totals > div { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+.bag-summary-totals dt { color: var(--color-stone); font-size: 0.8rem; }
+.bag-summary-totals dd { margin: 0; font-family: var(--font-mono), monospace; font-size: 0.88rem; }
+.bag-summary-progress { margin: 0.65rem 0 1.25rem; color: var(--color-stone); font-size: 0.8rem; line-height: 1.45; }
+.bag-summary-actions { display: grid; gap: 0.75rem; }
+.bag-summary-actions .button { width: 100%; }
+.bag-summary-actions .button[disabled] { cursor: not-allowed; opacity: 0.48; }
+.bag-empty { min-height: 11rem; }
 .bag-empty h2 { max-width: 12ch; margin-block: 0.75rem 1rem; }
 .bag-empty p:not(.section-label) { max-width: 20rem; margin-bottom: 1.5rem; color: var(--color-stone); }
 .bag-page { background: var(--color-bone); }
 .bag-page-intro { display: grid; gap: 1.25rem; padding-block: 5rem 4.5rem; }
 .bag-page-intro h1 { margin: 0; }
 .bag-page-intro p { max-width: 28rem; margin: 0; color: var(--color-stone); }
-.bag-page-body { padding-block: 0 8rem; border-top: 1px solid var(--color-rule); }
-.bag-page-body .bag-contents { max-width: 44rem; }
+.bag-page-body { padding-block: 2rem 8rem; border-top: 1px solid var(--color-rule); }
+.bag-review-grid { display: grid; gap: 2.5rem; }
+.bag-review-heading { margin-bottom: 1.5rem; }
+.bag-review-heading h2, .bag-review-summary h2 { max-width: 16ch; margin-block: 0.75rem 0; }
+.bag-review-summary { padding-top: 1.5rem; border-top: 1px solid var(--color-rule); }
+.bag-empty--page { padding-block: 1rem 3rem; }
+
+@media (min-width: 640px) {
+  .cart-line { grid-template-columns: 6rem minmax(0, 1fr); }
+  .cart-line--review { grid-template-columns: 7.5rem minmax(0, 1fr); gap: 1rem 1.5rem; }
+}
+
+@media (min-width: 900px) {
+  .bag-review-grid { grid-template-columns: minmax(0, 1fr) clamp(22.5rem, 30vw, 26.25rem); align-items: start; gap: clamp(2.5rem, 6vw, 5rem); }
+  .bag-review-summary { padding: 0 0 0 2rem; border-top: 0; border-left: 1px solid var(--color-rule); }
+}
 
 /* Pass 2R origin chapters */
 .home-origins { overflow: hidden; padding-block: 7rem 4rem; background: var(--color-canvas); }
@@ -897,7 +929,7 @@ html[data-home-motion="ready"] .home-ritual:not([data-visible="true"]) .ritual-p
 }
 
 @media (max-width: 639px) {
-  .bag-drawer { top: 10svh; width: 100%; border-top: 1px solid var(--color-rule); animation-name: bag-up; }
+  .bag-drawer { width: 100%; animation-name: bag-up; }
   .shop-coffee-collection .product-card:not(:first-child) { display: grid; grid-template-columns: minmax(7rem, 38%) minmax(0, 1fr); gap: 1rem; align-items: start; }
   .shop-coffee-collection .product-card:not(:first-child) .product-card-copy { padding-top: 0; }
   .shop-movement .product-card:not(:first-child) { display: grid; grid-template-columns: minmax(7rem, 38%) minmax(0, 1fr); gap: 1rem; align-items: start; }
