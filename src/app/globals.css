@@ -580,7 +580,7 @@ h3 { margin-block: 0.65rem 0.65rem; font-size: clamp(1.35rem, 1.8vw, 2rem); line
 .kiln-cup-scale h2 { margin-block: .8rem 1rem; }
 .kiln-cup-scale p { max-width: 28rem; color: var(--color-stone); }
 .kiln-cup-scale .product-media-stage { aspect-ratio: 16 / 10; }
-.kiln-cup-pairing { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; align-items: end; padding-block: 7rem 9rem; }
+.kiln-cup-pairing { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; align-items: flex-end; padding-block: 7rem 9rem; }
 .kiln-cup-pairing h2 { margin-block: .8rem 1rem; }
 .kiln-cup-pairing p { max-width: 24rem; margin: 0; color: var(--color-stone); }
 
@@ -852,6 +852,7 @@ html[data-home-motion="ready"] .home-ritual:not([data-visible="true"]) .ritual-p
 
 @media (min-width: 768px) and (max-width: 1023px) {
   .pdp-opening { grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.2fr); }
+  .pdp-zone--media .product-media-stage { width: 100%; height: auto; aspect-ratio: 4 / 5 !important; }
   .pdp-process-detail-grid, .pdp-ritual-grid { grid-template-columns: 1fr; }
   .pdp-edition-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
   .pdp-edition-media, .pdp-edition-meta, .pdp-edition-copy { grid-column: auto; grid-row: auto; min-height: 0; }
