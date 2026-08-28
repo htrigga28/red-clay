@@ -382,7 +382,7 @@ h3 { margin-block: 0.65rem 0.65rem; font-size: clamp(1.35rem, 1.8vw, 2rem); line
 .pdp-zone--purchase { order: 2; }
 .pdp-zone--media { order: 1; }
 .pdp-zone--context { order: 3; display: grid; gap: 1rem; align-content: start; }
-.pdp-zone--purchase h1.pdp-title { max-width: 11ch; margin-block: 0.8rem 0.65rem; font-size: clamp(2.5rem, 5vw, 5rem); text-wrap: balance; overflow-wrap: normal; word-break: normal; hyphens: none; }
+.pdp-zone--purchase h1.pdp-title { max-width: 11ch; margin-block: 0.8rem 0.65rem; font-size: clamp(2.5rem, 4.4vw, 4.6rem); text-wrap: balance; overflow-wrap: normal; word-break: normal; hyphens: none; }
 .coffee-pdp--afterlight .pdp-zone--purchase h1.pdp-title { white-space: nowrap; }
 .pdp-region { margin-bottom: 1.2rem; color: var(--color-stone); }
 .pdp-sensory-line { max-width: 25rem; margin-bottom: 0.75rem; font-family: var(--font-editorial), Georgia, serif; font-size: clamp(1.35rem, 2.2vw, 2rem); line-height: 1.1; }
