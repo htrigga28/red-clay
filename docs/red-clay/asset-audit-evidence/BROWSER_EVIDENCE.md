@@ -37,6 +37,6 @@ The earlier `:3000` pass is superseded and is not represented in this folder. Po
 - `ethiopia-origin-mobile-390x844.png`
 - `about-desktop-1366x768.png`
 
-`shop-products-1366x768.png` is an additional mid-scroll product-grid capture; `home-styled-3001-1366x768.png` is a duplicate of the valid 1366px homepage capture.
+`shop-products-1366x768.png` is an additional mid-scroll product-grid capture.
 
 No source code or asset files were changed during this pass.
