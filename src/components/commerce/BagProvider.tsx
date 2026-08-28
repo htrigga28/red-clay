@@ -95,11 +95,12 @@ export function BagProvider({ children }: { children: React.ReactNode }) {
     const safeQuantity = Math.max(1, Math.floor(quantity));
     const newItem = itemFromProduct(product, variant);
     setItems((current) => {
-      const existing = current.find((item) => getBagLineKey(item) === newItem.lineKey);
-      if (existing) return current.map((item) => getBagLineKey(item) === newItem.lineKey ? { ...item, quantity: item.quantity + safeQuantity } : item);
+      const hasExisting = current.some((item) => getBagLineKey(item) === newItem.lineKey);
+      if (hasExisting) return current.map((item) => getBagLineKey(item) === newItem.lineKey ? { ...item, quantity: item.quantity + safeQuantity } : item);
       return [...current, { ...newItem, quantity: safeQuantity }];
     });
-    setAnnouncement(`${product.id}${newItem.format ? `, ${newItem.format}${newItem.grind ? `, ${newItem.grind}` : ""}` : ""} added to your bag.`);
+    const variantLabel = [newItem.format, newItem.grind].filter(Boolean).join(", ");
+    setAnnouncement([product.id, variantLabel].filter(Boolean).join(", ") + " added to your bag.");
     open(trigger);
   }, [open]);
 

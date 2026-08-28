@@ -57,7 +57,7 @@ export function CartDrawer() {
   </>;
 }
 
-export function BagContents({ compact = false }: { compact?: boolean }) {
+export function BagContents({ compact = false }: Readonly<{ compact?: boolean }>) {
   const { items, count, announcement, increment, decrement, remove, undoRemove, close } = useBag();
   const subtotal = items.reduce((total, item) => total + (itemPrice(item) ?? 0) * item.quantity, 0);
   const hasPrices = items.every((item) => itemPrice(item) !== null);
@@ -85,7 +85,7 @@ export function BagContents({ compact = false }: { compact?: boolean }) {
   }
 }
 
-function BagLineItem({ item, increment, decrement, remove }: { item: BagItem; increment: (lineKey: string) => void; decrement: (lineKey: string) => void; remove: (lineKey: string) => void }) {
+function BagLineItem({ item, increment, decrement, remove }: Readonly<{ item: BagItem; increment: (lineKey: string) => void; decrement: (lineKey: string) => void; remove: (lineKey: string) => void }>) {
   const lineKey = getBagLineKey(item);
   return <li className="bag-line-item">
     <Link className="bag-line-media" href={`/shop/${item.slug}`} aria-label={`View ${item.id}`}><CartLineThumbnail item={item} /></Link>
@@ -93,7 +93,7 @@ function BagLineItem({ item, increment, decrement, remove }: { item: BagItem; in
   </li>;
 }
 
-function CartLineThumbnail({ item }: { item: BagItem }) {
+function CartLineThumbnail({ item }: Readonly<{ item: BagItem }>) {
   const isCup = item.kind === "kiln-cup";
   return <div className="product-media-stage" aria-label={`${item.id} product image pending`} role="img">
     <div className={`product-placeholder product-placeholder--${item.kind}`}>

@@ -132,8 +132,8 @@ export function Header() {
   );
 }
 
-function ShopRevealPanel({ onClose }: { onClose: () => void }) {
-  return <div className="reveal-panel reveal-panel--shop" id="shop-reveal" role="region" aria-label="Shop">
+function ShopRevealPanel({ onClose }: Readonly<{ onClose: () => void }>) {
+  return <section className="reveal-panel reveal-panel--shop" id="shop-reveal" aria-label="Shop">
     <div className="reveal-panel-primary">
       <p className="section-label">SHOP</p>
       <Link className="reveal-all-link" href="/shop" onClick={onClose}>Shop all <span aria-hidden="true">↗</span></Link>
@@ -143,10 +143,10 @@ function ShopRevealPanel({ onClose }: { onClose: () => void }) {
       <span className="reveal-feature-copy"><small>START HERE</small><strong>Three Regions</strong></span>
       <Image src={redClayAssets.origins.kenyaDetail.src!} alt="" fill sizes="42vw" />
     </Link>
-  </div>;
+  </section>;
 }
 
-function RevealPanel({ id, eyebrow, allLabel, items, feature, href, image, onClose }: { id: string; eyebrow: string; allLabel: string; items: readonly { label: string; href: string }[]; feature: string; href: string; image?: string; onClose: () => void }) {
+function RevealPanel({ id, eyebrow, allLabel, items, feature, href, image, onClose }: Readonly<{ id: string; eyebrow: string; allLabel: string; items: readonly { label: string; href: string }[]; feature: string; href: string; image?: string; onClose: () => void }>) {
   return <div className="reveal-panel" id={id} role="region" aria-label={eyebrow}>
     <div className="reveal-panel-primary">
       <p className="section-label">{eyebrow}</p>
@@ -160,7 +160,7 @@ function RevealPanel({ id, eyebrow, allLabel, items, feature, href, image, onClo
   </div>;
 }
 
-function MobileNavigation({ pathname, close }: { pathname: string; close: () => void }) {
+function MobileNavigation({ pathname, close }: Readonly<{ pathname: string; close: () => void }>) {
   const navigationRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {

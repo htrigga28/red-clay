@@ -21,14 +21,14 @@ const readingTerms = [
   { term: "Cup", copy: "The roaster’s sensory references for this coffee. Notes describe associations; they are not added ingredients." },
 ];
 
-const currentHarvestSlugs = [
+const currentHarvestSlugs = new Set([
   "kiambu-washed-01",
   "kirinyaga-washed-02",
   "kayanza-washed-01",
   "kayanza-natural-02",
   "sidama-washed-01",
   "guji-natural-02",
-];
+]);
 
 export default function OriginsPage() {
   const featuredEdition = editions[0];
@@ -76,7 +76,7 @@ export default function OriginsPage() {
             </div>
           </div>
           <div className="origins-coffee-grid">
-            {coffees.filter((coffee) => currentHarvestSlugs.includes(coffee.slug)).map((coffee, index) => <ProductCard key={coffee.id} product={coffee} featured={index === 0} />)}
+            {coffees.filter((coffee) => currentHarvestSlugs.has(coffee.slug)).map((coffee, index) => <ProductCard key={coffee.id} product={coffee} featured={index === 0} />)}
           </div>
         </PageContainer>
       </section>
