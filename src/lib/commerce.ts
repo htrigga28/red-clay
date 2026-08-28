@@ -72,3 +72,41 @@ export function getKenyaDeliveryProgress(subtotalKes: number) {
     message: remainingKes === 0 ? "Free Kenya delivery unlocked." : `${formatKes(remainingKes)} away from free Kenya delivery.`,
   };
 }
+
+export type DemoShippingInput = {
+  country: string;
+  city: string;
+  subtotalKes: number;
+};
+
+export type DemoShipping = {
+  amountKes: number;
+  label: string;
+  estimate: string;
+};
+
+export function calculateDemoShipping({ country, city, subtotalKes }: DemoShippingInput): DemoShipping {
+  const normalizedCountry = normalizeLocation(country);
+  const isKenya = normalizedCountry === "kenya";
+  const isNairobi = normalizeLocation(city).startsWith("nairobi");
+
+  if (isKenya) {
+    return {
+      amountKes: subtotalKes >= 5000 ? 0 : isNairobi ? 300 : 500,
+      label: subtotalKes >= 5000 ? "Free Kenya delivery" : isNairobi ? "Nairobi delivery" : "Rest of Kenya delivery",
+      estimate: isNairobi ? "1–2 business days" : "2–4 business days",
+    };
+  }
+
+  return { amountKes: 3500, label: "International demo rate", estimate: "International demo delivery" };
+}
+
+export function generateDemoOrderId(now: Date, random: () => number) {
+  const date = now.toISOString().slice(0, 10).replaceAll("-", "");
+  const suffix = Math.floor(Math.min(Math.max(random(), 0), 0.999999) * 1_000_000).toString().padStart(6, "0");
+  return `RC-DEMO-${date}-${suffix}`;
+}
+
+function normalizeLocation(value: string) {
+  return value.trim().toLowerCase().replace(/\s+/g, " ");
+}
