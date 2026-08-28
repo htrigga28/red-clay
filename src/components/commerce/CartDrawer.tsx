@@ -48,7 +48,7 @@ export function CartDrawer() {
   if (!isOpen) return null;
   return <>
     <button className="bag-backdrop" type="button" aria-label="Close bag" onClick={close} />
-    <aside ref={panelRef} className="bag-drawer" role="dialog" aria-modal="true" aria-labelledby="bag-title">
+    <aside ref={panelRef} className={`bag-drawer${items.length === 1 ? " bag-drawer--compact" : ""}`} role="dialog" aria-modal="true" aria-labelledby="bag-title">
       <p className="sr-only" aria-live="polite">{announcement}</p>
       <div className="bag-drawer-header"><div><p className="section-label">BAG</p><h2 id="bag-title">Bag <span>({count})</span></h2></div><button className="bag-close" type="button" onClick={close}>Close</button></div>
       <div className="bag-drawer-items" aria-label="Bag items">
