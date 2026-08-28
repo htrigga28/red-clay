@@ -5,6 +5,7 @@ import { ProductGrid } from "@/components/editorial/ProductCard";
 import { ProductMediaPlaceholder } from "@/components/media/ProductMediaPlaceholder";
 import { SectionLabel } from "@/components/layout/PageContainer";
 import { currentHarvest, kilnCup, materialSeries, otherWaysToDrink } from "@/content/coffees";
+import { formatKes, getDefaultSelection } from "@/lib/commerce";
 
 export const metadata: Metadata = {
   title: "Shop Coffee",
@@ -56,7 +57,7 @@ export default function ShopPage() {
     <section className="shop-companion" aria-labelledby="kiln-cup-title">
       <div className="page-container shop-companion-grid">
         <div className="shop-companion-media"><ProductMediaPlaceholder assetId={kilnCup.media.shopPrimary.id} label={kilnCup.id} kind="kiln-cup" /></div>
-        <div className="shop-companion-copy"><SectionLabel>THE KILN CUP</SectionLabel><h2 id="kiln-cup-title">Clay outside. Glaze within.</h2><p>Iron-rich high-fired stoneware, a warm mineral-white satin glaze, and an approximate 300ml / 10oz capacity. The cup remains a companion to coffee.</p><div className="shop-companion-actions"><AddToBagButton product={kilnCup} /><Link className="editorial-link" href={`/shop/${kilnCup.slug}`}>View The Kiln Cup <span aria-hidden="true">↗</span></Link></div></div>
+        <div className="shop-companion-copy"><SectionLabel>THE KILN CUP</SectionLabel><h2 id="kiln-cup-title">Clay outside. Glaze within.</h2><p>Iron-rich high-fired stoneware, a warm mineral-white satin glaze, and an approximate 300ml / 10oz capacity. The cup remains a companion to coffee.</p><p>{formatKes(kilnCup.commerce.formats[0].priceKes)} / {kilnCup.commerce.formats[0].label}</p><div className="shop-companion-actions"><AddToBagButton product={kilnCup} selection={getDefaultSelection(kilnCup)} /><Link className="editorial-link" href={`/shop/${kilnCup.slug}`}>View The Kiln Cup <span aria-hidden="true">↗</span></Link></div></div>
       </div>
     </section>
   </main>;

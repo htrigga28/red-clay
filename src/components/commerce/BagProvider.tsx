@@ -1,40 +1,32 @@
 "use client";
 
 import { createContext, useCallback, useContext, useMemo, useRef, useState } from "react";
-import type { Product } from "@/content/coffees";
+import { getProductById, type Product } from "@/content/coffees";
+import {
+  makeCartLineId,
+  resolveCartLine,
+  resolveSelection,
+  type CartLine,
+  type ProductSelection,
+} from "@/lib/commerce";
 
-export type BagItem = {
-  id: Product["id"];
-  slug: string;
-  region: string;
-  assetId: string;
-  kind: Product["kind"];
-  quantity: number;
-};
+export type BagItem = CartLine;
 
 type BagContextValue = {
   items: BagItem[];
   count: number;
+  hasInvalidItems: boolean;
   isOpen: boolean;
   announcement: string;
-  add: (product: Product, quantity?: number, trigger?: HTMLElement | null) => void;
-  increment: (id: BagItem["id"]) => void;
-  decrement: (id: BagItem["id"]) => void;
-  remove: (id: BagItem["id"]) => void;
+  add: (product: Product, selection: ProductSelection, quantity?: number, trigger?: HTMLElement | null) => void;
+  increment: (lineId: BagItem["lineId"]) => void;
+  decrement: (lineId: BagItem["lineId"]) => void;
+  remove: (lineId: BagItem["lineId"]) => void;
   open: (trigger?: HTMLElement | null) => void;
   close: () => void;
 };
 
 const BagContext = createContext<BagContextValue | null>(null);
-
-const itemFromProduct = (product: Product): BagItem => ({
-  id: product.id,
-  slug: product.slug,
-  region: product.region,
-  assetId: product.media.shopPrimary.id,
-  kind: product.kind,
-  quantity: 1,
-});
 
 export function BagProvider({ children }: { children: React.ReactNode }) {
   const [items, setItems] = useState<BagItem[]>([]);
@@ -52,27 +44,38 @@ export function BagProvider({ children }: { children: React.ReactNode }) {
     window.setTimeout(() => triggerRef.current?.focus(), 0);
   }, []);
 
-  const add = useCallback((product: Product, quantity = 1, trigger?: HTMLElement | null) => {
-    const safeQuantity = Math.max(1, Math.floor(quantity));
+  const add = useCallback((product: Product, selection: ProductSelection, quantity = 1, trigger?: HTMLElement | null) => {
+    const currentProduct = getProductById(product?.id);
+    const resolved = resolveSelection(currentProduct, selection);
+    const safeQuantity = Math.floor(quantity);
+    if (!resolved || !Number.isFinite(safeQuantity) || safeQuantity < 1) {
+      setAnnouncement("That product option cannot be added to your bag.");
+      return;
+    }
+    const lineId = makeCartLineId({ productId: resolved.product.id, ...selection });
     setItems((current) => {
-      const existing = current.find((item) => item.id === product.id);
-      if (existing) return current.map((item) => item.id === product.id ? { ...item, quantity: item.quantity + safeQuantity } : item);
-      return [...current, { ...itemFromProduct(product), quantity: safeQuantity }];
+      const existing = current.find((item) => item.lineId === lineId);
+      if (existing) return current.map((item) => item.lineId === lineId ? { ...item, quantity: item.quantity + safeQuantity } : item);
+      return [...current, { ...selection, productId: resolved.product.id, quantity: safeQuantity, lineId }];
     });
-    setAnnouncement(`${product.id} added to your bag.`);
+    setAnnouncement(`${resolved.product.id} ${resolved.format.label} added to your bag.`);
     open(trigger);
   }, [open]);
 
-  const increment = useCallback((id: BagItem["id"]) => setItems((current) => current.map((item) => item.id === id ? { ...item, quantity: item.quantity + 1 } : item)), []);
-  const decrement = useCallback((id: BagItem["id"]) => setItems((current) => current.flatMap((item) => item.id !== id ? item : item.quantity > 1 ? { ...item, quantity: item.quantity - 1 } : [])), []);
-  const remove = useCallback((id: BagItem["id"]) => {
-    setItems((current) => current.filter((item) => item.id !== id));
-    setAnnouncement(`${id} removed from your bag.`);
+  const increment = useCallback((lineId: BagItem["lineId"]) => setItems((current) => current.map((item) => item.lineId === lineId && resolveCartLine(item) ? { ...item, quantity: item.quantity + 1 } : item)), []);
+  const decrement = useCallback((lineId: BagItem["lineId"]) => setItems((current) => current.flatMap((item) => {
+    if (item.lineId !== lineId || !resolveCartLine(item)) return item;
+    return item.quantity > 1 ? { ...item, quantity: item.quantity - 1 } : [];
+  })), []);
+  const remove = useCallback((lineId: BagItem["lineId"]) => {
+    setItems((current) => current.filter((item) => item.lineId !== lineId));
+    setAnnouncement("Item removed from your bag.");
   }, []);
 
   const value = useMemo(() => ({
     items,
     count: items.reduce((total, item) => total + item.quantity, 0),
+    hasInvalidItems: items.some((item) => !resolveCartLine(item)),
     isOpen,
     announcement,
     add,

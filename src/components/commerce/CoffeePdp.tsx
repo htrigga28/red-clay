@@ -7,20 +7,24 @@ import { ProductCard } from "@/components/editorial/ProductCard";
 import { MediaFrame } from "@/components/editorial/MediaFrame";
 import { ProductMediaPlaceholder } from "@/components/media/ProductMediaPlaceholder";
 import { PageContainer, SectionLabel } from "@/components/layout/PageContainer";
-import { getProductById, type Coffee, type Product } from "@/content/coffees";
+import { getProductById, type Coffee, type FormatId, type GrindId, type Product } from "@/content/coffees";
 import { editions } from "@/content/editions";
+import { formatKes, resolveSelection } from "@/lib/commerce";
 
 export function CoffeePdp({ coffee }: { coffee: Coffee }) {
   const [quantity, setQuantity] = useState(1);
+  const [formatId, setFormatId] = useState<FormatId>(coffee.commerce.defaultFormatId);
+  const [grindId, setGrindId] = useState<GrindId | undefined>(coffee.commerce.defaultGrindId);
   const [stickyVisible, setStickyVisible] = useState(false);
   const buyModuleRef = useRef<HTMLElement>(null);
-  const canAddToBag = coffee.formats.length > 0;
+  const selection = resolveSelection(coffee, { formatId, ...(grindId ? { grindId } : {}) });
+  const canAddToBag = Boolean(selection);
   const related = coffee.relatedProducts
     .map((id) => getProductById(id))
     .filter((product): product is Product => Boolean(product));
   const edition = coffee.relatedEdition ? editions.find((item) => item.slug === coffee.relatedEdition) : undefined;
   const facts = [
-    coffee.formats.length > 0 ? { term: "Format", value: coffee.formats.join(" / ") } : null,
+    { term: "Format", value: coffee.commerce.formats.map((format) => format.label).join(" / ") },
     coffee.process ? { term: "Process", value: coffee.process } : null,
     coffee.uses.length > 0 ? { term: "Best for", value: coffee.uses.join(" / ") } : null,
   ].filter((fact): fact is { term: string; value: string } => Boolean(fact));
@@ -42,7 +46,14 @@ export function CoffeePdp({ coffee }: { coffee: Coffee }) {
         <p className="pdp-sensory-line">{coffee.sensoryStatement}</p>
         {coffee.notes.length > 0 && <p className="pdp-notes">{coffee.notes.join(" / ")}</p>}
         {facts.length > 0 && <dl className="pdp-facts">{facts.map((fact) => <div key={fact.term}><dt>{fact.term}</dt><dd>{fact.value}</dd></div>)}</dl>}
-        {canAddToBag && <div className="pdp-buy-controls"><div className="quantity-control" aria-label={`Quantity for ${coffee.id}`}><button type="button" aria-label="Decrease quantity" onClick={() => setQuantity((value) => Math.max(1, value - 1))}>−</button><span aria-live="polite">{quantity}</span><button type="button" aria-label="Increase quantity" onClick={() => setQuantity((value) => value + 1)}>+</button></div><AddToBagButton product={coffee} quantity={quantity} className="button button--dark pdp-add" /></div>}
+        {selection && <>
+          <p className="pdp-price" aria-live="polite">{formatKes(selection.unitPriceKes)}</p>
+          <div className="pdp-option-groups">
+            <fieldset className="pdp-option-group"><legend>Format for {coffee.id}</legend><div>{coffee.commerce.formats.map((format) => <label className="pdp-option" key={format.id}><input type="radio" name={`${coffee.slug}-format`} value={format.id} checked={formatId === format.id} onChange={() => setFormatId(format.id)} /><span>{format.label}</span></label>)}</div></fieldset>
+            {coffee.commerce.grindOptions.length > 0 && <fieldset className="pdp-option-group"><legend>Grind for {coffee.id}</legend><div>{coffee.commerce.grindOptions.map((grind) => <label className="pdp-option" key={grind}><input type="radio" name={`${coffee.slug}-grind`} value={grind} checked={grindId === grind} onChange={() => setGrindId(grind)} /><span>{grindLabel(grind)}</span></label>)}</div></fieldset>}
+          </div>
+          <div className="pdp-buy-controls"><div className="quantity-control" aria-label={`Quantity for ${coffee.id}`}><button type="button" aria-label="Decrease quantity" onClick={() => setQuantity((value) => Math.max(1, value - 1))}>−</button><span aria-live="polite">{quantity}</span><button type="button" aria-label="Increase quantity" onClick={() => setQuantity((value) => value + 1)}>+</button></div><AddToBagButton product={coffee} selection={{ formatId, ...(grindId ? { grindId } : {}) }} quantity={quantity} className="button button--dark pdp-add" /></div>
+        </>}
         <Link className="pdp-return-link" href="/shop">Back to Shop <span aria-hidden="true">↗</span></Link>
       </section>
       <div className="pdp-zone pdp-zone--media"><ProductMediaPlaceholder assetId={coffee.media.pdpHero.id} label={coffee.id} kind="coffee" /></div>
@@ -63,7 +74,7 @@ export function CoffeePdp({ coffee }: { coffee: Coffee }) {
 
     <section className="pdp-related" aria-labelledby="related-title"><PageContainer><SectionLabel>RELATED COFFEES</SectionLabel><h2 id="related-title">Continue from {displayName(coffee.id)}.</h2><div className="pdp-related-grid">{related.map((item, index) => <ProductCard key={item.id} product={item} featured={index === 0} showQuickAction action="add" />)}</div></PageContainer></section>
 
-    {canAddToBag && stickyVisible && <div className="pdp-mobile-buy"><span>{coffee.id}</span><AddToBagButton product={coffee} quantity={quantity} className="button button--dark" /></div>}
+    {canAddToBag && stickyVisible && selection && <div className="pdp-mobile-buy"><div><span>{coffee.id}</span><small>{selection.format.label}{selection.grindId ? ` / ${grindLabel(selection.grindId)}` : ""}</small></div><AddToBagButton product={coffee} selection={{ formatId, ...(grindId ? { grindId } : {}) }} quantity={quantity} className="button button--dark" /></div>}
   </main>;
 }
 
@@ -81,4 +92,8 @@ function editionLinkCopy(coffee: Coffee) {
 
 function displayName(id: string) {
   return id.split(" / ")[0].replace("RED CLAY INSTANT — ETHIOPIA", "Instant").replace("THE KILN CUP", "The Kiln Cup").toLowerCase().replace(/(^|\s)\S/g, (letter) => letter.toUpperCase());
+}
+
+function grindLabel(grind: GrindId) {
+  return grind === "whole-bean" ? "Whole Bean" : grind === "filter" ? "Filter Grind" : "Espresso Grind";
 }

@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { coffees, type Product } from "@/content/coffees";
+import { AddToBagButton } from "@/components/commerce/AddToBagButton";
 import { ProductMediaPlaceholder } from "@/components/media/ProductMediaPlaceholder";
-import { useBag } from "@/components/commerce/BagProvider";
+import { formatKes, getDefaultSelection } from "@/lib/commerce";
 
 type ProductCardProps = {
   product: Product;
@@ -15,12 +16,11 @@ type ProductCardProps = {
 };
 
 export function ProductCard({ product, featured = false, showQuickAction = false, action = "view", contextual = false, showDirection = false }: ProductCardProps) {
-  const { add } = useBag();
   const isCup = product.kind === "kiln-cup";
   const href = `/shop/${product.slug}`;
   const notes = product.notes.join(" / ");
   const label = isCup ? "View The Kiln Cup" : `View ${product.id}`;
-  const canAddToBag = product.formats.length > 0;
+  const canQuickAdd = product.commerce.formats.length === 1 && product.commerce.grindOptions.length === 0;
 
   return (
     <article className={`product-card product-card--${product.family} ${isCup ? "product-card--cup" : ""} ${featured ? "product-card--featured" : ""} ${contextual ? "product-card--contextual" : ""}`}>
@@ -34,15 +34,12 @@ export function ProductCard({ product, featured = false, showQuickAction = false
             alternate={"shopAlternate" in product.media ? product.media.shopAlternate : undefined}
           />
         </Link>
-        {showQuickAction && action === "add" && canAddToBag && (
-          <button className="product-quick-action" type="button" onClick={(event) => add(product, 1, event.currentTarget)}>
-            Add to Bag <span aria-hidden="true">↗</span>
-          </button>
-        )}
+        {showQuickAction && action === "add" && (canQuickAdd ? <AddToBagButton product={product} selection={getDefaultSelection(product)} className="product-quick-action">Add to Bag <span aria-hidden="true">↗</span></AddToBagButton> : <Link className="product-quick-action" href={href}>View options <span aria-hidden="true">↗</span></Link>)}
       </div>
       <div className="product-card-copy">
         <p className="product-card-id">{product.id}</p>
         <p className="product-card-region">{product.region}</p>
+        <p className="product-card-region">{product.commerce.formats.map((format) => `${format.label} ${formatKes(format.priceKes)}`).join(" / ")}</p>
         {notes && <p className="product-card-notes">{notes}</p>}
         {showDirection && <p className="product-card-direction">{product.customerDirection}</p>}
         <Link className="text-link" href={href}>{label}<span aria-hidden="true">↗</span></Link>

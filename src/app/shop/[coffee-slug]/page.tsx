@@ -8,6 +8,7 @@ import { allActiveProducts, getProductBySlug } from "@/content/coffees";
 import { MediaFrame } from "@/components/editorial/MediaFrame";
 import { AddToBagButton } from "@/components/commerce/AddToBagButton";
 import { redClayAssets } from "@/lib/assets/registry";
+import { getDefaultSelection } from "@/lib/commerce";
 
 export function generateStaticParams() {
   return allActiveProducts.map((product) => ({ "coffee-slug": product.slug }));
@@ -29,7 +30,7 @@ export default async function ProductPage({ params }: { params: Promise<{ "coffe
   if (!product) notFound();
   if (product.kind === "kiln-cup") return <main id="main-content" className="kiln-cup-page">
     <section className="kiln-cup-opening page-container">
-      <div className="kiln-cup-identity"><SectionLabel>THE COMPANION OBJECT</SectionLabel><h1>The Kiln Cup</h1><p>{product.shortDescription}</p><dl className="kiln-cup-facts"><div><dt>Material</dt><dd>Iron-rich high-fired stoneware</dd></div><div><dt>Interior</dt><dd>Warm mineral-white satin glaze</dd></div><div><dt>Capacity</dt><dd>Approx. 300ml / 10oz</dd></div></dl><div className="kiln-cup-actions"><AddToBagButton product={product} className="button button--dark" /><Link className="editorial-link" href="/shop">Back to Shop <span aria-hidden="true">↗</span></Link></div></div>
+      <div className="kiln-cup-identity"><SectionLabel>THE COMPANION OBJECT</SectionLabel><h1>The Kiln Cup</h1><p>{product.shortDescription}</p><dl className="kiln-cup-facts"><div><dt>Material</dt><dd>Iron-rich high-fired stoneware</dd></div><div><dt>Interior</dt><dd>Warm mineral-white satin glaze</dd></div><div><dt>Capacity</dt><dd>Approx. 300ml / 10oz</dd></div></dl><div className="kiln-cup-actions"><AddToBagButton product={product} selection={getDefaultSelection(product)} className="button button--dark" /><Link className="editorial-link" href="/shop">Back to Shop <span aria-hidden="true">↗</span></Link></div></div>
       <ProductMediaPlaceholder assetId={product.media.pdpHero.id} label={product.id} kind="kiln-cup" className="kiln-cup-hero-media" />
     </section>
     <section className="kiln-cup-material"><PageContainer><div className="kiln-cup-material-grid"><div><SectionLabel>FORM / MATERIAL</SectionLabel><h2>Clay outside. Glaze within.</h2><p>An exposed red clay exterior gives way to a warm satin glaze inside. The contrast is tactile, simple, and made to sit beside coffee rather than compete with it.</p></div><ProductMediaPlaceholder assetId={product.media.pdpHero.id} label={product.id} kind="kiln-cup" aspectRatio="1 / 1" /></div></PageContainer></section>
