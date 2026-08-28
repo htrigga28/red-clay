@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { coffees, kilnCup, type Product } from "@/content/coffees";
+import { coffees, type Product } from "@/content/coffees";
 import { ProductMediaPlaceholder } from "@/components/media/ProductMediaPlaceholder";
 import { useBag } from "@/components/commerce/BagProvider";
 
@@ -11,17 +11,20 @@ type ProductCardProps = {
   showQuickAction?: boolean;
   action?: "view" | "add";
   contextual?: boolean;
+  showDirection?: boolean;
+  anchorId?: string;
 };
 
-export function ProductCard({ product, featured = false, showQuickAction = false, action = "view", contextual = false }: ProductCardProps) {
+export function ProductCard({ product, featured = false, showQuickAction = false, action = "view", contextual = false, showDirection = false, anchorId }: Readonly<ProductCardProps>) {
   const { add } = useBag();
-  const isCup = product.id === kilnCup.id;
+  const isCup = product.kind === "kiln-cup";
   const href = `/shop/${product.slug}`;
   const notes = product.notes.join(" / ");
   const label = isCup ? "View The Kiln Cup" : `View ${product.id}`;
+  const canAddToBag = product.formats.length > 0;
 
   return (
-    <article className={`product-card ${isCup ? "product-card--cup" : ""} ${featured ? "product-card--featured" : ""} ${contextual ? "product-card--contextual" : ""}`}>
+    <article id={anchorId} className={`product-card product-card--${product.family} ${isCup ? "product-card--cup" : ""} ${featured ? "product-card--featured" : ""} ${contextual ? "product-card--contextual" : ""}`}>
       <div className="product-card-media">
         <Link href={href} aria-label={label}>
           <ProductMediaPlaceholder
@@ -32,9 +35,9 @@ export function ProductCard({ product, featured = false, showQuickAction = false
             alternate={"shopAlternate" in product.media ? product.media.shopAlternate : undefined}
           />
         </Link>
-        {showQuickAction && action === "add" && (
+        {showQuickAction && action === "add" && canAddToBag && (
           <button className="product-quick-action" type="button" onClick={(event) => add(product, 1, event.currentTarget)}>
-            Add to bag <span aria-hidden="true">↗</span>
+            Add to Bag <span aria-hidden="true">↗</span>
           </button>
         )}
         {showQuickAction && action === "view" && (
@@ -47,12 +50,13 @@ export function ProductCard({ product, featured = false, showQuickAction = false
         <p className="product-card-id">{product.id}</p>
         <p className="product-card-region">{product.region}</p>
         {notes && <p className="product-card-notes">{notes}</p>}
-        <Link className="text-link" href={href}>{isCup ? "View the object" : "View coffee"}<span aria-hidden="true">↗</span></Link>
+        {showDirection && <p className="product-card-direction">{product.customerDirection}</p>}
+        <Link className="text-link" href={href}>{label}<span aria-hidden="true">↗</span></Link>
       </div>
     </article>
   );
 }
 
-export function ProductGrid({ includeCup = true, showQuickAction = false, action = "view" }: { includeCup?: boolean; showQuickAction?: boolean; action?: "view" | "add" }) {
-  return <div className="product-grid">{coffees.map((coffee, index) => <ProductCard key={coffee.id} product={coffee} featured={index === 0} showQuickAction={showQuickAction} action={action} />)}{includeCup && <ProductCard product={kilnCup} showQuickAction={showQuickAction} action={action} />}</div>;
+export function ProductGrid({ items = coffees, showQuickAction = false, action = "view", showDirection = false, className = "", anchorIds = [] }: Readonly<{ items?: readonly Product[]; showQuickAction?: boolean; action?: "view" | "add"; showDirection?: boolean; className?: string; anchorIds?: readonly (string | undefined)[] }>) {
+  return <div className={`product-grid ${className}`}>{items.map((product, index) => <ProductCard key={product.id} product={product} featured={index === 0} showQuickAction={showQuickAction} action={action} showDirection={showDirection} anchorId={anchorIds[index]} />)}</div>;
 }

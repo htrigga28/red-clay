@@ -74,10 +74,10 @@ export function HeroCarousel() {
 
       <div className="home-hero-copy">
         <h1 id="home-title">Coffee, held by place.</h1>
-        <p>Four seasonal single-origin releases from Kenya, Burundi, and Ethiopia, presented through place, craft, and the ritual of brewing.</p>
+        <p>House coffees and seasonal releases from Kenya, Burundi, and Ethiopia, with a clear path from first choice to deeper reading.</p>
         <div className="home-hero-actions">
-          <Link href="/shop">Explore the harvest</Link>
-          <Link href="/origins">Read the origins <span aria-hidden="true">↗</span></Link>
+          <Link href="/shop">Shop the harvest</Link>
+          <Link href="/origins">Explore Origins <span aria-hidden="true">↗</span></Link>
         </div>
       </div>
 

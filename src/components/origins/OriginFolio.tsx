@@ -70,11 +70,11 @@ export function OriginFolio({ chapters }: { chapters: Origin[] }) {
       <PageContainer className="origins-folio-head">
         <SectionLabel>02 / THE EARTHEN FOLIO</SectionLabel>
         <div className="origins-folio-headline">
-          <h2 id="origins-folio-title">A monograph of place, held in three chapters.</h2>
-          <p>Move from the precise structure of Central Kenya through Burundi’s vertical rhythm and into the open process fields of Southern Ethiopia.</p>
+          <h2 id="origins-folio-title">Compare three regions before reading further.</h2>
+          <p>Use place, processing context, and cup direction to choose where to continue.</p>
         </div>
-        <nav className="folio-index" aria-label="Origin chapters">
-          <p className="section-label">CHAPTER INDEX</p>
+        <nav className="folio-index" aria-label="Origin regions">
+          <p className="section-label">REGION INDEX</p>
           <ol>
             {chapters.map((chapter, index) => (
               <li key={chapter.slug}>
@@ -108,9 +108,9 @@ export function OriginFolio({ chapters }: { chapters: Origin[] }) {
                   <h3 id={`folio-${chapter.slug}-title`}>{chapter.name}</h3>
                   <p className="folio-chapter-descriptor">{chapter.descriptor}</p>
                   <div className="folio-meta-grid">
-                    <div><span className="section-label">PLACE</span><p>{chapter.place}</p></div>
-                    <div><span className="section-label">PROCESS</span><p>{chapter.process}</p></div>
-                    <div><span className="section-label">CUP</span><p>{chapter.cup}</p></div>
+                    <div><span className="section-label">PLACE</span><p>{chapter.hub.place}</p></div>
+                    <div><span className="section-label">PROCESS</span><p>{chapter.hub.process}</p></div>
+                    <div><span className="section-label">CUP</span><p>{chapter.hub.cup}</p></div>
                   </div>
                   <Link className="editorial-link" href={`/origins/${chapter.slug}`}>Explore {chapter.name} <span aria-hidden="true">↗</span></Link>
                 </div>

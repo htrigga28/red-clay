@@ -95,7 +95,6 @@ export function Header() {
   }, [reveal]);
 
   const isCurrent = (href: string) => pathname === href || (href !== "/" && pathname.startsWith(`${href}/`));
-  const panelItems = reveal === "shop" ? navigation.shopReveal : navigation.originReveal;
   const openReveal = (nextReveal: Exclude<Reveal, null>) => setReveal(nextReveal);
 
   return (
@@ -118,11 +117,11 @@ export function Header() {
         <nav className="desktop-nav" aria-label="Primary navigation">
           <div className="nav-reveal-wrap">
             <button ref={panelButtonRef} className={`nav-link nav-link-button ${isCurrent("/shop") ? "is-current" : ""}`} type="button" aria-expanded={reveal === "shop"} aria-controls="shop-reveal" onClick={() => openReveal("shop")} onPointerEnter={(event) => { if (event.pointerType === "mouse") openReveal("shop"); }}>Shop</button>
-            {reveal === "shop" && <RevealPanel id="shop-reveal" eyebrow="COFFEE / OBJECT" allLabel="All shop" items={panelItems} feature="Current harvest" href="/shop" image={redClayAssets.origins.kenyaDetail.src} onClose={() => setReveal(null)} />}
+            {reveal === "shop" && <ShopRevealPanel onClose={() => setReveal(null)} />}
           </div>
           <div className="nav-reveal-wrap">
             <button ref={originButtonRef} className={`nav-link nav-link-button ${isCurrent("/origins") ? "is-current" : ""}`} type="button" aria-expanded={reveal === "origins"} aria-controls="origins-reveal" onClick={() => openReveal("origins")} onPointerEnter={(event) => { if (event.pointerType === "mouse") openReveal("origins"); }}>Origins</button>
-            {reveal === "origins" && <RevealPanel id="origins-reveal" eyebrow="THREE CHAPTERS" allLabel="All origins" items={panelItems} feature="The Earthen Folio" href="/origins" image={redClayAssets.origins.burundiLead.src} onClose={() => setReveal(null)} />}
+            {reveal === "origins" && <RevealPanel id="origins-reveal" eyebrow="ORIGINS" allLabel="Explore all origins" items={navigation.originReveal} feature="The Earthen Folio" href="/origins" image={redClayAssets.origins.burundiLead.src} onClose={() => setReveal(null)} />}
           </div>
           {navigation.primary.slice(2).map((item) => <Link className={`nav-link ${isCurrent(item.href) ? "is-current" : ""}`} key={item.href} href={item.href} onFocus={() => setReveal(null)} onPointerEnter={(event) => { if (event.pointerType === "mouse") setReveal(null); }}>{item.label}</Link>)}
         </nav>
@@ -133,7 +132,21 @@ export function Header() {
   );
 }
 
-function RevealPanel({ id, eyebrow, allLabel, items, feature, href, image, onClose }: { id: string; eyebrow: string; allLabel: string; items: readonly { label: string; href: string }[]; feature: string; href: string; image?: string; onClose: () => void }) {
+function ShopRevealPanel({ onClose }: Readonly<{ onClose: () => void }>) {
+  return <section className="reveal-panel reveal-panel--shop" id="shop-reveal" aria-label="Shop">
+    <div className="reveal-panel-primary">
+      <p className="section-label">SHOP</p>
+      <Link className="reveal-all-link" href="/shop" onClick={onClose}>Shop all <span aria-hidden="true">↗</span></Link>
+      <div className="reveal-groups">{navigation.shopRevealGroups.map((group) => <section className="reveal-group" key={group.label} aria-labelledby={`shop-group-${group.label.toLowerCase().replaceAll(" ", "-")}`}><h2 id={`shop-group-${group.label.toLowerCase().replaceAll(" ", "-")}`}>{group.label}</h2><ul>{group.items.map((item) => <li key={item.href}><Link href={item.href} onClick={onClose}>{item.label}</Link></li>)}</ul></section>)}</div>
+    </div>
+    <Link className="reveal-feature" href="/shop/three-regions" onClick={onClose}>
+      <span className="reveal-feature-copy"><small>START HERE</small><strong>Three Regions</strong></span>
+      <Image src={redClayAssets.origins.kenyaDetail.src!} alt="" fill sizes="42vw" />
+    </Link>
+  </section>;
+}
+
+function RevealPanel({ id, eyebrow, allLabel, items, feature, href, image, onClose }: Readonly<{ id: string; eyebrow: string; allLabel: string; items: readonly { label: string; href: string }[]; feature: string; href: string; image?: string; onClose: () => void }>) {
   return <div className="reveal-panel" id={id} role="region" aria-label={eyebrow}>
     <div className="reveal-panel-primary">
       <p className="section-label">{eyebrow}</p>
@@ -147,7 +160,7 @@ function RevealPanel({ id, eyebrow, allLabel, items, feature, href, image, onClo
   </div>;
 }
 
-function MobileNavigation({ pathname, close }: { pathname: string; close: () => void }) {
+function MobileNavigation({ pathname, close }: Readonly<{ pathname: string; close: () => void }>) {
   const navigationRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {

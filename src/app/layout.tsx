@@ -11,8 +11,8 @@ const sans = Geist({ subsets: ["latin"], variable: "--font-sans", display: "swap
 const mono = Geist_Mono({ subsets: ["latin"], variable: "--font-mono", display: "swap" });
 
 export const metadata: Metadata = {
-  title: { default: "Red Clay — Contemporary African Coffee House", template: "%s — Red Clay" },
-  description: "A contemporary African coffee house built around the material character of place.",
+  title: { default: "Red Clay Coffee — Contemporary African Coffee House", template: "%s — Red Clay Coffee" },
+  description: "House coffees and seasonal releases from Kenya, Burundi, and Ethiopia, with researched stories on place and coffee.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

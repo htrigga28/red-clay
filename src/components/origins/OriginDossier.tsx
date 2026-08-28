@@ -7,7 +7,7 @@ import { editions } from "@/content/editions";
 import type { Origin } from "@/content/origins";
 
 export function OriginDossier({ origin, nextOrigin }: { origin: Origin; nextOrigin: Origin }) {
-  const products = coffees.filter((coffee) => origin.coffeeIds.includes(coffee.id));
+  const products = coffees.filter((coffee) => origin.coffeeSlugs.includes(coffee.slug));
   const edition = editions.find((item) => item.slug === origin.editionSlug) ?? editions[Number(origin.number) - 1] ?? editions[0];
 
   return (
@@ -15,11 +15,11 @@ export function OriginDossier({ origin, nextOrigin }: { origin: Origin; nextOrig
       <section className="dossier-hero">
         <PageContainer className="dossier-hero-grid">
           <div className="dossier-hero-copy">
-            <span className="mono-label">{origin.number} / 03 · ORIGIN DOSSIER</span>
+            <span className="mono-label">{origin.number} / 03 · ORIGINS</span>
             <h1>{origin.name}</h1>
             <p className="dossier-descriptor">{origin.descriptor}</p>
             <p className="lead-copy">{origin.summary}</p>
-            <Link className="editorial-link" href="/origins">Back to the Folio <span aria-hidden="true">↗</span></Link>
+            <Link className="editorial-link" href="/origins">Back to Origins <span aria-hidden="true">↗</span></Link>
           </div>
           <div className="dossier-hero-media"><MediaFrame asset={origin.assets.lead} priority sizes="(max-width: 767px) 100vw, 66vw" /><span className="dossier-caption">{origin.assets.lead.alt}</span></div>
         </PageContainer>
@@ -28,7 +28,7 @@ export function OriginDossier({ origin, nextOrigin }: { origin: Origin; nextOrig
       <section className="dossier-place" aria-labelledby="dossier-place-title">
         <PageContainer className="dossier-place-grid">
           <div className="dossier-place-copy">
-            <SectionLabel>02 / PLACE &amp; LANDSCAPE</SectionLabel>
+            <SectionLabel>02 / THE REGION</SectionLabel>
             <h2 id="dossier-place-title">{origin.headings.place}</h2>
             <p>{origin.place}</p>
           </div>
@@ -40,9 +40,9 @@ export function OriginDossier({ origin, nextOrigin }: { origin: Origin; nextOrig
         <PageContainer className="dossier-context-grid">
           <div className="dossier-context-media"><MediaFrame asset={origin.assets.detail} sizes="(max-width: 767px) 100vw, 42vw" /><span className="dossier-caption">{origin.assets.detail.alt}</span></div>
           <div className="dossier-context-copy">
-            <SectionLabel>03 / COFFEE CONTEXT</SectionLabel>
+            <SectionLabel>03 / VARIETY CONTEXT</SectionLabel>
             <h2 id="dossier-context-title">{origin.headings.context}</h2>
-            <p>{origin.summary} The current release is a fictional Red Clay product expression; the documentary images provide context, not a claim of direct sourcing.</p>
+            <p>{origin.context}</p>
           </div>
         </PageContainer>
       </section>
@@ -50,11 +50,10 @@ export function OriginDossier({ origin, nextOrigin }: { origin: Origin; nextOrig
       <section className="dossier-process" aria-labelledby="dossier-process-title">
         <PageContainer className="dossier-process-grid">
           <div className="dossier-process-copy">
-            <SectionLabel>04 / PROCESSING TRADITIONS</SectionLabel>
+            <SectionLabel>04 / PROCESSING</SectionLabel>
             <h2 id="dossier-process-title">{origin.headings.process}</h2>
             <p>{origin.process}</p>
           </div>
-          <div className="dossier-process-note"><span className="mono-label">A REGIONAL VIEW</span><p>Process language stays specific to the image and the approved context. It is not presented as a universal recipe for the region.</p></div>
         </PageContainer>
       </section>
 
@@ -62,9 +61,9 @@ export function OriginDossier({ origin, nextOrigin }: { origin: Origin; nextOrig
         <PageContainer className="dossier-work-grid">
           <div className="dossier-work-media"><MediaFrame asset={origin.assets.support} sizes="(max-width: 767px) 100vw, 70vw" /><span className="dossier-caption">{origin.assets.support.alt}</span></div>
           <div className="dossier-work-copy">
-            <SectionLabel>05 / AGRICULTURAL WORK</SectionLabel>
+            <SectionLabel>05 / THE WORK</SectionLabel>
             <h2 id="dossier-work-title">{origin.headings.work}</h2>
-            <p>People and work remain visible as context. No individual is named or presented as a Red Clay producer; the image stays with the act of making and sorting.</p>
+            <p>{origin.work}</p>
           </div>
         </PageContainer>
       </section>
@@ -79,13 +78,13 @@ export function OriginDossier({ origin, nextOrigin }: { origin: Origin; nextOrig
       <section className="dossier-edition" aria-labelledby="dossier-edition-title">
         <PageContainer className="dossier-edition-grid">
           <div><SectionLabel>07 / RELATED EDITION</SectionLabel><span className="mono-label">{edition.eyebrow}</span><h2 id="dossier-edition-title">{edition.title}</h2></div>
-          <div><p>{edition.summary}</p><Link className="editorial-link" href={`/journal/${edition.slug}`}>Read the Edition <span aria-hidden="true">↗</span></Link></div>
+          <div><p>{origin.relatedEditionBlurb}</p><Link className="editorial-link" href={`/journal/${edition.slug}`}>Read {edition.title} <span aria-hidden="true">↗</span></Link></div>
         </PageContainer>
       </section>
 
       <section className="dossier-facts" aria-labelledby="dossier-facts-title">
         <PageContainer className="dossier-facts-grid">
-          <SectionLabel>08 / FACTUAL REFERENCE</SectionLabel>
+          <SectionLabel>08 / REGION AT A GLANCE</SectionLabel>
           <div><h2 id="dossier-facts-title">{origin.headings.facts}</h2><ul>{origin.factualContext.map((fact) => <li key={fact}>{fact}</li>)}</ul></div>
         </PageContainer>
       </section>
@@ -93,7 +92,7 @@ export function OriginDossier({ origin, nextOrigin }: { origin: Origin; nextOrig
       <section className="dossier-next" aria-labelledby="dossier-next-title">
         <PageContainer className="dossier-next-grid">
           <div><SectionLabel>09 / NEXT REGION</SectionLabel><h2 id="dossier-next-title">Continue to {nextOrigin.name}.</h2></div>
-          <Link className="editorial-link" href={`/origins/${nextOrigin.slug}`}>Read {nextOrigin.name} <span aria-hidden="true">↗</span></Link>
+          <Link className="editorial-link" href={`/origins/${nextOrigin.slug}`}>Explore {nextOrigin.name} <span aria-hidden="true">↗</span></Link>
         </PageContainer>
       </section>
     </main>

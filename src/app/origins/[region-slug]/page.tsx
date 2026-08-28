@@ -10,7 +10,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ "region-slug": string }> }): Promise<Metadata> {
   const { "region-slug": slug } = await params;
   const origin = getOriginBySlug(slug);
-  return origin ? { title: `${origin.name} — Origin Dossier`, description: origin.summary } : {};
+  return origin ? { title: `${origin.name} — Origins`, description: origin.summary } : {};
 }
 
 export default async function OriginPage({ params }: { params: Promise<{ "region-slug": string }> }) {
