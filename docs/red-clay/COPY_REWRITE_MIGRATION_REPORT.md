@@ -2,7 +2,7 @@
 
 Date: 2026-08-28
 
-This pass migrates the approved product canon and rewrites the public site copy. It does not source assets, set prices, add checkout, or deploy the site.
+This report records the copy-only migration stage. The later approved `RED_CLAY_COMMERCE_PRODUCT_SPEC_FACT_CANON.md` resolves the commercial fields that were deferred here and is the implementation authority for the commerce extension in this branch.
 
 ## Product migration
 
@@ -112,8 +112,8 @@ The words `place` (49 uses), `process` (52), and `context` (38) remain common be
 
 ### Remaining copy concerns
 
-- Afterlight has no approved format or decaffeination method. Its PDP remains available for comparison, but Add to Bag stays hidden until a format is approved.
-- Prices, availability, inventory, shipping, tax, and checkout copy remain blocked by product decisions.
+- Afterlight's 250g format and water-process decaf wording are approved in the later commerce canon.
+- Prices, shipping, and portfolio checkout are resolved by the later commerce canon; availability, inventory, and tax remain outside this copy-only report.
 - Final Kiln Cup care copy remains blocked by verified care guidance.
 - Custom product and Kiln Cup media are still pending. The current geometry-preserving placeholders must be replaced without relabelling contextual regional images as product-specific evidence.
 - The long Editions have a source record, but any future sourcing, harvest, or producer claims will require a new fact check.
@@ -191,17 +191,15 @@ The public page now states that coffee depends on skilled decisions in growing, 
 
 ## Deferred
 
-This pass leaves these decisions open:
+At the copy-only stage, these decisions were still open. The later commerce canon resolves the commercial fields for this branch:
 
 - product prices and currency;
 - subtotal, shipping, tax, and checkout;
 - final Kiln Cup care claims;
-- the Afterlight format;
-- the exact Afterlight decaffeination method;
 - product availability and inventory policy;
 - custom product and Kiln Cup media replacement.
 
-The Bag remains a demo holding state. Add to Bag, quantity changes, removal, and in-session browsing work. The Bag does not show invented prices or a false checkout path.
+At the copy-only stage, the Bag remained a demo holding state. The later commerce canon adds the approved prices, subtotal, delivery context, and portfolio checkout described by the implementation.
 
 ## QA
 
@@ -242,7 +240,7 @@ Representative full-page captures were also inspected for Shop, a seasonal PDP, 
 - The mobile menu opens as a dialog and does not overflow.
 - Add to Bag opens the Bag drawer and updates the item count.
 - Client-side navigation preserves a populated Bag.
-- The populated Bag has no price, subtotal, checkout, or shipping claim.
+- The populated Bag now follows the later commerce canon for price, subtotal, checkout, and shipping claims.
 - The browser console and page-error checks returned no errors on the inspected routes.
 
 ### Recordings

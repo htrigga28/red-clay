@@ -43,6 +43,8 @@ type ProductBase = {
   shortDescription: string;
   customerDirection: string;
   formats: string[];
+  formatPrices?: Record<string, number>;
+  grinds?: string[];
   uses: string[];
   placeHeading: string;
   placeCopy: string;
@@ -100,6 +102,8 @@ export const materialSeries: Coffee[] = [
     shortDescription: "Laterite is Red Clay's centre of gravity: generous sweetness, vivid fruit, and enough depth to remain an everyday coffee.",
     customerDirection: "Start here if you want balance.",
     formats: ["250G", "1KG"],
+    formatPrices: { "250G": 1600, "1KG": 5600 },
+    grinds: ["Whole Bean", "Filter Grind", "Espresso Grind"],
     uses: ["Filter", "Batch", "Espresso"],
     placeHeading: "A familiar profile through the seasons.",
     placeCopy: "The East African components can change with the harvest. The cup stays centred on red plum, brown sugar, and cacao.",
@@ -123,6 +127,8 @@ export const materialSeries: Coffee[] = [
     shortDescription: "Basalt is built for weight rather than darkness: deeper sweetness, rounder texture, and enough fruit to keep the cup alive.",
     customerDirection: "Choose Basalt for deeper sweetness, more body, or espresso.",
     formats: ["250G", "1KG"],
+    formatPrices: { "250G": 1700, "1KG": 6000 },
+    grinds: ["Whole Bean", "Filter Grind", "Espresso Grind"],
     uses: ["Espresso", "Moka", "Milk"],
     placeHeading: "Depth without losing the fruit.",
     placeCopy: "The seasonal composition can change while the intended profile remains steady: dark cherry, cacao, and molasses with a rounder texture.",
@@ -146,6 +152,8 @@ export const materialSeries: Coffee[] = [
     shortDescription: "Linen is clean, aromatic, and deliberately light on its feet.",
     customerDirection: "Choose Linen for a lighter, floral filter coffee.",
     formats: ["250G", "1KG"],
+    formatPrices: { "250G": 1800, "1KG": 6400 },
+    grinds: ["Whole Bean", "Filter Grind", "Espresso Grind"],
     uses: ["Pour-over", "Batch"],
     placeHeading: "The lightest house profile.",
     placeCopy: "Its East African components can rotate with the season. Pear, bergamot, and jasmine keep the profile aromatic, clean, and recognisable.",
@@ -174,6 +182,7 @@ export const currentHarvest: Coffee[] = [
     shortDescription: "Vivid fruit and clean sweetness.",
     customerDirection: "Choose Kiambu for darker fruit, structured acidity, and a precise cup.",
     formats: ["250G"],
+    grinds: ["Whole Bean", "Filter Grind"],
     uses: [],
     placeHeading: "Kiambu, read through water and selection.",
     placeCopy: "This washed profile moves through blackcurrant and plum toward clear cane-sugar sweetness. Selection, washing, and drying are part of the context, but no one variable explains the whole cup.",
@@ -207,6 +216,7 @@ export const currentHarvest: Coffee[] = [
     shortDescription: "The more lifted of the two Kenyan coffees.",
     customerDirection: "Choose Kirinyaga for brighter florals and a sharper citrus line.",
     formats: ["250G"],
+    grinds: ["Whole Bean", "Filter Grind"],
     uses: [],
     placeHeading: "A brighter Kenyan direction.",
     placeCopy: "Red currant, hibiscus, and pomelo make this the more lifted Kenyan profile in the Current Harvest.",
@@ -234,6 +244,7 @@ export const currentHarvest: Coffee[] = [
     shortDescription: "Softer fruit and floral sweetness.",
     customerDirection: "Choose the washed Kayanza for floral sweetness and a cleaner cup.",
     formats: ["250G"],
+    grinds: ["Whole Bean", "Filter Grind"],
     uses: [],
     placeHeading: "A softer reading of Kayanza.",
     placeCopy: "This washed profile brings red apple, honey, and orange blossom into a cleaner, more floral line.",
@@ -266,6 +277,7 @@ export const currentHarvest: Coffee[] = [
     shortDescription: "The deeper, fruitier Kayanza release.",
     customerDirection: "Choose the natural Kayanza for rounder fruit and deeper sweetness.",
     formats: ["250G"],
+    grinds: ["Whole Bean", "Filter Grind"],
     uses: [],
     placeHeading: "The deeper Kayanza profile.",
     placeCopy: "Raspberry, black tea, and brown sugar give this coffee a rounder, fruit-forward direction. Process is one part of the contrast, not its only cause.",
@@ -298,6 +310,7 @@ export const currentHarvest: Coffee[] = [
     shortDescription: "The lighter of the two Ethiopian coffees.",
     customerDirection: "Choose Sidama for florality, lighter body, and a tea-like finish.",
     formats: ["250G"],
+    grinds: ["Whole Bean", "Filter Grind"],
     uses: [],
     placeHeading: "A light, aromatic Ethiopian profile.",
     placeCopy: "Jasmine, yellow peach, and lemon tea give this washed Sidama coffee a clean, high-toned direction. Region and process help describe the coffee; neither predicts the cup by itself.",
@@ -329,6 +342,7 @@ export const currentHarvest: Coffee[] = [
     shortDescription: "Riper fruit and deeper sweetness.",
     customerDirection: "Choose Guji for rounder fruit, more weight, and deeper sweetness.",
     formats: ["250G"],
+    grinds: ["Whole Bean", "Filter Grind"],
     uses: [],
     placeHeading: "A fuller Ethiopian direction.",
     placeCopy: "Strawberry, apricot, and cacao nib make this the rounder, more saturated Ethiopian profile. Whole-cherry drying is one variable within a much larger coffee context.",
@@ -363,6 +377,8 @@ export const otherWaysToDrink: Coffee[] = [
     shortDescription: "A serious decaf with sweetness, body, and a full place in the collection.",
     customerDirection: "Choose Afterlight when you want the depth of a Red Clay coffee without the usual caffeine.",
     formats: ["250G"],
+    grinds: ["Whole Bean", "Filter Grind", "Espresso Grind"],
+    process: "Water-process decaf",
     uses: ["Filter", "Espresso"],
     placeHeading: "Decaf without the apology.",
     placeCopy: "Afterlight keeps the focus on the cup: plum, cocoa, honey, and a rounded finish.",
@@ -387,6 +403,7 @@ export const otherWaysToDrink: Coffee[] = [
     shortDescription: "Six single-serve sachets for travel, work, or a simpler cup.",
     customerDirection: "Choose Instant when convenience matters more than bringing the full brew setup.",
     formats: ["6 SACHETS"],
+    grinds: [],
     uses: ["Travel", "Office"],
     placeHeading: "A simpler route to the cup.",
     placeCopy: "Add hot water and drink it where a grinder, scale, and brewer are not practical.",
@@ -410,6 +427,7 @@ export const otherWaysToDrink: Coffee[] = [
     shortDescription: "Three 100g coffees selected to make regional comparison straightforward.",
     customerDirection: "Start here if you do not yet know which regional profile suits you.",
     formats: ["3 × 100G"],
+    grinds: ["Whole Bean", "Filter Grind"],
     uses: ["Filter comparison"],
     placeHeading: "Three clear starting points.",
     placeCopy: "You do not need to understand every process or region before choosing coffee. Brew the three coffees side by side or move through them one at a time.",
@@ -440,6 +458,7 @@ export const kilnCup: ObjectProduct = {
   shortDescription: "A gently tapered stoneware cup made for filter coffee, long black, and the everyday brew.",
   customerDirection: "Choose the coffee first. The Kiln Cup remains its companion.",
   formats: ["Approx. 300ML / 10OZ"],
+  grinds: [],
   uses: ["Filter coffee", "Long black", "Everyday coffee"],
   placeHeading: "Built around the daily brew.",
   placeCopy: "The form is gently tapered, with a compact loop handle, an exposed red clay exterior, and a warm mineral-white satin glaze inside.",
@@ -466,6 +485,10 @@ export function getProductBySlug(slug: string) {
 
 export function getProductById(id: ProductId) {
   return allActiveProducts.find((product) => product.id === id);
+}
+
+export function getProductVariantPrice(product: Product, variant: { format?: string } = {}) {
+  return product.formatPrices?.[variant.format ?? product.formats[0]] ?? product.price;
 }
 
 export function formatPrice(price: number | null, currency: string | null) {

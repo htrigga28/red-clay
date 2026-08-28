@@ -7,11 +7,13 @@ import { ProductCard } from "@/components/editorial/ProductCard";
 import { MediaFrame } from "@/components/editorial/MediaFrame";
 import { ProductMediaPlaceholder } from "@/components/media/ProductMediaPlaceholder";
 import { PageContainer, SectionLabel } from "@/components/layout/PageContainer";
-import { getProductById, type Coffee, type Product } from "@/content/coffees";
+import { getProductById, getProductVariantPrice, type Coffee, type Product } from "@/content/coffees";
 import { editions } from "@/content/editions";
 
 export function CoffeePdp({ coffee }: { coffee: Coffee }) {
   const [quantity, setQuantity] = useState(1);
+  const [format, setFormat] = useState(coffee.formats[0] ?? "");
+  const [grind, setGrind] = useState(coffee.grinds?.[0] ?? "");
   const [stickyVisible, setStickyVisible] = useState(false);
   const buyModuleRef = useRef<HTMLElement>(null);
   const canAddToBag = coffee.formats.length > 0;
@@ -19,6 +21,8 @@ export function CoffeePdp({ coffee }: { coffee: Coffee }) {
     .map((id) => getProductById(id))
     .filter((product): product is Product => Boolean(product));
   const edition = coffee.relatedEdition ? editions.find((item) => item.slug === coffee.relatedEdition) : undefined;
+  const selectedVariant = { format, grind: grind || undefined };
+  const selectedPrice = getProductVariantPrice(coffee, selectedVariant);
   const facts = [
     coffee.formats.length > 0 ? { term: "Format", value: coffee.formats.join(" / ") } : null,
     coffee.process ? { term: "Process", value: coffee.process } : null,
@@ -42,7 +46,14 @@ export function CoffeePdp({ coffee }: { coffee: Coffee }) {
         <p className="pdp-sensory-line">{coffee.sensoryStatement}</p>
         {coffee.notes.length > 0 && <p className="pdp-notes">{coffee.notes.join(" / ")}</p>}
         {facts.length > 0 && <dl className="pdp-facts">{facts.map((fact) => <div key={fact.term}><dt>{fact.term}</dt><dd>{fact.value}</dd></div>)}</dl>}
-        {canAddToBag && <div className="pdp-buy-controls"><div className="quantity-control" aria-label={`Quantity for ${coffee.id}`}><button type="button" aria-label="Decrease quantity" onClick={() => setQuantity((value) => Math.max(1, value - 1))}>−</button><span aria-live="polite">{quantity}</span><button type="button" aria-label="Increase quantity" onClick={() => setQuantity((value) => value + 1)}>+</button></div><AddToBagButton product={coffee} quantity={quantity} className="button button--dark pdp-add" /></div>}
+        {canAddToBag && <>
+          <div className="pdp-variant-controls">
+            {coffee.formats.length > 1 && <label>Format<select value={format} onChange={(event) => setFormat(event.target.value)}>{coffee.formats.map((option) => <option key={option}>{option}</option>)}</select></label>}
+            {(coffee.grinds?.length ?? 0) > 1 && <label>Grind<select value={grind} onChange={(event) => setGrind(event.target.value)}>{coffee.grinds?.map((option) => <option key={option}>{option}</option>)}</select></label>}
+          </div>
+          <p className="pdp-price">{selectedPrice == null ? "Price on request" : `KES ${new Intl.NumberFormat("en-KE", { maximumFractionDigits: 0 }).format(selectedPrice)}`}</p>
+          <div className="pdp-buy-controls"><div className="quantity-control" aria-label={`Quantity for ${coffee.id}`}><button type="button" aria-label="Decrease quantity" onClick={() => setQuantity((value) => Math.max(1, value - 1))}>−</button><span aria-live="polite">{quantity}</span><button type="button" aria-label="Increase quantity" onClick={() => setQuantity((value) => value + 1)}>+</button></div><AddToBagButton product={coffee} quantity={quantity} variant={selectedVariant} className="button button--dark pdp-add" /></div>
+        </>}
         <Link className="pdp-return-link" href="/shop">Back to Shop <span aria-hidden="true">↗</span></Link>
       </section>
       <div className="pdp-zone pdp-zone--media"><ProductMediaPlaceholder assetId={coffee.media.pdpHero.id} label={coffee.id} kind="coffee" /></div>

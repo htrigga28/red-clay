@@ -1,8 +1,7 @@
 "use client";
 
 import { createContext, useCallback, useContext, useMemo, useRef, useState } from "react";
-import type { Product } from "@/content/coffees";
-import { getProductById } from "@/content/coffees";
+import { getProductById, getProductVariantPrice, type Product } from "@/content/coffees";
 
 export type BagItem = {
   id: Product["id"];
@@ -39,8 +38,10 @@ type BagContextValue = {
 const BagContext = createContext<BagContextValue | null>(null);
 
 export const getBagLineKey = (item: Pick<BagItem, "id" | "format" | "grind" | "lineKey">) => item.lineKey ?? [item.id, item.format ?? "", item.grind ?? ""].join("|");
-
-const itemPrice = (item: BagItem) => item.price ?? getProductById(item.id)?.price ?? null;
+const itemPrice = (item: BagItem) => {
+  const product = getProductById(item.id);
+  return item.price ?? (product ? getProductVariantPrice(product, item) : null);
+};
 const formatSubtotal = (value: number | null) => value == null
   ? "KES unavailable"
   : `KES ${new Intl.NumberFormat("en-KE", { maximumFractionDigits: 0 }).format(value)}`;
@@ -60,7 +61,7 @@ const itemFromProduct = (product: Product, variant: BagVariant = {}): BagItem =>
   quantity: 1,
   format: variant.format ?? product.formats[0],
   grind: variant.grind,
-  price: product.price,
+  price: getProductVariantPrice(product, variant),
   currency: product.currency,
 });
 

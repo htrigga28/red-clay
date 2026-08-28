@@ -5,6 +5,8 @@
 **Date:** 2026-08-28
 **Scope:** Product architecture, coffee identities, commerce framing, editorial program, terminology, disclosure, and public copy boundaries.
 
+**Commerce supersession:** `RED_CLAY_COMMERCE_PRODUCT_SPEC_FACT_CANON.md` is the later approved authority for prices, formats, grinds, delivery, and portfolio checkout implemented in this branch. The unresolved list below remains the historical copy-lock state for fields outside that commerce extension.
+
 ---
 
 # 0. PURPOSE

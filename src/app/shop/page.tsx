@@ -35,11 +35,11 @@ export default function ShopPage() {
           <div><h2 id="current-harvest-title">Six coffees, with contrast built in.</h2><p>Choose vivid Kiambu or lifted Kirinyaga; floral Kayanza Washed or deeper Kayanza Natural; tea-like Sidama or fruit-driven Guji.</p></div>
         </div>
         <div className="shop-comparison" aria-label="Current Harvest comparison">
-          <p id="kenya-coffees"><strong>KENYA</strong><span>Kiambu is darker-fruited and structured. Kirinyaga is brighter and more floral.</span></p>
-          <p id="kayanza-coffees"><strong>KAYANZA</strong><span>Washed is clean and honeyed. Natural is rounder and fruitier.</span></p>
-          <p id="ethiopia-coffees"><strong>ETHIOPIA</strong><span>Sidama is light and tea-like. Guji is fuller and fruit-driven.</span></p>
+          <p><strong>KENYA</strong><span>Kiambu is darker-fruited and structured. Kirinyaga is brighter and more floral.</span></p>
+          <p><strong>KAYANZA</strong><span>Washed is clean and honeyed. Natural is rounder and fruitier.</span></p>
+          <p><strong>ETHIOPIA</strong><span>Sidama is light and tea-like. Guji is fuller and fruit-driven.</span></p>
         </div>
-        <ProductGrid items={currentHarvest} showQuickAction action="add" showDirection className="product-grid--harvest" />
+        <ProductGrid items={currentHarvest} showQuickAction action="add" showDirection className="product-grid--harvest" anchorIds={["kenya-coffees", undefined, "kayanza-coffees", undefined, "ethiopia-coffees"]} />
       </div>
     </section>
 

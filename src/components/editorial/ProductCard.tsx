@@ -12,9 +12,10 @@ type ProductCardProps = {
   action?: "view" | "add";
   contextual?: boolean;
   showDirection?: boolean;
+  anchorId?: string;
 };
 
-export function ProductCard({ product, featured = false, showQuickAction = false, action = "view", contextual = false, showDirection = false }: ProductCardProps) {
+export function ProductCard({ product, featured = false, showQuickAction = false, action = "view", contextual = false, showDirection = false, anchorId }: ProductCardProps) {
   const { add } = useBag();
   const isCup = product.kind === "kiln-cup";
   const href = `/shop/${product.slug}`;
@@ -23,7 +24,7 @@ export function ProductCard({ product, featured = false, showQuickAction = false
   const canAddToBag = product.formats.length > 0;
 
   return (
-    <article className={`product-card product-card--${product.family} ${isCup ? "product-card--cup" : ""} ${featured ? "product-card--featured" : ""} ${contextual ? "product-card--contextual" : ""}`}>
+    <article id={anchorId} className={`product-card product-card--${product.family} ${isCup ? "product-card--cup" : ""} ${featured ? "product-card--featured" : ""} ${contextual ? "product-card--contextual" : ""}`}>
       <div className="product-card-media">
         <Link href={href} aria-label={label}>
           <ProductMediaPlaceholder
@@ -39,6 +40,11 @@ export function ProductCard({ product, featured = false, showQuickAction = false
             Add to Bag <span aria-hidden="true">↗</span>
           </button>
         )}
+        {showQuickAction && action === "view" && (
+          <Link className="product-quick-action" href={href}>
+            {isCup ? "View the object" : "View coffee"} <span aria-hidden="true">↗</span>
+          </Link>
+        )}
       </div>
       <div className="product-card-copy">
         <p className="product-card-id">{product.id}</p>
@@ -51,6 +57,6 @@ export function ProductCard({ product, featured = false, showQuickAction = false
   );
 }
 
-export function ProductGrid({ items = coffees, showQuickAction = false, action = "view", showDirection = false, className = "" }: { items?: readonly Product[]; showQuickAction?: boolean; action?: "view" | "add"; showDirection?: boolean; className?: string }) {
-  return <div className={`product-grid ${className}`}>{items.map((product, index) => <ProductCard key={product.id} product={product} featured={index === 0} showQuickAction={showQuickAction} action={action} showDirection={showDirection} />)}</div>;
+export function ProductGrid({ items = coffees, showQuickAction = false, action = "view", showDirection = false, className = "", anchorIds = [] }: { items?: readonly Product[]; showQuickAction?: boolean; action?: "view" | "add"; showDirection?: boolean; className?: string; anchorIds?: readonly (string | undefined)[] }) {
+  return <div className={`product-grid ${className}`}>{items.map((product, index) => <ProductCard key={product.id} product={product} featured={index === 0} showQuickAction={showQuickAction} action={action} showDirection={showDirection} anchorId={anchorIds[index]} />)}</div>;
 }

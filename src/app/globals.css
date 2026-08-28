@@ -391,6 +391,10 @@ h3 { margin-block: 0.65rem 0.65rem; font-size: clamp(1.35rem, 1.8vw, 2rem); line
 .pdp-zone--context p { max-width: 24rem; margin: 0; color: var(--color-stone); font-size: 0.85rem; }
 .pdp-context-character { color: var(--color-ink) !important; font-family: var(--font-editorial), Georgia, serif; font-size: 1.2rem !important; line-height: 1.2; }
 .pdp-context-media { aspect-ratio: 4 / 3; min-height: 0; }
+.pdp-variant-controls { display: grid; gap: 0.75rem; margin-top: 1.5rem; }
+.pdp-variant-controls label { display: grid; gap: 0.3rem; color: var(--color-stone); font-size: 0.72rem; }
+.pdp-variant-controls select { width: 100%; min-height: 2.75rem; padding: 0.55rem 0.65rem; border: 1px solid var(--color-rule); border-radius: 0; background: transparent; color: var(--color-ink); }
+.pdp-price { margin: 1rem 0 0; font-family: var(--font-mono), monospace; font-size: 0.78rem; font-variant-numeric: tabular-nums; }
 .pdp-buy-controls { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: stretch; margin-bottom: 1rem; }
 .quantity-control { display: inline-flex; min-height: 48px; align-items: center; border: 1px solid var(--color-rule); }
 .quantity-control button { width: 42px; height: 46px; border: 0; background: transparent; cursor: pointer; }
