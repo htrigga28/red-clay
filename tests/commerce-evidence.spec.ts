@@ -158,8 +158,10 @@ test("captures the required mobile commerce walkthrough and screenshots", async 
     await page.goto(`${baseUrl}/shop/laterite`, { waitUntil: "networkidle" });
     await page.getByLabel("1kg").check();
     await page.getByLabel("Espresso Grind").check();
+    await page.getByRole("button", { name: "Increase quantity" }).click();
     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
     await expect(page.locator(".pdp-mobile-buy")).toBeVisible();
+    await expect(page.locator(".pdp-mobile-buy")).toContainText("1kg / Espresso Grind · Qty 2");
     await page.locator(".pdp-mobile-buy").getByRole("button", { name: "Add to Bag" }).click();
     await closeDrawer(page);
 

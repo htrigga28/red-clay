@@ -108,8 +108,8 @@ The desktop recording covers Shop, Sidama, AFTERLIGHT, one-item and four-item Ba
 
 | File | Codec | Pixel format | Dimensions | Duration | Size |
 | --- | --- | --- | --- | --- | --- |
-| `desktop-1366x768.raw_compressed.mp4` | h264 | yuv420p | 1366 × 768 | 17.520000s | 1,077,654 bytes |
-| `mobile-390x844.raw_compressed.mp4` | h264 | yuv420p | 390 × 844 | 8.240000s | 394,630 bytes |
+| `desktop-1366x768.raw_compressed.mp4` | h264 | yuv420p | 1366 × 768 | 17.240000s | 1,113,754 bytes |
+| `mobile-390x844.raw_compressed.mp4` | h264 | yuv420p | 390 × 844 | 8.120000s | 423,211 bytes |
 
 ## Limits And Unresolved Issues
 

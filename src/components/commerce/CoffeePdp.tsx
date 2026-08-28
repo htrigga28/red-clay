@@ -78,7 +78,7 @@ export function CoffeePdp({ coffee }: { coffee: Coffee }) {
 
     <section className="pdp-related" aria-labelledby="related-title"><PageContainer><SectionLabel>RELATED COFFEES</SectionLabel><h2 id="related-title">Continue from {displayName(coffee.id)}.</h2><div className="pdp-related-grid">{related.map((item, index) => <ProductCard key={item.id} product={item} featured={index === 0} showQuickAction action="add" />)}</div></PageContainer></section>
 
-    {canAddToBag && stickyVisible && selection && <div className="pdp-mobile-buy"><div><span>{coffee.id}</span><small>{selection.format.label}{selection.grindId ? ` / ${grindLabel(selection.grindId)}` : ""}</small></div><AddToBagButton product={coffee} selection={{ formatId, ...(grindId ? { grindId } : {}) }} quantity={quantity} className="button button--dark" /></div>}
+    {canAddToBag && stickyVisible && selection && <div className="pdp-mobile-buy"><div><span>{coffee.id}</span><small>{selection.format.label}{selection.grindId ? ` / ${grindLabel(selection.grindId)}` : ""} · Qty {quantity}</small></div><AddToBagButton product={coffee} selection={{ formatId, ...(grindId ? { grindId } : {}) }} quantity={quantity} className="button button--dark" /></div>}
   </main>;
 }
 
