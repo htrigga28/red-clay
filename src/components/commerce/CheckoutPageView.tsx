@@ -27,6 +27,7 @@ export function CheckoutPageView() {
   const [region, setRegion] = useState("");
   const [payment, setPayment] = useState("mpesa");
   const [error, setError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const subtotal = useMemo(() => items.reduce((sum, item) => sum + (linePrice(item) ?? 0), 0), [items]);
   const hasPrices = items.every((item) => linePrice(item) !== null);
   const isNairobi = region.trim().toLowerCase().includes("nairobi");
@@ -35,7 +36,8 @@ export function CheckoutPageView() {
 
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (items.length === 0) return;
+    if (items.length === 0 || isSubmitting) return;
+    setIsSubmitting(true);
     setError("");
     const order = `RC-${new Date().toISOString().slice(2, 10).replaceAll("-", "")}-${Math.floor(1000 + Math.random() * 9000)}`;
     router.push(`/checkout/complete?order=${encodeURIComponent(order)}`);
@@ -55,7 +57,7 @@ export function CheckoutPageView() {
           <fieldset className="checkout-section"><legend><span>03</span> Delivery method</legend><div className="checkout-method"><strong>{country === "Kenya" ? (isNairobi ? "Nairobi delivery" : "Kenya delivery") : "International demo rate"}</strong><span>{country === "Kenya" ? `${isNairobi ? "1–2" : "2–4"} business days · ${shipping === 0 ? "Free" : money(shipping)}` : "Calculated at checkout · KES 3,500"}</span></div></fieldset>
           <fieldset className="checkout-section"><legend><span>04</span> Payment method</legend><label className="checkout-choice"><input type="radio" name="payment" value="mpesa" checked={payment === "mpesa"} onChange={() => setPayment("mpesa")} /><span><strong>M-Pesa</strong><small>Demo confirmation only. No STK push is sent.</small></span></label><label className="checkout-choice"><input type="radio" name="payment" value="card" checked={payment === "card"} onChange={() => setPayment("card")} /><span><strong>Card</strong><small>Demo card state. Do not enter a real card number.</small></span></label>{payment === "card" && <div className="checkout-card-demo" role="status">Card details are simulated for this portfolio checkout.</div>}</fieldset>
           {error && <p className="checkout-error" role="alert">{error}</p>}
-          <button className="button button--dark checkout-submit" type="submit">Place demo order <span aria-hidden="true">↗</span></button>
+          <button className="button button--dark checkout-submit" type="submit" disabled={isSubmitting}>{isSubmitting ? "Placing demo order…" : "Place demo order"} <span aria-hidden="true">↗</span></button>
         </div>
         <aside className="checkout-summary" aria-label="Order summary"><SectionLabel>REVIEW</SectionLabel><h2>{count} {count === 1 ? "item" : "items"}</h2><ul>{items.map((item) => <li key={item.id}><span>{item.id}<small>{item.quantity} × {item.format ?? item.region}</small></span><strong>{money(linePrice(item))}</strong></li>)}</ul><div className="checkout-total-row"><span>Subtotal</span><strong>{hasPrices ? money(subtotal) : "KES —"}</strong></div><div className="checkout-total-row"><span>Shipping</span><strong>{shipping === 0 ? "Free" : money(shipping)}</strong></div><div className="checkout-total-row checkout-total-row--grand"><span>Total</span><strong>{hasPrices ? money(total) : "KES —"}</strong></div>{country === "Kenya" && subtotal < FREE_DELIVERY_THRESHOLD && hasPrices && <p className="checkout-summary-note">{money(FREE_DELIVERY_THRESHOLD - subtotal)} away from free Kenya delivery.</p>}<Link className="editorial-link" href="/bag">Back to bag <span aria-hidden="true">↗</span></Link></aside>
       </form>

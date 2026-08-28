@@ -707,6 +707,7 @@ h3 { margin-block: 0.65rem 0.65rem; font-size: clamp(1.35rem, 1.8vw, 2rem); line
 .checkout-card-demo { padding: 0.8rem; background: var(--color-canvas); color: var(--color-stone); font-size: 0.76rem; }
 .checkout-error { margin: 1.25rem 0 0; color: var(--color-clay); font-size: 0.8rem; }
 .checkout-submit { width: 100%; margin-top: 2rem; justify-content: space-between; }
+.checkout-submit:disabled { cursor: progress; opacity: 0.62; }
 .checkout-summary { align-self: start; padding: 1.5rem; background: var(--color-canvas); }
 .checkout-summary h2 { margin: 0.7rem 0 1.5rem; font-size: 2rem; }
 .checkout-summary ul { display: grid; gap: 1rem; margin: 0 0 1.5rem; padding: 0 0 1.5rem; border-bottom: 1px solid var(--color-rule); list-style: none; }
