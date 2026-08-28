@@ -14,6 +14,7 @@ export function CoffeePdp({ coffee }: { coffee: Coffee }) {
   const [quantity, setQuantity] = useState(1);
   const [stickyVisible, setStickyVisible] = useState(false);
   const buyModuleRef = useRef<HTMLElement>(null);
+  const canAddToBag = coffee.formats.length > 0;
   const related = coffee.relatedProducts
     .map((id) => getProductById(id))
     .filter((product): product is Product => Boolean(product));
@@ -41,7 +42,7 @@ export function CoffeePdp({ coffee }: { coffee: Coffee }) {
         <p className="pdp-sensory-line">{coffee.sensoryStatement}</p>
         {coffee.notes.length > 0 && <p className="pdp-notes">{coffee.notes.join(" / ")}</p>}
         {facts.length > 0 && <dl className="pdp-facts">{facts.map((fact) => <div key={fact.term}><dt>{fact.term}</dt><dd>{fact.value}</dd></div>)}</dl>}
-        <div className="pdp-buy-controls"><div className="quantity-control" aria-label={`Quantity for ${coffee.id}`}><button type="button" aria-label="Decrease quantity" onClick={() => setQuantity((value) => Math.max(1, value - 1))}>−</button><span aria-live="polite">{quantity}</span><button type="button" aria-label="Increase quantity" onClick={() => setQuantity((value) => value + 1)}>+</button></div><AddToBagButton product={coffee} quantity={quantity} className="button button--dark pdp-add" /></div>
+        {canAddToBag && <div className="pdp-buy-controls"><div className="quantity-control" aria-label={`Quantity for ${coffee.id}`}><button type="button" aria-label="Decrease quantity" onClick={() => setQuantity((value) => Math.max(1, value - 1))}>−</button><span aria-live="polite">{quantity}</span><button type="button" aria-label="Increase quantity" onClick={() => setQuantity((value) => value + 1)}>+</button></div><AddToBagButton product={coffee} quantity={quantity} className="button button--dark pdp-add" /></div>}
         <Link className="pdp-return-link" href="/shop">Back to Shop <span aria-hidden="true">↗</span></Link>
       </section>
       <div className="pdp-zone pdp-zone--media"><ProductMediaPlaceholder assetId={coffee.media.pdpHero.id} label={coffee.id} kind="coffee" /></div>
@@ -62,7 +63,7 @@ export function CoffeePdp({ coffee }: { coffee: Coffee }) {
 
     <section className="pdp-related" aria-labelledby="related-title"><PageContainer><SectionLabel>RELATED COFFEES</SectionLabel><h2 id="related-title">Continue from {displayName(coffee.id)}.</h2><div className="pdp-related-grid">{related.map((item, index) => <ProductCard key={item.id} product={item} featured={index === 0} showQuickAction action="add" />)}</div></PageContainer></section>
 
-    {stickyVisible && <div className="pdp-mobile-buy"><span>{coffee.id}</span><AddToBagButton product={coffee} quantity={quantity} className="button button--dark" /></div>}
+    {canAddToBag && stickyVisible && <div className="pdp-mobile-buy"><span>{coffee.id}</span><AddToBagButton product={coffee} quantity={quantity} className="button button--dark" /></div>}
   </main>;
 }
 

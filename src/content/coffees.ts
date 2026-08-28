@@ -298,7 +298,6 @@ export const currentHarvest: Coffee[] = [
     relatedEdition: "beyond-heirloom",
     relatedProducts: ["GUJI / NATURAL 02", "LINEN", "KIAMBU / WASHED 01"],
     media: media(redClayAssets.pending.sidamaWashed01, {
-      shopAlternate: redClayAssets.origins.ethiopiaSupport,
       origin: redClayAssets.origins.ethiopiaLead,
       process: redClayAssets.origins.ethiopiaSupport,
       secondaryProcess: redClayAssets.origins.ethiopiaDetail,

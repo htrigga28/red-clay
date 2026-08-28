@@ -28,7 +28,7 @@ export default function ShopPage() {
       </div>
     </section>
 
-    <section className="shop-movement shop-current-harvest" aria-labelledby="current-harvest-title">
+    <section id="current-harvest" className="shop-movement shop-current-harvest" aria-labelledby="current-harvest-title">
       <div className="page-container">
         <div className="shop-movement-heading">
           <SectionLabel>CURRENT HARVEST</SectionLabel>

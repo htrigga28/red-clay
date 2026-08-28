@@ -6,7 +6,7 @@ Date accessed: 2026-08-28
 
 This file supports the revised Origins pages, Volume 01 of The Editions, and the short regional claims on Home and About.
 
-The source list favors government records, research institutions, peer-reviewed research, and recognized coffee-sector organizations. The product names, flavor notes, prices, weights, and availability come from `PRODUCT_CONTENT_CANON.md`. They are not research claims.
+The source list favors government records, research institutions, peer-reviewed research, and recognized coffee-sector organizations. The approved product names, process labels, tasting notes, and stated formats come from `PRODUCT_CONTENT_CANON.md`. They are not research claims.
 
 The customer copy must keep these limits:
 
@@ -89,7 +89,7 @@ This is supportable when nearby copy explains the context. For a stand-alone fac
 
 | Claim | Source | URL | Source type | Date accessed | Limits | Customer-facing use |
 | --- | --- | --- | --- | --- | --- | --- |
-| The six current coffee names, process labels, tasting notes, formats, prices, and roast colors are fixed product facts for this release. | `PRODUCT_CONTENT_CANON.md` | Internal: docs/red-clay/PRODUCT_CONTENT_CANON.md | Internal product authority | 2026-08-28 | These are release facts, not proof of real-world sourcing or harvest specifications. Do not add farms, washing stations, elevations, certifications, lot codes, exporter names, or harvest dates. | All Origins and Editions product links use the canonical slugs and sensory notes. |
+| The six Current Harvest names, process labels, tasting notes, and stated 250g formats are fixed product facts for this release. | `PRODUCT_CONTENT_CANON.md` | Internal: docs/red-clay/PRODUCT_CONTENT_CANON.md | Internal product authority | 2026-08-28 | These are release facts, not proof of real-world sourcing or harvest specifications. Prices, availability, inventory, and roast colors are not approved. Do not add farms, washing stations, elevations, certifications, lot codes, exporter names, or harvest dates. | All Origins and Editions product links use the canonical slugs and sensory notes. |
 | The articles use tasting notes as Red Clay’s intended product profiles, not as universal regional or process traits. | `PRODUCT_CONTENT_CANON.md`, read with the research sources above | Internal: docs/red-clay/PRODUCT_CONTENT_CANON.md | Internal product authority with editorial limitation | 2026-08-28 | Do not use the paired products as scientific evidence. New harvests can differ. | Each article ends with a product comparison and an explicit statement that the comparison is not a regional flavor rule. |
 
 ## Editorial review record

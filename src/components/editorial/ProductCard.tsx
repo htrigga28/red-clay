@@ -20,6 +20,7 @@ export function ProductCard({ product, featured = false, showQuickAction = false
   const href = `/shop/${product.slug}`;
   const notes = product.notes.join(" / ");
   const label = isCup ? "View The Kiln Cup" : `View ${product.id}`;
+  const canAddToBag = product.formats.length > 0;
 
   return (
     <article className={`product-card product-card--${product.family} ${isCup ? "product-card--cup" : ""} ${featured ? "product-card--featured" : ""} ${contextual ? "product-card--contextual" : ""}`}>
@@ -33,7 +34,7 @@ export function ProductCard({ product, featured = false, showQuickAction = false
             alternate={"shopAlternate" in product.media ? product.media.shopAlternate : undefined}
           />
         </Link>
-        {showQuickAction && action === "add" && (
+        {showQuickAction && action === "add" && canAddToBag && (
           <button className="product-quick-action" type="button" onClick={(event) => add(product, 1, event.currentTarget)}>
             Add to Bag <span aria-hidden="true">↗</span>
           </button>
