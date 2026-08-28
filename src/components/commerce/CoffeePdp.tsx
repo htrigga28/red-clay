@@ -37,7 +37,7 @@ export function CoffeePdp({ coffee }: { coffee: Coffee }) {
     <section className="pdp-opening page-container" aria-labelledby="pdp-title">
       <section ref={buyModuleRef} className="pdp-zone pdp-zone--purchase" data-pdp-buy>
         <SectionLabel>{coffee.role}</SectionLabel>
-        <h1 id="pdp-title">{coffee.id}</h1>
+        <h1 id="pdp-title" className="pdp-title">{coffee.id}</h1>
         <p className="pdp-region">{coffee.origin}</p>
         <p className="pdp-sensory-line">{coffee.sensoryStatement}</p>
         {coffee.notes.length > 0 && <p className="pdp-notes">{coffee.notes.join(" / ")}</p>}
