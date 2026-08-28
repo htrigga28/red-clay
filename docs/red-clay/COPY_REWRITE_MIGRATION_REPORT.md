@@ -99,6 +99,25 @@ The audit baseline found 14 meaningful exact-repeat groups and seven large conce
 
 This system reduces duplicate targets without hiding the main path.
 
+### Dominant-word changes
+
+A rendered-text scan covered all 25 public routes after the rewrite. The main house-cadence words now appear at this scale:
+
+- `held`: two uses;
+- `close`: one use, in the shared Close control;
+- `stillness`: one use;
+- `quiet`, `attention`, `process-led`, `chapter`, `frame`, and `rhythm`: zero uses.
+
+The words `place` (49 uses), `process` (52), and `context` (38) remain common because the three long Editions and regional pages discuss those subjects directly. `Material` appears 22 times, mainly in the approved Material Series name and literal Kiln Cup copy. These terms now carry product or editorial information instead of acting as default mood language.
+
+### Remaining copy concerns
+
+- Afterlight has no approved format or decaffeination method. Its PDP remains available for comparison, but Add to Bag stays hidden until a format is approved.
+- Prices, availability, inventory, shipping, tax, and checkout copy remain blocked by product decisions.
+- Final Kiln Cup care copy remains blocked by verified care guidance.
+- Custom product and Kiln Cup media are still pending. The current geometry-preserving placeholders must be replaced without relabelling contextual regional images as product-specific evidence.
+- The long Editions have a source record, but any future sourcing, harvest, or producer claims will require a new fact check.
+
 ## Product differentiation
 
 ### Material Series
@@ -177,6 +196,7 @@ This pass leaves these decisions open:
 - product prices and currency;
 - subtotal, shipping, tax, and checkout;
 - final Kiln Cup care claims;
+- the Afterlight format;
 - the exact Afterlight decaffeination method;
 - product availability and inventory policy;
 - custom product and Kiln Cup media replacement.
@@ -190,7 +210,7 @@ The Bag remains a demo holding state. Add to Bag, quantity changes, removal, and
 - `npm run typecheck`: passed.
 - `npm run lint`: passed.
 - `npm run build`: passed and generated 31 static pages.
-- `git diff --check`: passed apart from Windows line-ending notices.
+- `git diff --check`: passed.
 - Impeccable detector on `src/app`, `src/components`, and `src/content`: returned `[]`.
 
 The production build reports that the current ESLint configuration does not expose the Next.js plugin to the build step. The separate project lint command passes.
