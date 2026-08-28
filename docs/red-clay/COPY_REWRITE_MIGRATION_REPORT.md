@@ -250,10 +250,10 @@ Representative full-page captures were also inspected for Shop, a seasonal PDP, 
 The final recordings are local QA artifacts under `recordings/`:
 
 - `recordings/red-clay-copy-rewrite-desktop-1366-final.mp4`
-  - H.264, `1366×768`, `yuv420p`, 16.6 seconds.
+  - H.264, `1366×768`, `yuv420p`, 22 seconds.
   - Covers Home, the four Shop movements, representative and paired PDPs, Origins, Kayanza, The Editions, all three long stories, About, The Kiln Cup, a populated Bag, and the footer disclosure.
 - `recordings/red-clay-copy-rewrite-mobile-390-final.mp4`
-  - H.264, `390×844`, `yuv420p`, 10.3 seconds.
+  - H.264, `390×844`, `yuv420p`, 13 seconds.
   - Covers Shop architecture, representative cards, a house PDP, a seasonal PDP, Origins, Beyond “Heirloom,” About, a populated Bag, and the footer disclosure.
 
 `ffprobe` confirmed both output dimensions, codecs, pixel formats, durations, and file sizes.
