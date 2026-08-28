@@ -78,7 +78,7 @@ const media = (primary: RedClayAsset, support: Omit<CoffeeMedia, "shopPrimary" |
 
 const baseCommerce = {
   price: null,
-  currency: null,
+  currency: "KES",
   availability: null,
   isActive: true,
 } as const;
@@ -87,6 +87,7 @@ export const materialSeries: Coffee[] = [
   {
     ...baseCommerce,
     id: "LATERITE",
+    price: 1600,
     slug: "laterite",
     kind: "coffee",
     family: "material-series",
@@ -109,6 +110,7 @@ export const materialSeries: Coffee[] = [
   {
     ...baseCommerce,
     id: "BASALT",
+    price: 1700,
     slug: "basalt",
     kind: "coffee",
     family: "material-series",
@@ -131,6 +133,7 @@ export const materialSeries: Coffee[] = [
   {
     ...baseCommerce,
     id: "LINEN",
+    price: 1800,
     slug: "linen",
     kind: "coffee",
     family: "material-series",
@@ -156,6 +159,7 @@ export const currentHarvest: Coffee[] = [
   {
     ...baseCommerce,
     id: "KIAMBU / WASHED 01",
+    price: 1950,
     slug: "kiambu-washed-01",
     kind: "coffee",
     family: "current-harvest",
@@ -188,6 +192,7 @@ export const currentHarvest: Coffee[] = [
   {
     ...baseCommerce,
     id: "KIRINYAGA / WASHED 02",
+    price: 2100,
     slug: "kirinyaga-washed-02",
     kind: "coffee",
     family: "current-harvest",
@@ -214,6 +219,7 @@ export const currentHarvest: Coffee[] = [
   {
     ...baseCommerce,
     id: "KAYANZA / WASHED 01",
+    price: 1900,
     slug: "kayanza-washed-01",
     kind: "coffee",
     family: "current-harvest",
@@ -245,6 +251,7 @@ export const currentHarvest: Coffee[] = [
   {
     ...baseCommerce,
     id: "KAYANZA / NATURAL 02",
+    price: 2050,
     slug: "kayanza-natural-02",
     kind: "coffee",
     family: "current-harvest",
@@ -276,6 +283,7 @@ export const currentHarvest: Coffee[] = [
   {
     ...baseCommerce,
     id: "SIDAMA / WASHED 01",
+    price: 2100,
     slug: "sidama-washed-01",
     kind: "coffee",
     family: "current-harvest",
@@ -306,6 +314,7 @@ export const currentHarvest: Coffee[] = [
   {
     ...baseCommerce,
     id: "GUJI / NATURAL 02",
+    price: 2200,
     slug: "guji-natural-02",
     kind: "coffee",
     family: "current-harvest",
@@ -340,6 +349,7 @@ export const otherWaysToDrink: Coffee[] = [
   {
     ...baseCommerce,
     id: "AFTERLIGHT",
+    price: 2200,
     slug: "afterlight",
     kind: "coffee",
     family: "other-ways-to-drink",
@@ -352,8 +362,8 @@ export const otherWaysToDrink: Coffee[] = [
     notes: ["Plum", "cocoa", "honey"],
     shortDescription: "A serious decaf with sweetness, body, and a full place in the collection.",
     customerDirection: "Choose Afterlight when you want the depth of a Red Clay coffee without the usual caffeine.",
-    formats: [],
-    uses: [],
+    formats: ["250G"],
+    uses: ["Filter", "Espresso"],
     placeHeading: "Decaf without the apology.",
     placeCopy: "Afterlight keeps the focus on the cup: plum, cocoa, honey, and a rounded finish.",
     comparison: "Choose Laterite for a caffeinated all-rounder. Choose Basalt for more espresso weight and deeper sweetness.",
@@ -363,6 +373,7 @@ export const otherWaysToDrink: Coffee[] = [
   {
     ...baseCommerce,
     id: "RED CLAY INSTANT — ETHIOPIA",
+    price: 2300,
     slug: "red-clay-instant",
     kind: "coffee",
     family: "other-ways-to-drink",
@@ -386,6 +397,7 @@ export const otherWaysToDrink: Coffee[] = [
   {
     ...baseCommerce,
     id: "THREE REGIONS",
+    price: 2800,
     slug: "three-regions",
     kind: "coffee",
     family: "other-ways-to-drink",
@@ -415,6 +427,7 @@ export const otherWaysToDrink: Coffee[] = [
 export const kilnCup: ObjectProduct = {
   ...baseCommerce,
   id: "THE KILN CUP",
+  price: 5900,
   slug: "the-kiln-cup",
   kind: "kiln-cup",
   family: "object",

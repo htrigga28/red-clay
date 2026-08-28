@@ -10,6 +10,11 @@ export type BagItem = {
   assetId: string;
   kind: Product["kind"];
   quantity: number;
+  /** The selected sellable variant. These remain optional for older saved bag items. */
+  format?: string;
+  grind?: string;
+  price?: number | null;
+  currency?: string | null;
 };
 
 type BagContextValue = {
@@ -34,6 +39,9 @@ const itemFromProduct = (product: Product): BagItem => ({
   assetId: product.media.shopPrimary.id,
   kind: product.kind,
   quantity: 1,
+  format: product.formats[0],
+  price: product.price,
+  currency: product.currency,
 });
 
 export function BagProvider({ children }: { children: React.ReactNode }) {
