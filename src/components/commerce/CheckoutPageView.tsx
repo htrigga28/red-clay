@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { FormEvent, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useBag, type BagItem } from "@/components/commerce/BagProvider";
+import { getBagLineKey, useBag, type BagItem } from "@/components/commerce/BagProvider";
 import { getProductById } from "@/content/coffees";
 import { PageContainer, SectionLabel } from "@/components/layout/PageContainer";
 
@@ -44,7 +44,7 @@ export function CheckoutPageView() {
   }
 
   if (items.length === 0) {
-    return <main id="main-content" className="checkout-page"><PageContainer><div className="checkout-empty"><SectionLabel>CHECKOUT</SectionLabel><h1>Your bag is empty.</h1><p>Add something from the collection before you check out.</p><Link className="button button--dark" href="/shop">See all coffees <span aria-hidden="true">↗</span></Link></div></PageContainer></main>;
+    return <main id="main-content" className="checkout-page"><PageContainer><div className="checkout-empty"><SectionLabel>CHECKOUT</SectionLabel><h1>Your bag is empty.</h1><p>Add something from the collection before you check out.</p><Link className="button button--dark" href="/shop">Browse the collection <span aria-hidden="true">↗</span></Link></div></PageContainer></main>;
   }
 
   return <main id="main-content" className="checkout-page">
@@ -59,7 +59,7 @@ export function CheckoutPageView() {
           {error && <p className="checkout-error" role="alert">{error}</p>}
           <button className="button button--dark checkout-submit" type="submit" disabled={isSubmitting}>{isSubmitting ? "Placing demo order…" : "Place demo order"} <span aria-hidden="true">↗</span></button>
         </div>
-        <aside className="checkout-summary" aria-label="Order summary"><SectionLabel>REVIEW</SectionLabel><h2>{count} {count === 1 ? "item" : "items"}</h2><ul>{items.map((item) => <li key={item.id}><span>{item.id}<small>{item.quantity} × {item.format ?? item.region}</small></span><strong>{money(linePrice(item))}</strong></li>)}</ul><div className="checkout-total-row"><span>Subtotal</span><strong>{hasPrices ? money(subtotal) : "KES —"}</strong></div><div className="checkout-total-row"><span>Shipping</span><strong>{shipping === 0 ? "Free" : money(shipping)}</strong></div><div className="checkout-total-row checkout-total-row--grand"><span>Total</span><strong>{hasPrices ? money(total) : "KES —"}</strong></div>{country === "Kenya" && subtotal < FREE_DELIVERY_THRESHOLD && hasPrices && <p className="checkout-summary-note">{money(FREE_DELIVERY_THRESHOLD - subtotal)} away from free Kenya delivery.</p>}<Link className="editorial-link" href="/bag">Back to bag <span aria-hidden="true">↗</span></Link></aside>
+        <aside className="checkout-summary" aria-label="Order summary"><SectionLabel>REVIEW</SectionLabel><h2>{count} {count === 1 ? "item" : "items"}</h2><ul>{items.map((item) => <li key={getBagLineKey(item)}><span>{item.id}<small>{item.quantity} × {item.format ?? item.region}</small></span><strong>{money(linePrice(item))}</strong></li>)}</ul><div className="checkout-total-row"><span>Subtotal</span><strong>{hasPrices ? money(subtotal) : "KES —"}</strong></div><div className="checkout-total-row"><span>Shipping</span><strong>{shipping === 0 ? "Free" : money(shipping)}</strong></div><div className="checkout-total-row checkout-total-row--grand"><span>Total</span><strong>{hasPrices ? money(total) : "KES —"}</strong></div>{country === "Kenya" && subtotal < FREE_DELIVERY_THRESHOLD && hasPrices && <p className="checkout-summary-note">{money(FREE_DELIVERY_THRESHOLD - subtotal)} away from free Kenya delivery.</p>}<Link className="editorial-link" href="/bag">Back to bag <span aria-hidden="true">↗</span></Link></aside>
       </form>
     </PageContainer>
   </main>;
