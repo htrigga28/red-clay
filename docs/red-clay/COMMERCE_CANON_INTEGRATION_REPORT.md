@@ -1,6 +1,6 @@
 # Commerce Canon Integration Report
 
-Date: 2026-08-28  
+Date: 2026-08-28
 Scope: commerce canon integration, Bag surfaces, checkout demo, factual review, and browser evidence.
 
 ## Result
