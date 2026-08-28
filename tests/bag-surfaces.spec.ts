@@ -92,6 +92,8 @@ test("Bag controls fit at 320px and preserve drawer keyboard close", async ({ pa
   await expect(page.locator("body")).not.toHaveClass(/bag-open/);
 
   await page.getByRole("link", { name: "Bag, 1 items" }).click();
+  await expect(drawer).toBeVisible();
+  await expect(drawer).toHaveCSS("opacity", "1");
   await drawer.getByRole("link", { name: "View bag" }).click();
   await expect(page).toHaveURL(/\/bag$/);
   expect(await page.locator(".bag-review-grid").evaluate((element) => getComputedStyle(element).gridTemplateColumns.split(" ").length)).toBe(1);
