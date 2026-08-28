@@ -174,15 +174,15 @@ Counts below are route-level appearances in the current source, not browser impr
 | BASALT | MISSING | MISSING | MISSING | NOT REQUIRED | DERIVE | NOT REQUIRED | P1 Material trio | P0 |
 | LINEN | MISSING | MISSING | MISSING | NOT REQUIRED | DERIVE | NOT REQUIRED | P1 Material trio | P0 |
 | KIAMBU / WASHED 01 | MISSING | CURRENT | MISSING | CURRENT | DERIVE | CURRENT | P2 Kenya pair | P0 |
-| KIRINYAGA / WASHED 02 | MISSING | MISSING | MISSING | MISSING (text-only today) | DERIVE | MISSING dedicated regional media | P2 Kenya pair | P0 custom + P1 editorial |
+| KIRINYAGA / WASHED 02 | MISSING | MISSING | MISSING | MISSING | DERIVE | MISSING | P2 Kenya pair | P0 custom + P1 editorial; current copy is text-only |
 | KAYANZA / WASHED 01 | MISSING | CURRENT | MISSING | CURRENT | DERIVE | CURRENT | P2 Kayanza pair | P0 |
 | KAYANZA / NATURAL 02 | MISSING | CURRENT | MISSING | CURRENT | DERIVE | CURRENT | P2 Kayanza pair | P0 |
-| SIDAMA / WASHED 01 | MISSING | MISSING | MISSING | CURRENT Hawassa process/detail | DERIVE | PARTIAL; no Sidama place proof | P2 Ethiopia pair | P0 custom + P1 editorial review |
-| GUJI / NATURAL 02 | MISSING | CURRENT | MISSING | CURRENT | DERIVE | MISSING dedicated Guji media | P2 Ethiopia pair | P0 custom + P1 editorial |
+| SIDAMA / WASHED 01 | MISSING | MISSING | MISSING | CURRENT | DERIVE | MISSING | P2 Ethiopia pair | P0 custom + P1 editorial review; current support is Hawassa context only |
+| GUJI / NATURAL 02 | MISSING | CURRENT | MISSING | CURRENT | DERIVE | MISSING | P2 Ethiopia pair | P0 custom + P1 editorial |
 | AFTERLIGHT | MISSING | MISSING | MISSING | MISSING | DERIVE | NOT REQUIRED today | P2 Other Ways | P0 |
-| RED CLAY INSTANT — ETHIOPIA | MISSING box | MISSING box+sachet | MISSING | MISSING (text-only today) | DERIVE box crop | OPTIONAL travel/office only if layout adds it | P2 Other Ways | P0 |
-| THREE REGIONS | MISSING outer box | MISSING opened box | MISSING | MISSING (text-only today) | DERIVE box crop | NOT REQUIRED | P1 opened-box group | P0 |
-| THE KILN CUP | MISSING | MISSING | MISSING | MISSING macro/detail | DERIVE | CURRENT generic ritual only | P1 coffee + Cup | P0 |
+| RED CLAY INSTANT — ETHIOPIA | MISSING | MISSING | MISSING | MISSING | DERIVE | NOT REQUIRED | P2 Other Ways | P0; box and sachet are both required |
+| THREE REGIONS | MISSING | MISSING | MISSING | MISSING | DERIVE | NOT REQUIRED | P1 opened-box group | P0; outer and opened-box views are required |
+| THE KILN CUP | MISSING | MISSING | MISSING | MISSING | DERIVE | CURRENT | P1 coffee + Cup | P0; current ritual is generic and not a Cup proof |
 
 ## Master production matrix
 
