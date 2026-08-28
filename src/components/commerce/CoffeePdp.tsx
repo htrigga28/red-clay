@@ -24,8 +24,12 @@ export function CoffeePdp({ coffee }: { coffee: Coffee }) {
     .filter((product): product is Product => Boolean(product));
   const edition = coffee.relatedEdition ? editions.find((item) => item.slug === coffee.relatedEdition) : undefined;
   const facts = [
+    coffee.country ? { term: "Country", value: coffee.country } : null,
+    coffee.family === "current-harvest" ? { term: "Region", value: coffee.region } : null,
     { term: "Format", value: coffee.commerce.formats.map((format) => format.label).join(" / ") },
     coffee.process ? { term: "Process", value: coffee.process } : null,
+    coffee.varieties ? { term: "Variety", value: coffee.varieties.join(" / ") } : null,
+    coffee.roast ? { term: "Roast", value: coffee.roast } : null,
     coffee.uses.length > 0 ? { term: "Best for", value: coffee.uses.join(" / ") } : null,
   ].filter((fact): fact is { term: string; value: string } => Boolean(fact));
 
