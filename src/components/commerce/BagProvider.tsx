@@ -51,19 +51,23 @@ const subtotalFor = (items: BagItem[]) => {
   return items.reduce((total, item) => total + itemPrice(item)! * item.quantity, 0);
 };
 
-const itemFromProduct = (product: Product, variant: BagVariant = {}): BagItem => ({
-  id: product.id,
-  lineKey: getBagLineKey({ id: product.id, format: variant.format ?? product.formats[0], grind: variant.grind }),
-  slug: product.slug,
-  region: product.region,
-  assetId: product.media.shopPrimary.id,
-  kind: product.kind,
-  quantity: 1,
-  format: variant.format ?? product.formats[0],
-  grind: variant.grind,
-  price: getProductVariantPrice(product, variant),
-  currency: product.currency,
-});
+const itemFromProduct = (product: Product, variant: BagVariant = {}): BagItem => {
+  const format = variant.format ?? product.formats[0];
+  const grind = variant.grind ?? product.grinds?.[0];
+  return {
+    id: product.id,
+    lineKey: getBagLineKey({ id: product.id, format, grind }),
+    slug: product.slug,
+    region: product.region,
+    assetId: product.media.shopPrimary.id,
+    kind: product.kind,
+    quantity: 1,
+    format,
+    grind,
+    price: getProductVariantPrice(product, variant),
+    currency: product.currency,
+  };
+};
 
 export function BagProvider({ children }: { children: React.ReactNode }) {
   const [items, setItems] = useState<BagItem[]>([]);
