@@ -48,7 +48,8 @@ function DeliveryMethod({ country, isNairobi, shipping }: Readonly<{ country: st
   const isKenya = country === "Kenya";
   const name = isKenya ? "Kenya delivery" : "International demo rate";
   const deliveryWindow = isNairobi ? "1–2" : "2–4";
-  const details = isKenya ? `${deliveryWindow} business days · ${shipping === 0 ? "Free" : money(shipping)}` : "Calculated at checkout · KES 3,500";
+  const shippingLabel = shipping === 0 ? "Free" : money(shipping);
+  const details = isKenya ? `${deliveryWindow} business days · ${shippingLabel}` : "Calculated at checkout · KES 3,500";
   const finalName = isNairobi && isKenya ? "Nairobi delivery" : name;
   return <fieldset className="checkout-section"><legend><span>03</span> Delivery method</legend><div className="checkout-method"><strong>{finalName}</strong><span>{details}</span></div></fieldset>;
 }

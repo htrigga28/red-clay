@@ -63,7 +63,7 @@ export function CoffeePdp({ coffee }: { coffee: Coffee }) {
     <section className="pdp-sensory-block" aria-labelledby="sensory-title"><PageContainer><SectionLabel>CHARACTER</SectionLabel><h2 id="sensory-title">{coffee.shortDescription}</h2></PageContainer></section>
 
     <section className={`pdp-place-process page-container ${coffee.media.process ? "" : "pdp-place-process--text-only"}`} aria-labelledby="place-title">
-      <div className="pdp-story-copy"><SectionLabel>{coffee.family === "material-series" ? "HOUSE PROFILE" : coffee.family === "other-ways-to-drink" ? "HOW IT FITS" : "PLACE / PROCESS"}</SectionLabel><h2 id="place-title">{coffee.placeHeading}</h2><p>{coffee.placeCopy}</p>{coffee.relatedOrigin && <Link className="editorial-link" href={`/origins/${coffee.relatedOrigin}`}>{originLinkLabel(coffee.relatedOrigin)} <span aria-hidden="true">↗</span></Link>}</div>
+      <div className="pdp-story-copy"><SectionLabel>{placeSectionLabel(coffee.family)}</SectionLabel><h2 id="place-title">{coffee.placeHeading}</h2><p>{coffee.placeCopy}</p>{coffee.relatedOrigin && <Link className="editorial-link" href={`/origins/${coffee.relatedOrigin}`}>{originLinkLabel(coffee.relatedOrigin)} <span aria-hidden="true">↗</span></Link>}</div>
       {coffee.media.process && <MediaFrame asset={coffee.media.process} className="pdp-story-process" sizes="(max-width: 1023px) 100vw, 58vw" />}
       {coffee.media.botanical && <MediaFrame asset={coffee.media.botanical} className="pdp-story-detail" sizes="(max-width: 1023px) 58vw, 20vw" />}
     </section>
@@ -82,6 +82,12 @@ function originLinkLabel(slug: string) {
   if (slug === "central-kenya") return "Explore Central Kenya";
   if (slug === "kayanza-burundi") return "Explore Kayanza";
   return "Explore Southern Ethiopia";
+}
+
+function placeSectionLabel(family: Coffee["family"]) {
+  if (family === "material-series") return "HOUSE PROFILE";
+  if (family === "other-ways-to-drink") return "HOW IT FITS";
+  return "PLACE / PROCESS";
 }
 
 function editionLinkCopy(coffee: Coffee) {
