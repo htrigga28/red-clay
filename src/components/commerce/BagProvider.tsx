@@ -61,7 +61,9 @@ export function BagProvider({ children }: { children: React.ReactNode }) {
   const triggerRef = useRef<HTMLElement | null>(null);
   const undoTimerRef = useRef<number | null>(null);
   const itemsRef = useRef<BagItem[]>([]);
+  const lastRemovedRef = useRef<{ item: BagItem; index: number } | null>(null);
   itemsRef.current = items;
+  lastRemovedRef.current = lastRemoved;
 
   const open = useCallback((trigger?: HTMLElement | null) => {
     if (trigger) triggerRef.current = trigger;
@@ -119,18 +121,17 @@ export function BagProvider({ children }: { children: React.ReactNode }) {
     undoTimerRef.current = window.setTimeout(() => setLastRemoved(null), 8000);
   }, []);
   const undoRemove = useCallback(() => {
-    setLastRemoved((removed) => {
-      if (!removed) return removed;
-      setItems((current) => {
-        if (current.some((item) => getBagLineKey(item) === getBagLineKey(removed.item))) return current;
-        const next = [...current];
-        next.splice(Math.min(removed.index, next.length), 0, removed.item);
-        return next;
-      });
-      setAnnouncement(`${removed.item.id} restored to your bag.`);
-      if (undoTimerRef.current != null) window.clearTimeout(undoTimerRef.current);
-      return null;
+    const removed = lastRemovedRef.current;
+    if (!removed) return;
+    setItems((current) => {
+      if (current.some((item) => getBagLineKey(item) === getBagLineKey(removed.item))) return current;
+      const next = [...current];
+      next.splice(Math.min(removed.index, next.length), 0, removed.item);
+      return next;
     });
+    setAnnouncement(`${removed.item.id} restored to your bag.`);
+    setLastRemoved(null);
+    if (undoTimerRef.current != null) window.clearTimeout(undoTimerRef.current);
   }, []);
 
   const value = useMemo(() => ({
