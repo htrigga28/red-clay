@@ -46,7 +46,7 @@ export const origins: Origin[] = [
     name: "Central Kenya",
     region: "Central Kenya",
     country: "Kenya",
-    leadAssetId: "KEN-LAND-001",
+    leadAssetId: "KIAMBU-LAND-4K",
     descriptor: "Water, selection, and two bright Kenyan coffees.",
     summary: "Central Kenya is a useful place to see how variety, careful cherry selection, washed processing, and drying meet without reducing the cup to any one of them.",
     hub: {
@@ -63,9 +63,9 @@ export const origins: Origin[] = [
     editionSlug: "water-and-time",
     relatedEditionBlurb: "Follow the washed sequence from coffee fruit to dry parchment, then meet three varieties that became important in Kenya.",
     assets: {
-      lead: redClayAssets.origins.kenyaLead,
-      support: redClayAssets.origins.kenyaProcess,
-      detail: redClayAssets.origins.kenyaDetail,
+      lead: redClayAssets.documentary.kiambuLead,
+      support: redClayAssets.documentary.kiambuSupport,
+      detail: redClayAssets.documentary.kiambuCultivation,
     },
     factualContext: [
       "Washed processing has a long and prominent place in Kenya, alongside natural, honey, and newer process methods.",

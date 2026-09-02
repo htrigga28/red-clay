@@ -26,6 +26,7 @@ export type CoffeeMedia = {
   process?: RedClayAsset;
   secondaryProcess?: RedClayAsset;
   botanical?: RedClayAsset;
+  documentarySupport?: { asset: RedClayAsset; caption: string }[];
 };
 
 type ProductBase = {
@@ -196,6 +197,11 @@ export const currentHarvest: Coffee[] = [
       process: redClayAssets.origins.kenyaProcess,
       secondaryProcess: redClayAssets.origins.kenyaDrying,
       botanical: redClayAssets.origins.kenyaDetail,
+      documentarySupport: [
+        { asset: redClayAssets.documentary.homeProcess, caption: "Coffee drying on raised racks at Fairview Estate in Kiambu, Kenya." },
+        { asset: redClayAssets.documentary.kenyaWashingInfrastructure, caption: "Inactive coffee washing pits at Fairview Estate in Kiambu, Kenya; this frame does not show active washing." },
+        { asset: redClayAssets.documentary.kenyaDryingTexture, caption: "Coffee drying texture at Fairview Estate in Kiambu, Kenya; a detail plate, not packaging imagery." },
+      ],
     }),
   },
   {

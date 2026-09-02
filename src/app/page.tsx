@@ -70,7 +70,7 @@ export default function HomePage() {
         </header>
 
         <article className="origin-beat origin-beat--kenya page-container" data-origin-beat>
-          <MediaFrame asset={redClayAssets.origins.kenyaLead} className="origin-beat-primary" sizes="(max-width: 1023px) 100vw, 64vw" />
+          <MediaFrame asset={redClayAssets.documentary.kiambuLead} className="origin-beat-primary" sizes="(max-width: 1023px) 100vw, 64vw" />
           <MediaFrame asset={redClayAssets.origins.kenyaDetail} className="origin-beat-secondary" sizes="(max-width: 1023px) 44vw, 16vw" />
           <div className="origin-beat-copy">
             <span className="mono-label">01 / KENYA</span>

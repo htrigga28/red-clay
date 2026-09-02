@@ -1,0 +1,116 @@
+[
+  {
+    "file": "HPL-01_KIA-L1__kiambu_dirt_road_fairview.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Dirt_road_at_Fairview_Estates_coffee_planation,_Kiambu,_KE.jpg",
+    "sha256": "f1e89fa6bf1374ac004e27a5bb4d1d1b873a232dcccd605bb360ae6fca743215",
+    "imageUrl": null,
+    "bytes": 13648894,
+    "target": "assets/red-clay/source-assets/documentary-handoff/HPL-01_KIA-L1__kiambu_dirt_road_fairview.jpg",
+    "reused": true,
+    "sourceSha256": "23a9096a121bc1afbaa11c683cd1a64ab0ae143959d41401391861aab93c1e8c",
+    "sourceBytes": 32405118,
+    "derivativeEncoding": "FFmpeg MJPEG q:v 2 (full-resolution, visually lossless)"
+  },
+  {
+    "file": "HPL-02_KIA-L2__kiambu_view_across_coffee_fields.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:View_across_coffee_fields,_Fairview_Estate,_Kiambu,_KE.jpg",
+    "sha256": "17abbaf8ec885f5b1a113c651f082c8394f36fef0321d2e6679277e0d63e7ecb",
+    "imageUrl": null,
+    "bytes": 9875143,
+    "target": "assets/red-clay/source-assets/documentary-handoff/HPL-02_KIA-L2__kiambu_view_across_coffee_fields.jpg",
+    "reused": true,
+    "sourceSha256": "8d262a46ff32f9fe83c91a03f1b02ae1ceb97921c93210c366a9cd325b754ce1",
+    "sourceBytes": 26459965,
+    "derivativeEncoding": "FFmpeg MJPEG q:v 2 (full-resolution, visually lossless)"
+  },
+  {
+    "file": "HPL-03_KIA-L3__kiambu_coffee_bushes_palms.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Coffee_bushes,_trees_and_palms_at_Fairview_Estate,_Kiambu,_KE.jpg",
+    "sha256": "c06fdd8d788cd81713c4de7f38cec2d26ff1ca4a7fb508f7d3da0c1520a192fb",
+    "imageUrl": null,
+    "bytes": 12757361,
+    "target": "assets/red-clay/source-assets/documentary-handoff/HPL-03_KIA-L3__kiambu_coffee_bushes_palms.jpg",
+    "reused": true,
+    "sourceSha256": "82842991693e3397e1902d9e5be1e9495f62af5d204b04f7750069852d362a15",
+    "sourceBytes": 30948187,
+    "derivativeEncoding": "FFmpeg MJPEG q:v 2 (full-resolution, visually lossless)"
+  },
+  {
+    "file": "HPR-01_KEN-D1__kiambu_coffee_drying_rack.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Coffee_beans_drying_at_Fairview_Estate,_Kiambu,_KE.jpg",
+    "sha256": "5f03d757b9efb9e26987d4496ac093ddfacea904364f802c8a9e0f0e6b6832db",
+    "imageUrl": null,
+    "bytes": 13830500,
+    "target": "assets/red-clay/source-assets/documentary-handoff/HPR-01_KEN-D1__kiambu_coffee_drying_rack.jpg",
+    "reused": true,
+    "sourceSha256": "a0a821e1601a5694dadafd46ea696d1ca88295a220ec3c262d8763654ba0d900",
+    "sourceBytes": 32194697,
+    "derivativeEncoding": "FFmpeg MJPEG q:v 2 (full-resolution, visually lossless)"
+  },
+  {
+    "file": "HPR-02_KEN-W1__kiambu_washing_pits_inactive.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Coffee_washing_pits_at_Fairview_Estate,_Kiamu,_KE.jpg",
+    "sha256": "41f337f34db738d0c48c3c199b4ab1fceec7c87177fd461c3fccbe367c8e4765",
+    "imageUrl": null,
+    "bytes": 10837082,
+    "target": "assets/red-clay/source-assets/documentary-handoff/HPR-02_KEN-W1__kiambu_washing_pits_inactive.jpg",
+    "reused": true,
+    "sourceSha256": "7bdc508e6f50ae1ee7f4d1479fa0037dfa67e96d916aa9391bc11f73e6e9e3b9",
+    "sourceBytes": 28392881,
+    "derivativeEncoding": "FFmpeg MJPEG q:v 2 (full-resolution, visually lossless)"
+  },
+  {
+    "file": "KIA-C1__kiambu_unripe_coffee_berries.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Coffee_berries_on_plants_at_Fairview_Estate,_Kiambu,_KE.jpg",
+    "sha256": "4e86156ad82e52d70552b4920c47a582eeb1ec6276222c48e4770be8d17a2520",
+    "imageUrl": null,
+    "bytes": 3075063,
+    "target": "assets/red-clay/source-assets/documentary-handoff/KIA-C1__kiambu_unripe_coffee_berries.jpg",
+    "reused": true,
+    "sourceSha256": "eee3086573d3e2f729613bf58022a7fc4034753ad4211251c5aaab4de49746dd",
+    "sourceBytes": 11802353,
+    "derivativeEncoding": "FFmpeg MJPEG q:v 2 (full-resolution, visually lossless)"
+  },
+  {
+    "file": "KIA-C2__kiambu_hand_holding_mature_cherries.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Hand_holding_coffee_cherries.jpg",
+    "sha256": "f9e96fe844f3cfdb44fc72dd8fd3d397126b2b5779a788d76727200442c20ea1",
+    "imageUrl": null,
+    "bytes": 3481187,
+    "target": "assets/red-clay/source-assets/documentary-handoff/KIA-C2__kiambu_hand_holding_mature_cherries.jpg",
+    "reused": true,
+    "sourceSha256": "a8ab6af92c2d04392cd9d5ac43b307d48e22788844ca71f99187b348b85262aa",
+    "sourceBytes": 15093916,
+    "derivativeEncoding": "FFmpeg MJPEG q:v 2 (full-resolution, visually lossless)"
+  },
+  {
+    "file": "KEN-D2__kiambu_drying_coffee_texture.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Drying_coffee_bean_texture_at_Fairview_Estate,_Kiambu,_KE.jpg",
+    "sha256": "6c6ed6787cdc16ec2c2fce68449f3cf9128ebf4305df02a13142b8d3dee7740b",
+    "imageUrl": null,
+    "bytes": 5475273,
+    "target": "assets/red-clay/source-assets/documentary-handoff/KEN-D2__kiambu_drying_coffee_texture.jpg",
+    "reused": true,
+    "sourceSha256": "3d472ab8384581348179c5f41d0e30387d54d46f845cd1ed6e3fddd3e584ec82",
+    "sourceBytes": 17830553,
+    "derivativeEncoding": "FFmpeg MJPEG q:v 2 (full-resolution, visually lossless)"
+  },
+  {
+    "file": "HPR-03_ETH-S1__addis_women_checking_coffee.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Women_checking_coffee.jpg",
+    "sha256": "38108f8f3416de560467729a6b2abe140bd796fc6da56e51f6b5e8caefd8a82a",
+    "imageUrl": null,
+    "bytes": 2996007,
+    "target": "assets/red-clay/source-assets/documentary-handoff/HPR-03_ETH-S1__addis_women_checking_coffee.jpg",
+    "reused": true
+  },
+  {
+    "file": "ETH-S2__ethiopia_raw_coffee_quality_check.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:The_shape,_colour_and_odour_of_beans.jpg",
+    "sha256": "fb30cc8995c2153fde494682b9fac1cab75c925dca19d6a9d09f0b27600a5d00",
+    "imageUrl": null,
+    "bytes": 1293045,
+    "target": "assets/red-clay/source-assets/documentary-handoff/ETH-S2__ethiopia_raw_coffee_quality_check.jpg",
+    "reused": true
+  }
+]
