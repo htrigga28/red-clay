@@ -61,8 +61,8 @@ export const editions: Edition[] = [
     coffeeBlurb: "Both Red Clay coffees are washed, but their profiles are deliberately different. Compare place, selection, and cup character instead of treating “washed Kenya” as one flavor.",
     relatedOriginSlug: "central-kenya",
     relatedOriginBlurb: "Central Kenya places the washed sequence beside the variety histories and the current contrast between Kiambu and Kirinyaga.",
-    leadAsset: redClayAssets.origins.kenyaLead,
-    supportingAssets: [redClayAssets.origins.kenyaProcess, redClayAssets.origins.kenyaDrying],
+    leadAsset: redClayAssets.documentary.kiambuLead,
+    supportingAssets: [redClayAssets.origins.kenyaProcess, redClayAssets.documentary.homeProcess, redClayAssets.documentary.kenyaDryingTexture],
     sections: [
       {
         label: "01 / THE CUP AND THE WORK",
@@ -71,9 +71,9 @@ export const editions: Edition[] = [
           "A bright Kenyan coffee can seem almost self-explanatory in the cup. Fruit appears quickly. Sweetness feels sharply drawn. The finish leaves a clean line. It is tempting to give one word on the bag—washed—all the credit.",
           "That word matters, but it compresses a long chain of decisions. Coffee must be picked as fruit, separated from that fruit, dried to a stable condition, milled, stored, roasted, and brewed. Washed processing describes part of the journey between cherry and green seed. It does not replace the variety, the growing conditions, the ripeness of the harvest, or the skill of the people handling it.",
         ],
-        asset: redClayAssets.origins.kenyaLead,
+        asset: redClayAssets.documentary.kiambuLead,
         assetClass: "edition-section-media--wide",
-        caption: "Coffee plants near Kawaida Falls in Kiambu County, Kenya.",
+        caption: "View across coffee fields at Fairview Estate in Kiambu, Kenya.",
       },
       {
         label: "02 / BEFORE WASHING",
@@ -83,6 +83,8 @@ export const editions: Edition[] = [
           "Selection begins at harvest. Ripe, unripe, damaged, and overripe cherries do not enter processing in the same condition. Sorting by hand, flotation, or both can separate part of that variation before pulping. The aim is not to make every cherry identical. It is to give the next stage a more consistent starting point.",
           "This is why the phrase “washed coffee” should not suggest that water corrects everything that came before it. Water can carry, clean, and help separate material. It cannot make an unripe seed mature or restore fruit damaged before it reaches the pulper.",
         ],
+        asset: redClayAssets.documentary.kiambuCherryDetail,
+        caption: "A hand holding coffee cherries at Fairview Estate in Kiambu, Kenya; no variety or Red Clay relationship is implied.",
       },
       {
         label: "03 / THE WASHED SEQUENCE",
@@ -104,6 +106,8 @@ export const editions: Edition[] = [
           "Familiar, however, is not exclusive. The same official industry guidance also lists natural, honey, and newer fermentation approaches in Kenya. A country is not a process, and a process is not a national flavor. Washed coffee became an important way that Kenyan coffee entered the specialty market, not a rule that every Kenyan coffee must follow.",
           "There is also an environmental dimension. Wet processing uses water and creates fruit-rich wastewater that must be managed. Good processing is therefore not only a sensory question. It involves water access, equipment maintenance, by-product handling, and decisions that affect the working site around the coffee.",
         ],
+        asset: redClayAssets.documentary.kenyaWashingInfrastructure,
+        caption: "Inactive coffee washing pits at Fairview Estate in Kiambu, Kenya; this frame does not show active washing.",
       },
       {
         label: "05 / THREE VARIETY NAMES",
@@ -124,6 +128,8 @@ export const editions: Edition[] = [
           "It is still one variable. Research on coffee quality repeatedly finds interaction among plant genetics, environment, maturity, post-harvest conditions, storage, roasting, and brewing. This is why washed coffees can differ widely from one another, and why a natural coffee is not automatically heavy, boozy, or intensely fruity.",
           "The practical reading is simple: use process to ask better questions. How was fruit removed? How was fermentation managed? How was the coffee dried? Then keep the region, variety information, and the roaster’s own tasting references in view.",
         ],
+        asset: redClayAssets.documentary.kenyaDryingTexture,
+        caption: "Coffee drying texture at Fairview Estate in Kiambu, Kenya; a detail plate, not packaging imagery.",
       },
       {
         label: "07 / READING RED CLAY",
@@ -269,7 +275,7 @@ export const editions: Edition[] = [
     relatedOriginSlug: "southern-ethiopia",
     relatedOriginBlurb: "Compare Sidama with Guji, washed with natural, and broad plant-language with the details an individual coffee can actually support.",
     leadAsset: redClayAssets.origins.ethiopiaLead,
-    supportingAssets: [redClayAssets.origins.ethiopiaSupport, redClayAssets.origins.ethiopiaDetail],
+    supportingAssets: [redClayAssets.origins.ethiopiaSupport, redClayAssets.origins.ethiopiaDetail, redClayAssets.documentary.ethiopiaChecking, redClayAssets.documentary.ethiopiaQualityCheck],
     sections: [
       {
         label: "01 / THE CONVENIENT WORD",
@@ -312,6 +318,8 @@ export const editions: Edition[] = [
           "Mixtures add another layer. Coffee from several small plots may enter one station lot. A plot may contain more than one plant type. Unless the chain can identify and keep a specific variety separate, the honest label may remain broad. “Local landraces and selections” can be more informative than heirloom, but it is still a category, not a genetic result.",
           "Good labeling therefore includes the limit of knowledge. “Variety not specified” is not a failure when the information is genuinely unavailable. False precision is worse because it turns an assumption into product fact.",
         ],
+        asset: redClayAssets.documentary.ethiopiaChecking,
+        caption: "Women checking coffee in Addis Ababa, Ethiopia; this image is general Ethiopia work context, not Sidama, Guji, or Hawassa evidence.",
       },
       {
         label: "05 / SIDAMA AND GUJI",
@@ -330,8 +338,8 @@ export const editions: Edition[] = [
           "That makes process useful on a bag. It can help a drinker compare two coffees from the same country or region. It still cannot carry the full explanation. Fruit maturity, plant material, temperature, microbes, drying rate, storage, roasting, and brewing all affect what reaches the cup.",
           "The familiar contrast—washed is floral and clean, natural is fruity and heavy—may describe some coffees. It cannot define the categories. A carefully handled natural can be delicate; a washed coffee can be full and fruit-saturated. Read the process beside the producer’s or roaster’s specific notes, not in place of them.",
         ],
-        asset: redClayAssets.origins.ethiopiaDetail,
-        caption: "Coffee beans being sifted during quality sorting in Ethiopia.",
+        asset: redClayAssets.documentary.ethiopiaQualityCheck,
+        caption: "Hands inspecting raw coffee beans in an Ethiopia Commodity Exchange / Awassa-associated quality-check series; DFID / Pete Lewis credit retained.",
       },
       {
         label: "07 / READING RED CLAY",
